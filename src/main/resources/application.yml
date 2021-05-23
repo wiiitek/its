@@ -3,5 +3,5 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/my_db
     username: postgres
-    # should be provided with env variable
+    # should be overwritten with env variable
     #password:
