@@ -14,6 +14,9 @@ class TcEmployeeRepositoryJdbcSpec extends TcSpringBaseTest {
         def actual = tested.findById(-1)
 
         then:
-        actual != Optional.empty()
+        actual.isPresent()
+
+        and:
+        actual.get() == new EmployeeEntity(-1, 'John Doe', 'john.doe@example.com')
     }
 }
