@@ -6,6 +6,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.5.0"
     kotlin("plugin.spring") version "1.5.0"
+    kotlin("plugin.jpa") version "1.5.0"
     id("groovy")
 }
 
@@ -37,6 +38,8 @@ dependencies {
     testImplementation("org.testcontainers:spock")
     // https://www.programmersought.com/article/30275596545/
     testRuntimeOnly("com.h2database:h2")
+    // https://stackoverflow.com/q/48956743
+    testImplementation("io.zonky.test:embedded-database-spring-test:1.6.3")
 }
 
 dependencyManagement {

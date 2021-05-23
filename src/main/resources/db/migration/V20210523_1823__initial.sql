@@ -1,12 +1,13 @@
 
 CREATE TABLE employees (
-    id int NOT NULL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
+    uuid uuid NOT NULL,
     name varchar(2048) CHECK (name <> ''),
     email varchar(512)
 );
 
 CREATE TABLE departments (
-    id int NOT NULL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name varchar(2048) CHECK (name <> '')
 );
 

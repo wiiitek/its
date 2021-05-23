@@ -1,12 +1,13 @@
-package pl.kubiczak.test.spring.integration.demo.employees
+package pl.kubiczak.test.spring.integration.demo.employees.jdbc
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
+import org.springframework.test.context.jdbc.Sql
 import spock.lang.Specification
 
 @DataJdbcTest
-class EmployeeRepositoryJdbcSpec extends Specification {
+class TestEmployeeRepositoryJdbcSpec extends Specification {
 
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate
@@ -17,14 +18,15 @@ class EmployeeRepositoryJdbcSpec extends Specification {
         tested = new EmployeeRepositoryJdbc(namedParameterJdbcTemplate)
     }
 
+    @Sql(scripts = ['/db/scripts/sample_employees.sql'])
     def "should find sample user in database"() {
         when:
-        def actual = tested.findById(-1)
+        def actual = tested.findByUuid(UUID.fromString('6fe146ed-367e-4f09-a03a-b8569339c8b2'))
 
         then:
         actual.isPresent()
 
         and:
-        actual.get() == new EmployeeEntity(-1, 'John Doe', 'john.doe@example.com')
+        actual.get().email == 'john.doe@example.com'
     }
 }
