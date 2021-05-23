@@ -4,7 +4,8 @@ HELP.md
 !gradle/wrapper/gradle-wrapper.jar
 
 ### IntelliJ IDEA ###
-/.idea
+/.idea/
+/.run/
 *.iml
 /out/
 
