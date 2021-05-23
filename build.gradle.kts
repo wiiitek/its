@@ -24,6 +24,7 @@ extra["testcontainersVersion"] = "1.15.3"
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
+    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.flywaydb:flyway-core")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -34,6 +35,8 @@ dependencies {
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
     testImplementation("org.testcontainers:spock")
+    // https://www.programmersought.com/article/30275596545/
+    testRuntimeOnly("com.h2database:h2")
 }
 
 dependencyManagement {
@@ -57,10 +60,4 @@ tasks.withType<BootRun> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-sourceSets.test {
-    withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class)  {
-        kotlin.srcDirs("src/main/kotlin", "src/test/groovy")
-    }
 }
