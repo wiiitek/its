@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.stereotype.Repository
 import java.util.*
 
-@Repository("jdbcRepository")
+@Repository
 class EmployeeRepositoryJdbc
 @Autowired
 constructor(private val namedParameterJdbcTemplate: NamedParameterJdbcTemplate) : EmployeeRepository {

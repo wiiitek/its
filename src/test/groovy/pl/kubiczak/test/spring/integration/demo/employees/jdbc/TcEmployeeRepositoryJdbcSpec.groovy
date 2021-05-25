@@ -1,14 +1,12 @@
 package pl.kubiczak.test.spring.integration.demo.employees.jdbc
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.test.context.jdbc.Sql
 import pl.kubiczak.test.spring.integration.demo.TcSpringBaseTest
 
 class TcEmployeeRepositoryJdbcSpec extends TcSpringBaseTest {
 
     @Autowired
-    @Qualifier("jdbcRepository")
     EmployeeRepository tested
 
     @Sql(scripts = ['/db/scripts/sample_employees.sql'])
