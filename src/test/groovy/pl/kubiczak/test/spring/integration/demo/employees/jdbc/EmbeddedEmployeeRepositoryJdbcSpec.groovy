@@ -35,4 +35,34 @@ class EmbeddedEmployeeRepositoryJdbcSpec extends Specification {
         and:
         actual.get().email == 'john.doe@example.com'
     }
+
+    def "should insert and find user in database"() {
+        given:
+        def uuid = UUID.randomUUID()
+        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
+        tested.insert(employee)
+
+        when:
+        def actual = tested.findByUuid(uuid).get()
+
+        then:
+        actual.email == 'john.doe@example.com'
+        and:
+        actual.id != null
+    }
+
+    def "should upsert and find user in database"() {
+        given:
+        def uuid = UUID.randomUUID()
+        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
+        tested.upsert(employee)
+
+        when:
+        def actual = tested.findByUuid(uuid).get()
+
+        then:
+        actual.email == 'john.doe@example.com'
+        and:
+        actual.id != null
+    }
 }
