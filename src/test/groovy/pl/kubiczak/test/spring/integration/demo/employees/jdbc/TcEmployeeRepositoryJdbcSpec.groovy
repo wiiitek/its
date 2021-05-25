@@ -1,25 +1,55 @@
 package pl.kubiczak.test.spring.integration.demo.employees.jdbc
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Qualifier
-import org.springframework.test.context.jdbc.Sql
 import pl.kubiczak.test.spring.integration.demo.TcSpringBaseTest
 
 class TcEmployeeRepositoryJdbcSpec extends TcSpringBaseTest {
 
     @Autowired
-    @Qualifier("jdbcRepository")
     EmployeeRepository tested
 
-    @Sql(scripts = ['/db/scripts/sample_employees.sql'])
-    def "should find sample user in database"() {
+    def "should save and find user in database"() {
+        given:
+        def uuid = UUID.randomUUID()
+        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
+        tested.upsert(employee)
+
         when:
-        def actual = tested.findByUuid(UUID.fromString('6fe146ed-367e-4f09-a03a-b8569339c8b2'))
+        def actual = tested.findByUuid(uuid).get()
 
         then:
-        actual.isPresent()
-
+        actual.email == 'john.doe@example.com'
         and:
-        actual.get().email == 'john.doe@example.com'
+        actual.id != null
+    }
+
+    def "should insert and find user in database"() {
+        given:
+        def uuid = UUID.randomUUID()
+        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
+        tested.insert(employee)
+
+        when:
+        def actual = tested.findByUuid(uuid).get()
+
+        then:
+        actual.email == 'john.doe@example.com'
+        and:
+        actual.id != null
+    }
+
+    def "should upsert and find user in database"() {
+        given:
+        def uuid = UUID.randomUUID()
+        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
+        tested.upsert(employee)
+
+        when:
+        def actual = tested.findByUuid(uuid).get()
+
+        then:
+        actual.email == 'john.doe@example.com'
+        and:
+        actual.id != null
     }
 }

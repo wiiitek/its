@@ -1,6 +1,5 @@
 package pl.kubiczak.test.spring.integration.demo
 
-
 import org.springframework.boot.test.util.TestPropertyValues
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.ConfigurableApplicationContext

@@ -4,5 +4,9 @@ import java.util.*
 
 interface EmployeeRepository {
 
+    fun insert(entity: EmployeeEntity)
+
+    fun upsert(entity: EmployeeEntity)
+
     fun findByUuid(uuid: UUID): Optional<EmployeeEntity>
 }

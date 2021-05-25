@@ -8,7 +8,9 @@ import spock.lang.Specification
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
 @Testcontainers
-@ContextConfiguration(initializers = [TcDbInitializer.class])
+@ContextConfiguration(initializers = [
+        TcDbInitializer.class
+])
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class TcSpringBaseTest extends Specification {
 }

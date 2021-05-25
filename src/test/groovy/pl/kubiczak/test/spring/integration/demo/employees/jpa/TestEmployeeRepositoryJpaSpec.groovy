@@ -1,18 +1,14 @@
 package pl.kubiczak.test.spring.integration.demo.employees.jpa
 
-import io.zonky.test.db.AutoConfigureEmbeddedDatabase
+
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.test.context.jdbc.Sql
 import pl.kubiczak.test.spring.integration.demo.FakeDb
 import spock.lang.Specification
 
-@DataJpaTest(excludeAutoConfiguration = [
-        AutoConfigureTestDatabase
-])
-@AutoConfigureEmbeddedDatabase
-class EmbeddedEmployeeRepositoryJpaSpec extends Specification {
+@DataJpaTest
+class TestEmployeeRepositoryJpaSpec extends Specification {
 
     @Autowired()
     EmployeeRepository tested
