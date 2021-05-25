@@ -1,13 +1,23 @@
 
+CREATE SEQUENCE employees_seq
+  MINVALUE 1
+  START WITH 1000
+  INCREMENT BY 10;
+
 CREATE TABLE employees (
-    id SERIAL PRIMARY KEY,
+    id bigint PRIMARY KEY,
     uuid uuid NOT NULL,
     name varchar(2048) CHECK (name <> ''),
     email varchar(512)
 );
 
+CREATE SEQUENCE departments_seq
+  MINVALUE 1
+  START WITH 10
+  INCREMENT BY 1;
+
 CREATE TABLE departments (
-    id SERIAL PRIMARY KEY,
+    id bigint PRIMARY KEY,
     name varchar(2048) CHECK (name <> '')
 );
 
