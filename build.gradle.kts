@@ -27,9 +27,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
-    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
-
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
@@ -40,8 +37,6 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.spockframework:spock-core:2.0-groovy-3.0")
     testImplementation("org.spockframework:spock-spring:2.0-groovy-3.0")
-
-    testImplementation("io.projectreactor:reactor-test")
 
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
