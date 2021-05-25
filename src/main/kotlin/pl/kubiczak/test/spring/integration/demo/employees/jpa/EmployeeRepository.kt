@@ -4,6 +4,8 @@ import java.util.*
 
 interface EmployeeRepository {
 
+    fun save(entity: EmployeeEntity): EmployeeEntity
+
     fun findByUuid(uuid: UUID): Optional<EmployeeEntity>
 
 }

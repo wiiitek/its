@@ -5,7 +5,7 @@ import java.sql.ResultSet
 import java.util.*
 
 data class EmployeeEntity(
-    val id: Int?,
+    val id: Long?,
     val uuid: UUID,
     val name: String,
     val email: String?
@@ -14,7 +14,7 @@ data class EmployeeEntity(
 class EmployeeEntityMapper : RowMapper<EmployeeEntity> {
 
     override fun mapRow(rs: ResultSet, rowNum: Int): EmployeeEntity? {
-        val id = rs.getInt("id")
+        val id = rs.getLong("id")
         val uuidStr = rs.getString("uuid")
         val name = rs.getString("name")
         val email = rs.getString("email")

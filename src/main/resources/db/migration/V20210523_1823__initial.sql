@@ -8,7 +8,7 @@ CREATE SEQUENCE employees_seq
 -- https://vladmihalcea.com/postgresql-serial-column-hibernate-identity/
 CREATE TABLE employees (
     id bigint PRIMARY KEY,
-    uuid uuid NOT NULL,
+    uuid uuid UNIQUE NOT NULL,
     name varchar(2048) CHECK (name <> ''),
     email varchar(512)
 );

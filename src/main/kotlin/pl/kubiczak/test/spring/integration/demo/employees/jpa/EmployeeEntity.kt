@@ -10,7 +10,7 @@ data class EmployeeEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employees_gen")
     @SequenceGenerator(name = "employees_gen", sequenceName = "employees_seq", initialValue = 1000, allocationSize = 10)
-    val id: Int?,
+    val id: Long?,
     @Type(type = "org.hibernate.type.PostgresUUIDType")
     val uuid: UUID,
     val name: String,
