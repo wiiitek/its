@@ -4,6 +4,8 @@ CREATE SEQUENCE employees_seq
   START WITH 1000
   INCREMENT BY 10;
 
+-- don't use SERIAL for primary keys
+-- https://vladmihalcea.com/postgresql-serial-column-hibernate-identity/
 CREATE TABLE employees (
     id bigint PRIMARY KEY,
     uuid uuid NOT NULL,
