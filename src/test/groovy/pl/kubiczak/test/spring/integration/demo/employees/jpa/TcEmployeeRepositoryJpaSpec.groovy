@@ -29,8 +29,8 @@ class TcEmployeeRepositoryJpaSpec extends TcSpringBaseTest {
         given:
         def uuid = UUID.randomUUID()
         def employee = new EmployeeEntity(null, uuid, 'John Dzźż', null)
-
         tested.save(employee)
+
         def fixed = new EmployeeEntity(employee.id, uuid, 'John Doe', null)
         def saved = tested.save(fixed)
 
