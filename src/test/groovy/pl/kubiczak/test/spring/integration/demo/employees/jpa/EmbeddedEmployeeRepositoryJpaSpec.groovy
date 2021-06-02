@@ -57,20 +57,22 @@ class EmbeddedEmployeeRepositoryJpaSpec extends Specification {
         given:
         def uuid = UUID.randomUUID()
         def employee = new EmployeeEntity(null, uuid, 'John Dzźż', null)
-        tested.save(employee)
+        def saved = tested.save(employee)
 
         def fixed = new EmployeeEntity(employee.id, uuid, 'John Doe', null)
-        def saved = tested.save(fixed)
+        def savedFixed = tested.save(fixed)
 
         when:
         def actual = tested.findByUuid(uuid).get()
 
         then:
-        employee.name == 'John Doe'
-        and:
-        fixed.name == 'John Doe'
-        and:
         saved.name == 'John Doe'
+        and:
+        savedFixed.name == 'John Doe'
+        and:
+        actual.name == 'John Doe'
+        and:
+        actual.name == 'John Doe'
         and:
         actual.name == 'John Doe'
     }

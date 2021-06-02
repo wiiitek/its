@@ -29,21 +29,25 @@ class TcEmployeeRepositoryJpaSpec extends TcSpringBaseTest {
         given:
         def uuid = UUID.randomUUID()
         def employee = new EmployeeEntity(null, uuid, 'John Dzźż', null)
-        tested.save(employee)
+        def saved = tested.save(employee)
 
         def fixed = new EmployeeEntity(employee.id, uuid, 'John Doe', null)
-        def saved = tested.save(fixed)
+        def savedFixed = tested.save(fixed)
 
         when:
         def actual = tested.findByUuid(uuid).get()
 
         then:
-        // employee is in transient state and will not be updated
-        employee.name == 'John Dzźż'
+        // why JPA not recognize those two entities as same?
+        // is it because we lack equals + hashcode method in entity?
+        // is it because we are using *real* database?
+        saved.name == 'John Dzźż'
         and:
-        fixed.name == 'John Doe'
+        savedFixed.name == 'John Doe'
         and:
-        saved.name == 'John Doe'
+        actual.name == 'John Doe'
+        and:
+        actual.name == 'John Doe'
         and:
         actual.name == 'John Doe'
     }
