@@ -38,7 +38,7 @@ class TcEmployeeRepositoryJpaSpec extends TcSpringBaseTest {
         def actual = tested.findByUuid(uuid).get()
 
         then:
-        // when working with testcontainers it might be that entity is not updated straight away :)
+        // employee is in transient state and will not be updated
         employee.name == 'John Dzźż'
         and:
         fixed.name == 'John Doe'
