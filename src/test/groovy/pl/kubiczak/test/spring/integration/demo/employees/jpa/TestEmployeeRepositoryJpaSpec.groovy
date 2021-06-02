@@ -3,6 +3,7 @@ package pl.kubiczak.test.spring.integration.demo.employees.jpa
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import org.springframework.test.context.jdbc.Sql
 import pl.kubiczak.test.spring.integration.demo.FakeDb
 import spock.lang.Specification
@@ -12,6 +13,9 @@ class TestEmployeeRepositoryJpaSpec extends Specification {
 
     @Autowired()
     EmployeeRepository tested
+
+    @Autowired
+    TestEntityManager testEntityManager
 
     @Sql(scripts = [FakeDb.DATA_INIT_SQL_SCRIPT])
     def "should find sample user by UUID"() {
@@ -29,7 +33,11 @@ class TestEmployeeRepositoryJpaSpec extends Specification {
         given:
         def uuid = UUID.randomUUID()
         def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
-        def saved = tested.save(employee)
+        // save works with JPA first-level cache
+        //def saved = tested.save(employee)
+        // if it wasn't for kotlin("plugin.jpa") we would have exception here about entity without default constructor
+        // https://stackoverflow.com/a/41365380
+        def saved = testEntityManager.persistFlushFind(employee)
 
         when:
         def actual = tested.findByUuid(uuid).get()
