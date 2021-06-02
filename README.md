@@ -5,6 +5,7 @@ Integration Testing examples for [Spring Test Slices].
 Some links about Test Slices:
 
 - [Spring Test Slices at sudoinit5.com]
+- [Integration Testing With @DataJpaTest at baeldung.com]
 
 ## @DataJdbcTest
 
@@ -29,6 +30,7 @@ In our tests we use [TestEntityManager] because repository methods use [first-le
 
 [Spring Test Slices]: https://www.baeldung.com/spring-tests#5-using-test-slices
 [Spring Test Slices at sudoinit5.com]: https://www.sudoinit5.com/post/spring-test-slices/#testing-just-jpa
+[Integration Testing With @DataJpaTest at baeldung.com]: https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 
 [embedded database]: https://github.com/spring-projects/spring-boot/blob/main/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/jdbc/EmbeddedDatabaseConnection.java
 [embedded PostgreSQL]: https://stackoverflow.com/a/49011982
