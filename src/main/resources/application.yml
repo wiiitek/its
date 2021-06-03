@@ -1,5 +1,7 @@
 
 spring:
+  jpa:
+    open-in-view: false
   datasource:
     url: jdbc:postgresql://localhost:5432/my_db
     username: postgres
