@@ -35,9 +35,10 @@ class EmbeddedEmployeeRepositoryJpaSpec extends Specification {
 
     def "should save and find user in database"() {
         given:
-        def uuid = UUID.randomUUID()
-        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
+        def employee = new EmployeeEntity('John Doe', 'john.doe@example.com')
+        def uuid = employee.uuid
         def saved = testEntityManager.persistFlushFind(employee)
+
         when:
         def actual = tested.findByUuid(uuid).get()
 
@@ -49,12 +50,12 @@ class EmbeddedEmployeeRepositoryJpaSpec extends Specification {
 
     def "should overwrite existing entity and update row"() {
         given:
-        def uuid = UUID.randomUUID()
-        def employee = new EmployeeEntity(null, uuid, 'John Dzźż', null)
-        def employeeSaved = testEntityManager.persistFlushFind(employee)
+        def employee = new EmployeeEntity('John Dzźż', null)
+        def uuid = employee.uuid
+        def saved = testEntityManager.persistFlushFind(employee)
 
-        def fixed = new EmployeeEntity(employeeSaved.id, uuid, 'John Doe', null)
-        testEntityManager.persistFlushFind(fixed)
+        saved.name = 'John Doe'
+        testEntityManager.persistFlushFind(saved)
 
         when:
         def actual = tested.findByUuid(uuid).get()

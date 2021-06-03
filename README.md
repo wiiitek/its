@@ -18,6 +18,10 @@ There is also a possibility to use [embedded PostgreSQL].
 
 ## @DataJpaTest
 
+First some info about Kotlin with Spring JPA:
+
+- [Hibernate with Kotlin - powered by Spring Boot at kotlinexpertise.com]
+
 Similar to @DataJdbcTest.
 In our tests we use [TestEntityManager] because repository methods use [first-level cache].
 `kotlin("plugin.jpa")` provides no-args constructor for our entities (https://stackoverflow.com/a/41365380).
@@ -35,6 +39,8 @@ In our tests we use [TestEntityManager] because repository methods use [first-le
 
 [embedded database]: https://github.com/spring-projects/spring-boot/blob/main/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/jdbc/EmbeddedDatabaseConnection.java
 [embedded PostgreSQL]: https://stackoverflow.com/a/49011982
+
+[Hibernate with Kotlin - powered by Spring Boot at kotlinexpertise.com]: https://kotlinexpertise.com/hibernate-with-kotlin-spring-boot/
 
 [TestEntityManager]: https://zetcode.com/springboot/testentitymanager/
 [first-level cache]: https://howtodoinjava.com/hibernate/understanding-hibernate-first-level-cache-with-example/

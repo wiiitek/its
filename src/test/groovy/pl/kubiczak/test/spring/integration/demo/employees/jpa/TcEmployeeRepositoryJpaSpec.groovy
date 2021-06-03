@@ -10,29 +10,27 @@ class TcEmployeeRepositoryJpaSpec extends TcSpringBaseTest {
 
     def "should save and find user in database"() {
         given:
-        def uuid = UUID.randomUUID()
-        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
+        def employee = new EmployeeEntity('John Doe', 'john.doe@example.com')
+        def uuid = employee.uuid
         def saved = tested.save(employee)
 
         when:
         def actual = tested.findByUuid(uuid).get()
 
         then:
-        actual.email == 'john.doe@example.com'
+        actual == saved
         and:
         actual.id != null
-        and:
-        actual.id == saved.id
     }
 
     def "should overwrite existing entity and update row"() {
         given:
-        def uuid = UUID.randomUUID()
-        def employee = new EmployeeEntity(null, uuid, 'John Dzźż', null)
-        def employeeSaved = tested.save(employee)
+        def employee = new EmployeeEntity('John Dzźż', null)
+        def uuid = employee.uuid
+        def saved = tested.save(employee)
 
-        def fixed = new EmployeeEntity(employeeSaved.id, uuid, 'John Doe', null)
-        tested.save(fixed)
+        saved.name = 'John Doe'
+        tested.save(saved)
 
         when:
         def actual = tested.findByUuid(uuid).get()
