@@ -38,8 +38,8 @@ class EmbeddedEmployeeRepositoryJdbcSpec extends Specification {
 
     def "should insert and find user in database"() {
         given:
-        def uuid = UUID.randomUUID()
-        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
+        def employee = new EmployeeEntity('John Doe', 'john.doe@example.com')
+        def uuid = employee.uuid
         tested.insert(employee)
 
         when:
@@ -53,8 +53,8 @@ class EmbeddedEmployeeRepositoryJdbcSpec extends Specification {
 
     def "should upsert and find user in database"() {
         given:
-        def uuid = UUID.randomUUID()
-        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
+        def employee = new EmployeeEntity('John Doe', 'john.doe@example.com')
+        def uuid = employee.uuid
         tested.upsert(employee)
 
         when:

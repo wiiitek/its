@@ -4,22 +4,32 @@ import org.springframework.jdbc.core.RowMapper
 import java.sql.ResultSet
 import java.util.*
 
-data class EmployeeEntity(
-    val id: Long?,
-    val uuid: UUID,
-    val name: String,
+class EmployeeEntity {
+
+    val id: Long?
+    val uuid: UUID
+    val name: String
     val email: String?
-)
 
-class EmployeeEntityMapper : RowMapper<EmployeeEntity> {
+    constructor(name: String, email: String?) : this(null, UUID.randomUUID(), name, email)
 
-    override fun mapRow(rs: ResultSet, rowNum: Int): EmployeeEntity? {
-        val id = rs.getLong("id")
-        val uuidStr = rs.getString("uuid")
-        val name = rs.getString("name")
-        val email = rs.getString("email")
+    private constructor(id: Long?, uuid: UUID, name: String, email: String?) {
+        this.id = id
+        this.uuid = uuid
+        this.name = name
+        this.email = email
+    }
 
-        val uuid = UUID.fromString(uuidStr)
-        return EmployeeEntity(id, uuid, name, email)
+    class Mapper : RowMapper<EmployeeEntity> {
+        override fun mapRow(rs: ResultSet, rowNum: Int): EmployeeEntity {
+            val id = rs.getLong("id")
+            val uuidStr = rs.getString("uuid")
+            val name = rs.getString("name")
+            val email = rs.getString("email")
+
+            val uuid = UUID.fromString(uuidStr)
+
+            return EmployeeEntity(id, uuid, name, email)
+        }
     }
 }

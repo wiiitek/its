@@ -34,8 +34,8 @@ class TestEmployeeRepositoryJdbcSpec extends Specification {
 
     def "should insert and find user in database"() {
         given:
-        def uuid = UUID.randomUUID()
-        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
+        def employee = new EmployeeEntity('John Doe', 'john.doe@example.com')
+        def uuid = employee.uuid
         tested.insert(employee)
 
         when:
@@ -50,8 +50,8 @@ class TestEmployeeRepositoryJdbcSpec extends Specification {
     @Ignore('ON CONFLICT DO UPDATE does not work in H2 which is our test DB here')
     def "should upsert and find user in database"() {
         given:
-        def uuid = UUID.randomUUID()
-        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
+        def employee = new EmployeeEntity('John Doe', 'john.doe@example.com')
+        def uuid = employee.uuid
         tested.upsert(employee)
 
         when:

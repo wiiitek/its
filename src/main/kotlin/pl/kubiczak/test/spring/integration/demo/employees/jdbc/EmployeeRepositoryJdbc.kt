@@ -56,7 +56,7 @@ constructor(private val namedParameterJdbcTemplate: NamedParameterJdbcTemplate) 
 
     override fun findByUuid(uuid: UUID): Optional<EmployeeEntity> {
         val params = mapOf("employeeUuid" to uuid)
-        val result = namedParameterJdbcTemplate.query(FIND_BY_ID, params, EmployeeEntityMapper())
+        val result = namedParameterJdbcTemplate.query(FIND_BY_ID, params, EmployeeEntity.Mapper())
         return if (result.isEmpty())
             Optional.empty()
         else
