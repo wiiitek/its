@@ -20,6 +20,7 @@ There is also a possibility to use [embedded PostgreSQL].
 
 Similar to @DataJdbcTest.
 In our tests we use [TestEntityManager] because repository methods use [first-level cache].
+`kotlin("plugin.jpa")` provides no-args constructor for our entities (https://stackoverflow.com/a/41365380).
 
 > By default, tests annotated with @DataJpaTest are transactional and roll back at the end of each test.
 

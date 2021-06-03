@@ -37,43 +37,29 @@ class EmbeddedEmployeeRepositoryJpaSpec extends Specification {
         given:
         def uuid = UUID.randomUUID()
         def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
-        // save works with JPA first-level cache
-        //def saved = tested.save(employee)
-        // if it wasn't for kotlin("plugin.jpa") we would have exception here about entity without default constructor
-        // https://stackoverflow.com/a/41365380
         def saved = testEntityManager.persistFlushFind(employee)
         when:
         def actual = tested.findByUuid(uuid).get()
 
         then:
-        actual.email == 'john.doe@example.com'
+        actual == saved
         and:
         actual.id != null
-        and:
-        actual.id == saved.id
     }
 
-    def "should overwrite existing entity and update instances"() {
+    def "should overwrite existing entity and update row"() {
         given:
         def uuid = UUID.randomUUID()
         def employee = new EmployeeEntity(null, uuid, 'John Dzźż', null)
-        def saved = tested.save(employee)
+        def employeeSaved = testEntityManager.persistFlushFind(employee)
 
-        def fixed = new EmployeeEntity(employee.id, uuid, 'John Doe', null)
-        def savedFixed = tested.save(fixed)
+        def fixed = new EmployeeEntity(employeeSaved.id, uuid, 'John Doe', null)
+        testEntityManager.persistFlushFind(fixed)
 
         when:
         def actual = tested.findByUuid(uuid).get()
 
         then:
-        saved.name == 'John Doe'
-        and:
-        savedFixed.name == 'John Doe'
-        and:
-        actual.name == 'John Doe'
-        and:
-        actual.name == 'John Doe'
-        and:
         actual.name == 'John Doe'
     }
 }
