@@ -33,6 +33,17 @@ In our tests we use [TestEntityManager] because repository methods use [first-le
 1. Slowest, but use *real* database.
 2. Database changes made by tests are not roll back at the end.
 
+## @WebMvcTest
+
+Might be used to test controllers separately:
+
+1. With `MockMvc` - compare also [Guide to Testing Spring Boot Applications With MockMvc]
+2. With `WebTestClient` - see [Spring framework docs for WebTestClient]
+
+## Springfox
+
+We use version 3.0.0 with Swagger UI available at http://localhost:8080/swagger-ui/.
+
 [Spring Test Slices]: https://www.baeldung.com/spring-tests#5-using-test-slices
 [Spring Test Slices at sudoinit5.com]: https://www.sudoinit5.com/post/spring-test-slices/#testing-just-jpa
 [Integration Testing With @DataJpaTest at baeldung.com]: https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
@@ -44,3 +55,6 @@ In our tests we use [TestEntityManager] because repository methods use [first-le
 
 [TestEntityManager]: https://zetcode.com/springboot/testentitymanager/
 [first-level cache]: https://howtodoinjava.com/hibernate/understanding-hibernate-first-level-cache-with-example/
+
+[Guide to Testing Spring Boot Applications With MockMvc]: https://rieckpil.de/guide-to-testing-spring-boot-applications-with-mockmvc/
+[Spring framework docs for WebTestClient]: https://spring.getdocs.org/en-US/spring-framework-docs/docs/testing/integration-testing/webtestclient.html

@@ -21,6 +21,7 @@ repositories {
 defaultTasks(":clean", ":build")
 
 extra["testcontainersVersion"] = "1.15.3"
+extra["swaggerVersion"] = "3.0.0"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -29,8 +30,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     implementation("org.flywaydb:flyway-core")
+
+    implementation("io.springfox:springfox-boot-starter:${property("swaggerVersion")}")
 
     runtimeOnly("org.postgresql:postgresql")
 
@@ -38,6 +42,10 @@ dependencies {
     testImplementation("org.spockframework:spock-core:2.0-groovy-3.0")
     testImplementation("org.spockframework:spock-spring:2.0-groovy-3.0")
 
+    testImplementation("org.codehaus.groovy:groovy-all:3.0.8")
+    testImplementation("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
+
+    // testcontainers
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
     testImplementation("org.testcontainers:spock")
