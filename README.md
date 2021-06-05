@@ -33,6 +33,10 @@ In our tests we use [TestEntityManager] because repository methods use [first-le
 1. Slowest, but use *real* database.
 2. Database changes made by tests are not roll back at the end.
 
+## Springfox
+
+We use version 3.0.0 with Swagger UI available at http://localhost:8080/swagger-ui/.
+
 [Spring Test Slices]: https://www.baeldung.com/spring-tests#5-using-test-slices
 [Spring Test Slices at sudoinit5.com]: https://www.sudoinit5.com/post/spring-test-slices/#testing-just-jpa
 [Integration Testing With @DataJpaTest at baeldung.com]: https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
