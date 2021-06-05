@@ -1,20 +1,26 @@
 package pl.kubiczak.test.spring.integration.demo.employees
 
 import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
 import spock.lang.Specification
 
 @ExtendWith(SpringExtension.class)
-@WebFluxTest(controllers = [
+@WebMvcTest(controllers = [
         EmployeesController.class
 ])
-class EmployeesControllerSpec extends Specification {
+class EmployeesControllerWebTestClientSpec extends Specification {
 
-    @Autowired
     WebTestClient webTestClient
+
+    // https://spring.getdocs.org/en-US/spring-framework-docs/docs/testing/integration-testing/webtestclient.html
+    def setup() {
+        this.webTestClient = WebTestClient
+                .bindToController(new EmployeesController())
+                .configureClient()
+                .build()
+    }
 
     def "get employees + expectBodyList"() {
 

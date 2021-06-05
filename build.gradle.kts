@@ -35,9 +35,6 @@ dependencies {
     implementation("org.flywaydb:flyway-core")
 
     implementation("io.springfox:springfox-boot-starter:${property("swaggerVersion")}")
-    implementation("io.springfox:springfox-swagger2:${property("swaggerVersion")}")
-    implementation("io.springfox:springfox-swagger-ui:${property("swaggerVersion")}")
-    implementation("io.springfox:springfox-spring-webflux:${property("swaggerVersion")}")
 
     runtimeOnly("org.postgresql:postgresql")
 
