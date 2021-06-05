@@ -1,5 +1,7 @@
 # its
 
+[![CI](https://github.com/wiiitek/its/actions/workflows/main.yml/badge.svg)](https://github.com/wiiitek/its/actions/workflows/main.yml)
+
 Integration Testing examples for [Spring Test Slices].
 
 Some links about Test Slices:
