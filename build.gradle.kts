@@ -52,7 +52,7 @@ dependencies {
     // https://www.programmersought.com/article/30275596545/
     testRuntimeOnly("com.h2database:h2")
     // https://stackoverflow.com/q/48956743
-    testImplementation("io.zonky.test:embedded-database-spring-test:1.6.3")
+    testImplementation("io.zonky.test:embedded-database-spring-test:2.1.1")
 }
 
 dependencyManagement {
