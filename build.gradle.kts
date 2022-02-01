@@ -42,7 +42,7 @@ dependencies {
     testImplementation("org.spockframework:spock-core:2.0-groovy-3.0")
     testImplementation("org.spockframework:spock-spring:2.0-groovy-3.0")
 
-    testImplementation("org.codehaus.groovy:groovy-all:3.0.8")
+    testImplementation("org.codehaus.groovy:groovy-all:3.0.9")
     testImplementation("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
 
     // testcontainers
