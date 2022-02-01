@@ -6,7 +6,7 @@ updates:
     directory: /
     schedule:
       interval: daily
-      time: 01:23
+      time: '01:23'
       timezone: Europe/Warsaw
     labels:
       - dependencies
@@ -15,7 +15,7 @@ updates:
     directory: /
     schedule:
       interval: daily
-      time: 01:23
+      time: '01:23'
       timezone: Europe/Warsaw
     labels:
       - dependencies
