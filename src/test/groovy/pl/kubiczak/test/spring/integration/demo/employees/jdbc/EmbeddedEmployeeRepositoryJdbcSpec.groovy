@@ -9,10 +9,16 @@ import org.springframework.test.context.jdbc.Sql
 import pl.kubiczak.test.spring.integration.demo.FakeDb
 import spock.lang.Specification
 
+import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseProvider
+import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseType
+
 @DataJdbcTest(excludeAutoConfiguration = [
         AutoConfigureTestDatabase
 ])
-@AutoConfigureEmbeddedDatabase
+@AutoConfigureEmbeddedDatabase(
+        type = DatabaseType.POSTGRES,
+        provider = DatabaseProvider.OPENTABLE
+)
 class EmbeddedEmployeeRepositoryJdbcSpec extends Specification {
 
     @Autowired
