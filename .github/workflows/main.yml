@@ -17,9 +17,22 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      # Gradle cache https://github.com/actions/cache/blob/main/examples.md#java---gradle
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
       # Runs a single command using the runners shell
-      - name: Run a one-line script
+      - name: Show Gradle version
         run: ./gradlew -v
         
       - name: Execute Gradle task
         run: ./gradlew clean build
+
+      - name: Stop Gradle deamon
+        run: ./gradlew --stop
