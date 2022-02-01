@@ -11,9 +11,9 @@ Some links about Test Slices:
 
 ## @DataJdbcTest
 
-Provide JDBC template, that can be used to test repositories.
+Provides JDBC template, that can be used to test repositories.
 
-Run tests with no connection (that's default) or [embedded database] (H2, DERBY, HSQLDB).
+Runs tests with no connection (that's default) or [embedded database] (H2, DERBY, HSQLDB).
 There is also a possibility to use [embedded PostgreSQL].
 
 > By default, tests annotated with @DataJdbcTest are transactional and roll back at the end of each test.
@@ -26,14 +26,14 @@ First some info about Kotlin with Spring JPA:
 
 Similar to @DataJdbcTest.
 In our tests we use [TestEntityManager] because repository methods use [first-level cache].
-`kotlin("plugin.jpa")` provides no-args constructor for our entities (https://stackoverflow.com/a/41365380).
+And `kotlin("plugin.jpa")` provides no-args constructor for our entities (https://stackoverflow.com/a/41365380).
 
 > By default, tests annotated with @DataJpaTest are transactional and roll back at the end of each test.
 
 ## @Testcontainers
 
 1. Slowest, but use *real* database.
-2. Database changes made by tests are not roll back at the end.
+2. Database changes made by tests are not rolled back at the end.
 
 ## @WebMvcTest
 
