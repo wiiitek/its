@@ -10,10 +10,10 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @Testcontainers
 @ContextConfiguration(initializers = [
-        TcDbInitializer.class
+        TestcontainersDbInitializer.class
 ])
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-class TcSpringBaseTest extends Specification {
+class TestcontainersSpringBaseTest extends Specification {
 
     @LocalServerPort
     protected int localServerPort
