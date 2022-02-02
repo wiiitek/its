@@ -1,8 +1,21 @@
 package pl.kubiczak.test.spring.integration.demo.cats
 
-import pl.kubiczak.test.spring.integration.demo.cats.CatFactClient.*
+import org.springframework.http.HttpHeaders
+import org.springframework.http.MediaType
+import org.springframework.web.reactive.function.client.WebClient
+import pl.kubiczak.test.spring.integration.demo.cats.CatFactClient.CatFactDto
 
-class CatFactClientSimple : CatFactClient {
+class CatFactClientSimple: CatFactClient {
 
-    override fun next(): CatFactDto = CatFactDto("", 0)
+    private val webClient: WebClient = WebClient.builder()
+        .baseUrl("https://catfact.ninja")
+        .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+        .build()
+
+    override fun next(): CatFactDto = webClient
+        .get()
+        .uri("/fact")
+        .retrieve()
+        .bodyToMono(CatFactDto::class.java)
+        .block()!!
 }

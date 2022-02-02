@@ -14,8 +14,15 @@ class CatFactClientSpec extends Specification {
     private CatFactClient catFactClient
 
     def "should retrieve random fact about cats"() {
+        expect:
+        catFactClient.next() != null
+    }
+
+    def "should contain correct length for the retrieved fact"() {
+        given:
+        def factDto = catFactClient.next()
 
         expect:
-        catFactClient.next() == null
+        factDto.fact.length() == factDto.length
     }
 }
