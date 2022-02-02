@@ -2,7 +2,7 @@ package pl.kubiczak.test.spring.integration.demo.cats
 
 interface CatFactClient {
 
-    fun next(): CatFactDto
+    fun nextFact(): CatFactDto
 
     data class CatFactDto(
         val fact: String,
