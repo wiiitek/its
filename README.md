@@ -42,6 +42,10 @@ Might be used to test controllers separately:
 1. With `MockMvc` - compare also [Guide to Testing Spring Boot Applications With MockMvc]
 2. With `WebTestClient` - see [Spring framework docs for WebTestClient]
 
+## @AutoConfigureWireMock
+
+Simple example for [@AutoConfigureWireMock](https://cloud.spring.io/spring-cloud-contract/1.2.x/multi/multi__spring_cloud_contract_wiremock.html) is provided in [CatFactClientSpec](https://github.com/wiiitek/its/blob/main/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy).
+
 ## Springfox
 
 We use version 3.0.0 with Swagger UI available at http://localhost:8080/swagger-ui/.

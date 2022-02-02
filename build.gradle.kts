@@ -8,6 +8,8 @@ plugins {
     kotlin("plugin.spring") version "1.6.10"
     kotlin("plugin.jpa") version "1.5.0"
     id("groovy")
+    // this will work only for GA versions of Spring Cloud Contract
+    id("org.springframework.cloud.contract") version "3.1.0"
 }
 
 group = "pl.kubiczak.test.spring.integration"
@@ -47,6 +49,8 @@ dependencies {
 
     // wiremock
     testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:3.1.0")
+    // spring cloud contract
+    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:3.1.0")
 
     // testcontainers
     testImplementation("org.testcontainers:junit-jupiter")
@@ -80,4 +84,13 @@ tasks.withType<BootRun> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+contracts {
+    setTestFramework("SPOCK")
+    setBasePackageForTests("pl.kubiczak.test.spring.integration.demo.contracts")
+    baseClassMappings {
+
+        baseClassMapping(".*", "pl.kubiczak.test.spring.integration.demo.TestcontainersSpringBaseTest")
+    }
 }
