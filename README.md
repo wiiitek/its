@@ -58,7 +58,7 @@ Some interesting links:
 
 ## Springfox
 
-We use version 3.0.0 with Swagger UI available at http://localhost:8080/swagger-ui/.
+Swagger UI is available at http://localhost:8080/swagger-ui/.
 
 [Spring Test Slices]: https://www.baeldung.com/spring-tests#5-using-test-slices
 [Spring Test Slices at sudoinit5.com]: https://www.sudoinit5.com/post/spring-test-slices/#testing-just-jpa
