@@ -45,6 +45,9 @@ dependencies {
     testImplementation("org.codehaus.groovy:groovy-all:3.0.9")
     testImplementation("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
 
+    // wiremock
+    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:3.1.0")
+
     // testcontainers
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
