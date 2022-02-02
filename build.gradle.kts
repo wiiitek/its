@@ -8,6 +8,7 @@ plugins {
     kotlin("plugin.spring") version "1.6.10"
     kotlin("plugin.jpa") version "1.6.10"
     id("groovy")
+    id("org.springframework.cloud.contract") version "3.1.0"
 }
 
 group = "pl.kubiczak.test.spring.integration"
@@ -20,9 +21,6 @@ repositories {
 
 defaultTasks(":clean", ":build")
 
-extra["testcontainersVersion"] = "1.15.3"
-extra["swaggerVersion"] = "3.0.0"
-
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -34,7 +32,7 @@ dependencies {
 
     implementation("org.flywaydb:flyway-core")
 
-    implementation("io.springfox:springfox-boot-starter:${property("swaggerVersion")}")
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
 
     runtimeOnly("org.postgresql:postgresql")
 
@@ -47,6 +45,8 @@ dependencies {
 
     // wiremock
     testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:3.1.0")
+    // spring cloud contract
+    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:3.1.0")
 
     // testcontainers
     testImplementation("org.testcontainers:junit-jupiter")
@@ -61,7 +61,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("org.testcontainers:testcontainers-bom:${property("testcontainersVersion")}")
+        mavenBom("org.testcontainers:testcontainers-bom:1.15.3")
     }
 }
 
@@ -80,4 +80,13 @@ tasks.withType<BootRun> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+contracts {
+    setTestFramework("SPOCK")
+    setBasePackageForTests("pl.kubiczak.test.spring.integration.demo.contracts")
+    baseClassMappings {
+
+        baseClassMapping(".*", "pl.kubiczak.test.spring.integration.demo.MockMvcSpringBaseTest")
+    }
 }

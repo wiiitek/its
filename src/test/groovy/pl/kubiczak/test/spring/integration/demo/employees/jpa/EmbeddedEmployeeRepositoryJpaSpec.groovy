@@ -6,7 +6,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import org.springframework.test.context.jdbc.Sql
-import pl.kubiczak.test.spring.integration.demo.EmbeddedTestDb
+import pl.kubiczak.test.spring.integration.demo.TestDb
 import spock.lang.Specification
 
 import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseProvider
@@ -27,7 +27,7 @@ class EmbeddedEmployeeRepositoryJpaSpec extends Specification {
     @Autowired
     TestEntityManager testEntityManager
 
-    @Sql(scripts = [EmbeddedTestDb.DATA_INIT_SQL_SCRIPT])
+    @Sql(scripts = [TestDb.DATA_INIT_SQL_SCRIPT])
     def "should find sample user by UUID"() {
         when:
         def actual = tested.findByUuid(UUID.fromString('6fe146ed-367e-4f09-a03a-b8569339c8b2'))

@@ -6,7 +6,7 @@ import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.test.context.jdbc.Sql
-import pl.kubiczak.test.spring.integration.demo.EmbeddedTestDb
+import pl.kubiczak.test.spring.integration.demo.TestDb
 import spock.lang.Specification
 
 import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseProvider
@@ -30,7 +30,7 @@ class EmbeddedEmployeeRepositoryJdbcSpec extends Specification {
         tested = new EmployeeRepositoryJdbc(namedParameterJdbcTemplate)
     }
 
-    @Sql(scripts = [EmbeddedTestDb.DATA_INIT_SQL_SCRIPT])
+    @Sql(scripts = [TestDb.DATA_INIT_SQL_SCRIPT])
     def "should find sample user by UUID"() {
         when:
         def actual = tested.findByUuid(UUID.fromString('6fe146ed-367e-4f09-a03a-b8569339c8b2'))

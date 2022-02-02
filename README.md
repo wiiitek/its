@@ -42,9 +42,23 @@ Might be used to test controllers separately:
 1. With `MockMvc` - compare also [Guide to Testing Spring Boot Applications With MockMvc]
 2. With `WebTestClient` - see [Spring framework docs for WebTestClient]
 
+## @AutoConfigureWireMock
+
+Simple example for [@AutoConfigureWireMock](https://cloud.spring.io/spring-cloud-contract/1.2.x/multi/multi__spring_cloud_contract_wiremock.html) is provided in [CatFactClientSpec](https://github.com/wiiitek/its/blob/main/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy).
+
+## Spring Cloud Contract
+
+This Project currently shows how to record the sample request/response contract.
+Some interesting links:
+
+1. [Spring Cloud Contract Getting Started]
+2. [Spring Cloud Contract for Gradle project]
+3. [Spring Cloud Contract samples]
+4. [Ensuring Client and Server are in sync]
+
 ## Springfox
 
-We use version 3.0.0 with Swagger UI available at http://localhost:8080/swagger-ui/.
+Swagger UI is available at http://localhost:8080/swagger-ui/.
 
 [Spring Test Slices]: https://www.baeldung.com/spring-tests#5-using-test-slices
 [Spring Test Slices at sudoinit5.com]: https://www.sudoinit5.com/post/spring-test-slices/#testing-just-jpa
@@ -60,3 +74,8 @@ We use version 3.0.0 with Swagger UI available at http://localhost:8080/swagger-
 
 [Guide to Testing Spring Boot Applications With MockMvc]: https://rieckpil.de/guide-to-testing-spring-boot-applications-with-mockmvc/
 [Spring framework docs for WebTestClient]: https://spring.getdocs.org/en-US/spring-framework-docs/docs/testing/integration-testing/webtestclient.html
+
+[Spring Cloud Contract Getting Started]: https://cloud.spring.io/spring-cloud-contract/reference/html/getting-started.html
+[Spring Cloud Contract for Gradle project]: https://cloud.spring.io/spring-cloud-contract/reference/html/gradle-project.html
+[Spring Cloud Contract samples]: https://github.com/spring-cloud-samples/spring-cloud-contract-samples
+[Ensuring Client and Server are in sync]: https://www.linkedin.com/learning/advanced-spring-effective-integration-testing-with-spring-boot/ensuring-client-app-rest-call-and-web-app-controller-are-in-sync-10134626
