@@ -11,7 +11,7 @@ updates:
       - dependencies
       - actions
   - package-ecosystem: gradle
-    directory: /
+    directory: /server
     schedule:
       interval: daily
       time: '01:23'
@@ -19,3 +19,4 @@ updates:
     labels:
       - dependencies
       - libs
+      - server
