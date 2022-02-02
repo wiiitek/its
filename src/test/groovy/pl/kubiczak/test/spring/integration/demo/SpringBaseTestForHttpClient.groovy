@@ -1,10 +1,8 @@
 package pl.kubiczak.test.spring.integration.demo
 
-import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE
-
-@SpringBootTest(webEnvironment = NONE)
+@ContextConfiguration
 class SpringBaseTestForHttpClient extends Specification {
 }
