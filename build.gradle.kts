@@ -21,9 +21,6 @@ repositories {
 
 defaultTasks(":clean", ":build")
 
-extra["testcontainersVersion"] = "1.15.3"
-extra["swaggerVersion"] = "3.0.0"
-
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -35,7 +32,7 @@ dependencies {
 
     implementation("org.flywaydb:flyway-core")
 
-    implementation("io.springfox:springfox-boot-starter:${property("swaggerVersion")}")
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
 
     runtimeOnly("org.postgresql:postgresql")
 
@@ -64,7 +61,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("org.testcontainers:testcontainers-bom:${property("testcontainersVersion")}")
+        mavenBom("org.testcontainers:testcontainers-bom:1.15.3")
     }
 }
 
