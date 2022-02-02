@@ -90,3 +90,13 @@ contracts {
         baseClassMapping(".*", "pl.kubiczak.test.spring.integration.demo.MockMvcSpringBaseTest")
     }
 }
+
+// for consuming stubs locally https://stackoverflow.com/a/62077808/1823545
+val stubs: Configuration by configurations.creating {
+    isCanBeConsumed = true
+    isCanBeResolved = false
+}
+
+artifacts {
+    add("stubs", tasks.verifierStubsJar.get())
+}
