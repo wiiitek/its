@@ -91,6 +91,6 @@ contracts {
     setBasePackageForTests("pl.kubiczak.test.spring.integration.demo.contracts")
     baseClassMappings {
 
-        baseClassMapping(".*", "pl.kubiczak.test.spring.integration.demo.TestcontainersSpringBaseTest")
+        baseClassMapping(".*", "pl.kubiczak.test.spring.integration.demo.MockMvcSpringBaseTest")
     }
 }
