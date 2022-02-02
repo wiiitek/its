@@ -1,12 +1,21 @@
 package pl.kubiczak.test.spring.integration.demo.cats
 
-import pl.kubiczak.test.spring.integration.demo.SpringBaseTestForHttpClient
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.test.context.ContextConfiguration
+import pl.kubiczak.test.spring.integration.demo.config.CatFactConfig
+import spock.lang.Specification
 
-class CatFactClientSpec extends SpringBaseTestForHttpClient {
+@ContextConfiguration(
+        classes = [CatFactConfig.class]
+)
+class CatFactClientSpec extends Specification {
+
+    @Autowired
+    private CatFactClient catFactClient
 
     def "should retrieve random fact about cats"() {
 
         expect:
-        1 == 2
+        catFactClient.next() == null
     }
 }

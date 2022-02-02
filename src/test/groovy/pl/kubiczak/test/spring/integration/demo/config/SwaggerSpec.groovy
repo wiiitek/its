@@ -2,9 +2,9 @@ package pl.kubiczak.test.spring.integration.demo.config
 
 import groovyx.net.http.HttpResponseDecorator
 import groovyx.net.http.RESTClient
-import pl.kubiczak.test.spring.integration.demo.SpringBaseTestForTestcontainers
+import pl.kubiczak.test.spring.integration.demo.TestcontainersSpringBaseTest
 
-class SwaggerSpec extends SpringBaseTestForTestcontainers {
+class SwaggerSpec extends TestcontainersSpringBaseTest {
 
     private RESTClient restClient
 
