@@ -1,8 +1,8 @@
 package pl.kubiczak.test.spring.integration.demo.cats
 
-import pl.kubiczak.test.spring.integration.demo.NoWebSpringBaseTest
+import pl.kubiczak.test.spring.integration.demo.SpringBaseTestForHttpClient
 
-class CatFactClientSpec extends NoWebSpringBaseTest {
+class CatFactClientSpec extends SpringBaseTestForHttpClient {
 
     def "should retrieve random fact about cats"() {
 

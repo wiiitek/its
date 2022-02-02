@@ -13,7 +13,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
         TcDbInitializer.class
 ])
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-class TcSpringBaseTest extends Specification {
+class SpringBaseTestForTestcontainers extends Specification {
 
     @LocalServerPort
     protected int localServerPort

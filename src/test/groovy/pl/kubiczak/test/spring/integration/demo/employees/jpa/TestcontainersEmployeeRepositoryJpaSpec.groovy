@@ -1,9 +1,9 @@
 package pl.kubiczak.test.spring.integration.demo.employees.jpa
 
 import org.springframework.beans.factory.annotation.Autowired
-import pl.kubiczak.test.spring.integration.demo.TcSpringBaseTest
+import pl.kubiczak.test.spring.integration.demo.SpringBaseTestForTestcontainers
 
-class TcEmployeeRepositoryJpaSpec extends TcSpringBaseTest {
+class TestcontainersEmployeeRepositoryJpaSpec extends SpringBaseTestForTestcontainers {
 
     @Autowired()
     EmployeeRepository tested
