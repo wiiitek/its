@@ -8,7 +8,6 @@ plugins {
     kotlin("plugin.spring") version "1.6.10"
     kotlin("plugin.jpa") version "1.5.0"
     id("groovy")
-    // this will work only for GA versions of Spring Cloud Contract
     id("org.springframework.cloud.contract") version "3.1.0"
 }
 

@@ -6,7 +6,7 @@ import org.springframework.context.ConfigurableApplicationContext
 import org.testcontainers.containers.PostgreSQLContainer
 import org.testcontainers.junit.jupiter.Container
 
-class TestcontainersDbInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+class TcDbInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
     @Container
     public static final PostgreSQLContainer CONTAINER = new PostgreSQLContainer<>("postgres:12.3")
