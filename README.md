@@ -44,7 +44,7 @@ Might be used to test controllers separately:
 
 ## @AutoConfigureWireMock
 
-Simple example for [@AutoConfigureWireMock](https://cloud.spring.io/spring-cloud-contract/1.2.x/multi/multi__spring_cloud_contract_wiremock.html) is provided in [CatFactClientSpec](https://github.com/wiiitek/its/blob/main/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy).
+Simple example for [@AutoConfigureWireMock](https://cloud.spring.io/spring-cloud-contract/1.2.x/multi/multi__spring_cloud_contract_wiremock.html) is provided in [CatFactClientSpec](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy).
 
 ## Spring Cloud Contract
 
