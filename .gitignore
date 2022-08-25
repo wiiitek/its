@@ -1,14 +1,14 @@
 HELP.md
-/.gradle
-!gradle/wrapper/gradle-wrapper.jar
 
+### Gradle
+/.gradle/
 build/
 
 ### IntelliJ IDEA ###
 /.idea/
 /.run/
 *.iml
-/out/
+out/
 
 ### VS Code ###
 .vscode/
