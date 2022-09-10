@@ -8,7 +8,7 @@ plugins {
     kotlin("plugin.spring") version "1.7.10"
     kotlin("plugin.jpa") version "1.7.10"
     id("groovy")
-    id("org.springframework.cloud.contract") version "3.1.3"
+    id("org.springframework.cloud.contract") version "3.1.4"
 }
 
 group = "pl.kubiczak.test.spring.integration"
