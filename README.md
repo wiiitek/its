@@ -11,40 +11,68 @@ Some links about Test Slices:
 
 ## @DataJdbcTest
 
-Provides JDBC template, that can be used to test repositories.
+[@DataJdbcTest] applies only the Spring configuration relevant to Data JDBC tests.
 
-Runs tests with no connection (that's default) or [embedded database] (H2, DERBY, HSQLDB).
-There is also a possibility to use [embedded PostgreSQL].
+Tests run with no DB connection by default:
+
+- [`TestEmployeeRepositoryJdbcSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jdbc/TestEmployeeRepositoryJdbcSpec.groovy)
+
+but it can be configured to use [embedded database] (H2, DERBY, HSQLDB).
+With some effort it is also a possible to use [embedded PostgreSQL]:
+
+- [`EmbeddedEmployeeRepositoryJdbcSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jdbc/EmbeddedEmployeeRepositoryJdbcSpec.groovy)
 
 > By default, tests annotated with @DataJdbcTest are transactional and roll back at the end of each test.
 
 ## @DataJpaTest
 
-First some info about Kotlin with Spring JPA:
+[@DataJpaTest] provides Spring configuration to support JPA repositories and Entities:
+
+- [`TestEmployeeRepositoryJpaSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jpa/TestEmployeeRepositoryJpaSpec.groovy)
+
+they can also inject [TestEntityManager] to help testing repositories while using [first-level cache].
+
+And can be configured to use embedded PostgreSQL:
+
+- [`EmbeddedEmployeeRepositoryJpaSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jpa/EmbeddedEmployeeRepositoryJpaSpec.groovy)
+
+Additional info for using Kotlin with Spring JPA:
 
 - [Hibernate with Kotlin - powered by Spring Boot at kotlinexpertise.com]
 
-Similar to @DataJdbcTest.
-In our tests we use [TestEntityManager] because repository methods use [first-level cache].
-And `kotlin("plugin.jpa")` provides no-args constructor for our entities (https://stackoverflow.com/a/41365380).
+`kotlin("plugin.jpa")` provides no-args constructor for our entities (https://stackoverflow.com/a/41365380).
 
 > By default, tests annotated with @DataJpaTest are transactional and roll back at the end of each test.
 
 ## @Testcontainers
 
 1. Slowest, but use *real* database.
-2. Database changes made by tests are not rolled back at the end.
+2. Requires some setup and config values for DB connection
+3. Database changes made by tests are not rolled back at the end.
+
+- [`TestcontainersSpringBaseTest`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/TestcontainersSpringBaseTest.groovy)
 
 ## @WebMvcTest
 
-Might be used to test controllers separately:
+[@WebMvcTest] annotation can be used to test controllers separately:
 
 1. With `MockMvc` - compare also [Guide to Testing Spring Boot Applications With MockMvc]
 2. With `WebTestClient` - see [Spring framework docs for WebTestClient]
 
+Usually there is also a mock service created in test to provide the controller with data.
+
+Examples are provided in:
+
+- [`EmployeesControllerMockMvcSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerMockMvcSpec.groovy)
+- [`EmployeesControllerWebTestClientSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerWebTestClientSpec.groovy)
+
 ## @AutoConfigureWireMock
 
-Simple example for [@AutoConfigureWireMock](https://cloud.spring.io/spring-cloud-contract/1.2.x/multi/multi__spring_cloud_contract_wiremock.html) is provided in [CatFactClientSpec](https://github.com/wiiitek/its/blob/main/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy).
+[Autoconfigured Wiremock](https://cloud.spring.io/spring-cloud-contract/reference/html/project-features.html#features-wiremock)
+example with
+[@AutoConfigureWireMock](https://cloud.spring.io/spring-cloud-contract/1.2.x/multi/multi__spring_cloud_contract_wiremock.html)
+annotation is provided in
+[CatFactClientSpec](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy).
 
 ## Spring Cloud Contract
 
@@ -56,13 +84,20 @@ Some interesting links:
 3. [Spring Cloud Contract samples]
 4. [Ensuring Client and Server are in sync]
 
+May be run with Gradle plugin and require
+[some configuration](https://github.com/wiiitek/its/blob/main/server/build.gradle.kts#L85).
+
 ## Springfox
 
-Swagger UI is available at http://localhost:8080/swagger-ui/.
+Swagger UI is available at http://localhost:8080/swagger-ui/index.html.
 
 [Spring Test Slices]: https://www.baeldung.com/spring-tests#5-using-test-slices
 [Spring Test Slices at sudoinit5.com]: https://www.sudoinit5.com/post/spring-test-slices/#testing-just-jpa
 [Integration Testing With @DataJpaTest at baeldung.com]: https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
+
+[@DataJdbcTest]: https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.autoconfigured-spring-data-jdbc
+[@DataJpaTest]: https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.autoconfigured-spring-data-jpa
+[@WebMvcTest]: https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.spring-mvc-tests
 
 [embedded database]: https://github.com/spring-projects/spring-boot/blob/main/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/jdbc/EmbeddedDatabaseConnection.java
 [embedded PostgreSQL]: https://stackoverflow.com/a/49011982
