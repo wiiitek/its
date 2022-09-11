@@ -34,7 +34,8 @@ Additional info for using Kotlin with Spring JPA:
 ## @Testcontainers
 
 1. Slowest, but use *real* database.
-2. Database changes made by tests are not rolled back at the end.
+2. Requires some setup and config values for DB connection
+3. Database changes made by tests are not rolled back at the end.
 
 ## @WebMvcTest
 
@@ -45,7 +46,10 @@ Might be used to test controllers separately:
 
 ## @AutoConfigureWireMock
 
-Simple example for [@AutoConfigureWireMock](https://cloud.spring.io/spring-cloud-contract/1.2.x/multi/multi__spring_cloud_contract_wiremock.html) is provided in [CatFactClientSpec](https://github.com/wiiitek/its/blob/main/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy).
+Simple example for
+[@AutoConfigureWireMock](https://cloud.spring.io/spring-cloud-contract/1.2.x/multi/multi__spring_cloud_contract_wiremock.html)
+is provided in
+[CatFactClientSpec](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy).
 
 ## Spring Cloud Contract
 
