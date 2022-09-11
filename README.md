@@ -39,16 +39,19 @@ Additional info for using Kotlin with Spring JPA:
 
 ## @WebMvcTest
 
-Might be used to test controllers separately:
+[@WebMvcTest] annotation can be used to test controllers separately:
 
 1. With `MockMvc` - compare also [Guide to Testing Spring Boot Applications With MockMvc]
 2. With `WebTestClient` - see [Spring framework docs for WebTestClient]
 
+Usually there is also a mock service created in test to provide the controller with data.
+
 ## @AutoConfigureWireMock
 
-Simple example for
+[Autoconfigured Wiremock](https://cloud.spring.io/spring-cloud-contract/reference/html/project-features.html#features-wiremock)
+example with
 [@AutoConfigureWireMock](https://cloud.spring.io/spring-cloud-contract/1.2.x/multi/multi__spring_cloud_contract_wiremock.html)
-is provided in
+annotation is provided in
 [CatFactClientSpec](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy).
 
 ## Spring Cloud Contract
@@ -71,6 +74,7 @@ Swagger UI is available at http://localhost:8080/swagger-ui/index.html.
 
 [@DataJdbcTest]: https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.autoconfigured-spring-data-jdbc
 [@DataJpaTest]: https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.autoconfigured-spring-data-jpa
+[@WebMvcTest]: https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.spring-mvc-tests
 
 [embedded database]: https://github.com/spring-projects/spring-boot/blob/main/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/jdbc/EmbeddedDatabaseConnection.java
 [embedded PostgreSQL]: https://stackoverflow.com/a/49011982

@@ -20,7 +20,7 @@ class EmployeesControllerMockMvcSpec extends Specification {
     @Autowired
     private MockMvc mockMvc;
 
-    def "get employees + expect content().string"() {
+    def "Assertions on content().string"() {
 
         expect:
         mockMvc.perform(get('/employees'))
@@ -28,13 +28,11 @@ class EmployeesControllerMockMvcSpec extends Specification {
                 .andExpect(content().string('[]'))
     }
 
-
-    def "get employees + expect content().json"() {
+    def "Assertions on content().json"() {
 
         expect:
         mockMvc.perform(get('/employees'))
                 .andExpect(status().isOk())
                 .andExpect(content().json('[  ]'))
     }
-
 }
