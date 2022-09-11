@@ -1,7 +1,7 @@
 package pl.kubiczak.test.spring.integration.demo
 
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.test.context.ContextConfiguration
 import org.testcontainers.spock.Testcontainers
 import spock.lang.Specification
