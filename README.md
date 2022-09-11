@@ -11,22 +11,23 @@ Some links about Test Slices:
 
 ## @DataJdbcTest
 
-Provides JDBC template, that can be used to test repositories.
+[@DataJdbcTest] applies only the Spring configuration relevant to Data JDBC tests.
 
-Runs tests with no connection (that's default) or [embedded database] (H2, DERBY, HSQLDB).
-There is also a possibility to use [embedded PostgreSQL].
+Tests run with no DB connection by default, but it can be configured to use [embedded database] (H2, DERBY, HSQLDB).
+With some effort it is also a possible to use [embedded PostgreSQL].
 
 > By default, tests annotated with @DataJdbcTest are transactional and roll back at the end of each test.
 
 ## @DataJpaTest
 
-First some info about Kotlin with Spring JPA:
+[@DataJpaTest] provides Spring configuration to support JPA repositories and Entities.
+they can also inject [TestEntityManager] to help testing repositories while using [first-level cache].
+
+Additional info for using Kotlin with Spring JPA:
 
 - [Hibernate with Kotlin - powered by Spring Boot at kotlinexpertise.com]
 
-Similar to @DataJdbcTest.
-In our tests we use [TestEntityManager] because repository methods use [first-level cache].
-And `kotlin("plugin.jpa")` provides no-args constructor for our entities (https://stackoverflow.com/a/41365380).
+`kotlin("plugin.jpa")` provides no-args constructor for our entities (https://stackoverflow.com/a/41365380).
 
 > By default, tests annotated with @DataJpaTest are transactional and roll back at the end of each test.
 
@@ -63,6 +64,9 @@ Swagger UI is available at http://localhost:8080/swagger-ui/index.html.
 [Spring Test Slices]: https://www.baeldung.com/spring-tests#5-using-test-slices
 [Spring Test Slices at sudoinit5.com]: https://www.sudoinit5.com/post/spring-test-slices/#testing-just-jpa
 [Integration Testing With @DataJpaTest at baeldung.com]: https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
+
+[@DataJdbcTest]: https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.autoconfigured-spring-data-jdbc
+[@DataJpaTest]: https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.autoconfigured-spring-data-jpa
 
 [embedded database]: https://github.com/spring-projects/spring-boot/blob/main/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/jdbc/EmbeddedDatabaseConnection.java
 [embedded PostgreSQL]: https://stackoverflow.com/a/49011982
