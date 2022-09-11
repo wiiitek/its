@@ -13,15 +13,28 @@ Some links about Test Slices:
 
 [@DataJdbcTest] applies only the Spring configuration relevant to Data JDBC tests.
 
-Tests run with no DB connection by default, but it can be configured to use [embedded database] (H2, DERBY, HSQLDB).
-With some effort it is also a possible to use [embedded PostgreSQL].
+Tests run with no DB connection by default:
+
+- [`TestEmployeeRepositoryJdbcSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jdbc/TestEmployeeRepositoryJdbcSpec.groovy)
+
+but it can be configured to use [embedded database] (H2, DERBY, HSQLDB).
+With some effort it is also a possible to use [embedded PostgreSQL]:
+
+- [`EmbeddedEmployeeRepositoryJdbcSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jdbc/EmbeddedEmployeeRepositoryJdbcSpec.groovy)
 
 > By default, tests annotated with @DataJdbcTest are transactional and roll back at the end of each test.
 
 ## @DataJpaTest
 
-[@DataJpaTest] provides Spring configuration to support JPA repositories and Entities.
+[@DataJpaTest] provides Spring configuration to support JPA repositories and Entities:
+
+- [`TestEmployeeRepositoryJpaSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jpa/TestEmployeeRepositoryJpaSpec.groovy)
+
 they can also inject [TestEntityManager] to help testing repositories while using [first-level cache].
+
+And can be configured to use embedded PostgreSQL:
+
+- [`EmbeddedEmployeeRepositoryJpaSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jpa/EmbeddedEmployeeRepositoryJpaSpec.groovy)
 
 Additional info for using Kotlin with Spring JPA:
 
@@ -37,6 +50,8 @@ Additional info for using Kotlin with Spring JPA:
 2. Requires some setup and config values for DB connection
 3. Database changes made by tests are not rolled back at the end.
 
+- [`TestcontainersSpringBaseTest`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/TestcontainersSpringBaseTest.groovy)
+
 ## @WebMvcTest
 
 [@WebMvcTest] annotation can be used to test controllers separately:
@@ -45,6 +60,11 @@ Additional info for using Kotlin with Spring JPA:
 2. With `WebTestClient` - see [Spring framework docs for WebTestClient]
 
 Usually there is also a mock service created in test to provide the controller with data.
+
+Examples are provided in:
+
+- [`EmployeesControllerMockMvcSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerMockMvcSpec.groovy)
+- [`EmployeesControllerWebTestClientSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerWebTestClientSpec.groovy)
 
 ## @AutoConfigureWireMock
 
@@ -63,6 +83,9 @@ Some interesting links:
 2. [Spring Cloud Contract for Gradle project]
 3. [Spring Cloud Contract samples]
 4. [Ensuring Client and Server are in sync]
+
+May be run with Gradle plugin and require
+[some configuration](https://github.com/wiiitek/its/blob/main/server/build.gradle.kts#L85).
 
 ## Springfox
 
