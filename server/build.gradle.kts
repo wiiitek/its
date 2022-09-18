@@ -40,7 +40,7 @@ dependencies {
     testImplementation("org.spockframework:spock-core:2.0-groovy-3.0")
     testImplementation("org.spockframework:spock-spring:2.1-groovy-3.0")
 
-    testImplementation("org.codehaus.groovy:groovy-all:3.0.12")
+    testImplementation("org.codehaus.groovy:groovy-all:3.0.13")
     testImplementation("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
 
     // wiremock
