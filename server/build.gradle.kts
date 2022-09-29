@@ -5,7 +5,7 @@ plugins {
     id("org.springframework.boot") version "2.7.4"
     id("io.spring.dependency-management") version "1.0.14.RELEASE"
     kotlin("jvm") version "1.7.10"
-    kotlin("plugin.spring") version "1.7.10"
+    kotlin("plugin.spring") version "1.7.20"
     kotlin("plugin.jpa") version "1.7.10"
     id("groovy")
     id("org.springframework.cloud.contract") version "3.1.4"
