@@ -38,7 +38,7 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.spockframework:spock-core:2.0-groovy-3.0")
-    testImplementation("org.spockframework:spock-spring:2.1-groovy-3.0")
+    testImplementation("org.spockframework:spock-spring:2.3-groovy-4.0")
 
     testImplementation("org.codehaus.groovy:groovy-all:3.0.13")
     testImplementation("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
