@@ -46,9 +46,11 @@ Additional info for using Kotlin with Spring JPA:
 
 ## @Testcontainers
 
+We can use testcontainers to create all of our application beans for integration tests.
+
 1. Slowest, but use *real* database.
 2. Requires some setup and config values for DB connection
-3. Database changes made by tests are not rolled back at the end.
+3. Database changes made by tests are **not** rolled back at the end.
 
 - [`TestcontainersSpringBaseTest`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/TestcontainersSpringBaseTest.groovy)
 
@@ -59,7 +61,7 @@ Additional info for using Kotlin with Spring JPA:
 1. With `MockMvc` - compare also [Guide to Testing Spring Boot Applications With MockMvc]
 2. With `WebTestClient` - see [Spring framework docs for WebTestClient]
 
-Usually there is also a mock service created in test to provide the controller with data.
+Usually there is also a mock service used by the controller created in test.
 
 Examples are provided in:
 
