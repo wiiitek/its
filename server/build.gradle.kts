@@ -4,9 +4,9 @@ import org.springframework.boot.gradle.tasks.run.BootRun
 plugins {
     id("org.springframework.boot") version "2.7.4"
     id("io.spring.dependency-management") version "1.0.14.RELEASE"
-    kotlin("jvm") version "1.7.10"
-    kotlin("plugin.spring") version "1.7.10"
-    kotlin("plugin.jpa") version "1.7.10"
+    kotlin("jvm") version "1.7.20"
+    kotlin("plugin.spring") version "1.7.20"
+    kotlin("plugin.jpa") version "1.7.20"
     id("groovy")
     id("org.springframework.cloud.contract") version "3.1.4"
 }
@@ -37,7 +37,7 @@ dependencies {
     runtimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.spockframework:spock-core:2.0-groovy-3.0")
+    testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
     testImplementation("org.spockframework:spock-spring:2.1-groovy-3.0")
 
     testImplementation("org.codehaus.groovy:groovy-all:3.0.13")
