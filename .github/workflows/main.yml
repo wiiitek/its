@@ -14,12 +14,11 @@ jobs:
           repo_token: ${{ secrets.MY_GITHUB_TOKEN }}
           codiga_api_token: ${{ secrets.CODIGA_API_TOKEN }}
           force_ref: 'none'
-          min_quality_grade: 'WARNING'
-          min_quality_score: '50'
-          max_defects_rate: '0.0001'
-          max_complex_functions_rate: '0.0001'
-          max_long_functions_rate: '0.0001'
-          project_name: ''
+          min_quality_grade: 'EXCELLENT'
+          max_defects_rate: '0.015'
+          max_complex_functions_rate: '0.001'
+          max_long_functions_rate: '0.02'
+          project_name: 'its'
           max_timeout_sec: '600'
 
   build:
