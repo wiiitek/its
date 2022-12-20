@@ -2,8 +2,7 @@ package pl.kubiczak.test.spring.integration.demo.employees.jpa
 
 import org.hibernate.annotations.Type
 import java.util.*
-import javax.persistence.*
-
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "employees")
