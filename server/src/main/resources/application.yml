@@ -4,7 +4,8 @@ spring:
     # https://stackoverflow.com/a/48222934
     open-in-view: false
   datasource:
-    url: 'jdbc:h2:mem:mydb'
+    # http://h2database.com/html/features.html#other_logging
+    url: jdbc:h2:mem:mydb;TRACE_LEVEL_FILE=4
     username: sa
     password: sa
     driverClassName: org.h2.Driver
@@ -14,4 +15,5 @@ spring:
 
 logging:
   level:
-    org.h2: DEBUG
+    ROOT: INFO
+    org.h2: WARN
