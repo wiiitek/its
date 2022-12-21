@@ -19,7 +19,7 @@ import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseType
         type = DatabaseType.POSTGRES,
         provider = DatabaseProvider.OPENTABLE
 )
-class EmbeddedEmployeeRepositoryJpaSpec extends Specification {
+class EmployeeRepositoryEmbeddedSpec extends Specification {
 
     @Autowired()
     EmployeeRepository tested

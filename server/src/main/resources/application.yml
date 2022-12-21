@@ -2,8 +2,8 @@
 spring:
   jpa:
     open-in-view: false
-  datasource:
-    url: jdbc:postgresql://localhost:5432/my_db
-    username: postgres
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/my_db
+#    username: postgres
     # should be overwritten with env variable
     #password:
