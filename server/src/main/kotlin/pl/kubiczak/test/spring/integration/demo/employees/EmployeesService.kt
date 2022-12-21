@@ -1,6 +1,7 @@
 package pl.kubiczak.test.spring.integration.demo.employees
 
 import org.springframework.stereotype.Service
+import pl.kubiczak.test.spring.integration.demo.employees.jdbc.EmployeeEntity
 import pl.kubiczak.test.spring.integration.demo.employees.jdbc.EmployeeRepository
 import java.util.*
 
@@ -10,21 +11,16 @@ class EmployeesService(
 ) {
     fun findAll(): List<EmployeeDto> =
         employeeRepository.findAll()
-            .map {
-                EmployeeDto(
-                    uuid = it.uuid,
-                    name = it.name,
-                    email = it.email,
-                )
-            }
+            .map { it.toDto() }
 
     fun findByUuid(employeeId: UUID): Optional<EmployeeDto> =
         employeeRepository.findByUuid(employeeId)
-            .map {
-                EmployeeDto(
-                    uuid = it.uuid,
-                    name = it.name,
-                    email = it.email,
-                )
-            }
+            .map { it.toDto() }
+
+    private fun EmployeeEntity.toDto() =
+        EmployeeDto(
+            uuid = this.uuid,
+            name = this.name,
+            email = this.email,
+        )
 }
