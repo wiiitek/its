@@ -1,12 +1,17 @@
 
 spring:
   jpa:
+    # https://stackoverflow.com/a/48222934
     open-in-view: false
   datasource:
-    url: jdbc:h2:mem:mydb
+    url: 'jdbc:h2:mem:mydb'
     username: sa
-    password: password
+    password: sa
     driverClassName: org.h2.Driver
   h2:
     console:
       enabled: true
+
+logging:
+  level:
+    org.h2: DEBUG
