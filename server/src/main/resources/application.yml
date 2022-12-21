@@ -16,4 +16,4 @@ spring:
 logging:
   level:
     ROOT: INFO
-    org.h2: WARN
+    h2database: WARN
