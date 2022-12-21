@@ -1,8 +1,10 @@
 package pl.kubiczak.test.spring.integration.demo.employees.jdbc
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.ResponseEntity
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.stereotype.Repository
+import pl.kubiczak.test.spring.integration.demo.employees.EmployeeDto
 import java.util.*
 
 @Repository
@@ -28,6 +30,11 @@ constructor(private val namedParameterJdbcTemplate: NamedParameterJdbcTemplate) 
             FROM employees
             WHERE uuid = :employeeUuid;
         """
+        private const val FIND_ALL = """
+            SELECT *
+            FROM employees
+            ORDER BY name;
+        """
     }
 
     override fun insert(entity: EmployeeEntity) {
@@ -42,6 +49,18 @@ constructor(private val namedParameterJdbcTemplate: NamedParameterJdbcTemplate) 
         }
     }
 
+    override fun findByUuid(uuid: UUID): Optional<EmployeeEntity> {
+        val params = mapOf("employeeUuid" to uuid)
+        val result = namedParameterJdbcTemplate.query(FIND_BY_ID, params, EmployeeEntity.Mapper())
+        return if (result.isEmpty())
+            Optional.empty()
+        else
+            Optional.of(result[FIRST])
+    }
+
+    override fun findAll(): List<EmployeeEntity> =
+        namedParameterJdbcTemplate.query(FIND_ALL, EmployeeEntity.Mapper())
+
     override fun upsert(entity: EmployeeEntity) {
         val params = mapOf(
             "uuid_param" to entity.uuid,
@@ -52,14 +71,5 @@ constructor(private val namedParameterJdbcTemplate: NamedParameterJdbcTemplate) 
         if (result != 1) {
             throw RuntimeException()
         }
-    }
-
-    override fun findByUuid(uuid: UUID): Optional<EmployeeEntity> {
-        val params = mapOf("employeeUuid" to uuid)
-        val result = namedParameterJdbcTemplate.query(FIND_BY_ID, params, EmployeeEntity.Mapper())
-        return if (result.isEmpty())
-            Optional.empty()
-        else
-            Optional.of(result[FIRST])
     }
 }

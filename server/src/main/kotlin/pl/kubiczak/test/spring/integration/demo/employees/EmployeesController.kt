@@ -7,17 +7,19 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.*
 
 @RestController
-class EmployeesController {
+class EmployeesController(
+    private val employeesService: EmployeesService
+) {
 
     @GetMapping(path = ["/employees"])
-    fun readAll(): ResponseEntity<List<EmployeeDto>> {
-        val list = emptyList<EmployeeDto>()
-        return ResponseEntity.ok(list)
-    }
+    fun readAll(): ResponseEntity<List<EmployeeDto>> =
+        ResponseEntity.ok(
+            employeesService.findAll()
+        )
 
     @GetMapping(path = ["/employees/{uuid}"])
-    fun readAll(@PathVariable uuid: UUID): ResponseEntity<EmployeeDto> {
-        val anEmployee = EmployeeDto(uuid, "John Doe", "john.doe@example.com")
-        return ResponseEntity.ok(anEmployee)
-    }
+    fun readAll(@PathVariable uuid: UUID): ResponseEntity<EmployeeDto> =
+        ResponseEntity.of(
+            employeesService.findByUuid(uuid)
+        )
 }
