@@ -2,8 +2,11 @@
 spring:
   jpa:
     open-in-view: false
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/my_db
-#    username: postgres
-    # should be overwritten with env variable
-    #password:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
