@@ -62,7 +62,7 @@ We can use testcontainers to create all of our application beans for integration
 1. With `MockMvc` - compare also [Guide to Testing Spring Boot Applications With MockMvc]
 2. With `WebTestClient` - see [Spring framework docs for WebTestClient]
 
-Usually there is also a mock service used by the controller created in test.
+There is also a `@MockBean` service for service used by the tested controller.
 
 Examples are provided in:
 

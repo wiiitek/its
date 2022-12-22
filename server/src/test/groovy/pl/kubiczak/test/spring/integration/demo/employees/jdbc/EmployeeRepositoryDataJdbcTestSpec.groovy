@@ -1,26 +1,35 @@
 package pl.kubiczak.test.spring.integration.demo.employees.jdbc
 
 import org.springframework.beans.factory.annotation.Autowired
-import pl.kubiczak.test.spring.integration.demo.TestcontainersSpringBaseTest
+import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
+import org.springframework.test.context.jdbc.Sql
+import pl.kubiczak.test.spring.integration.demo.TestDb
+import spock.lang.Ignore
+import spock.lang.Specification
 
-class TestcontainersEmployeeRepositoryJdbcSpec extends TestcontainersSpringBaseTest {
+@DataJdbcTest
+class EmployeeRepositoryDataJdbcTestSpec extends Specification {
 
     @Autowired
+    NamedParameterJdbcTemplate namedParameterJdbcTemplate
+
     EmployeeRepository tested
 
-    def "should save and find user in database"() {
-        given:
-        def uuid = UUID.randomUUID()
-        def employee = new EmployeeEntity(null, uuid, 'John Doe', 'john.doe@example.com')
-        tested.upsert(employee)
+    def setup() {
+        tested = new EmployeeRepositoryJdbc(namedParameterJdbcTemplate)
+    }
 
+    @Sql(scripts = [TestDb.DATA_INIT_SQL_SCRIPT])
+    def "should find sample user by UUID"() {
         when:
-        def actual = tested.findByUuid(uuid).get()
+        def actual = tested.findByUuid(UUID.fromString('6fe146ed-367e-4f09-a03a-b8569339c8b2'))
 
         then:
-        actual.email == 'john.doe@example.com'
+        actual.isPresent()
+
         and:
-        actual.id != null
+        actual.get().email == 'john.doe@example.com'
     }
 
     def "should insert and find user in database"() {
@@ -38,6 +47,7 @@ class TestcontainersEmployeeRepositoryJdbcSpec extends TestcontainersSpringBaseT
         actual.id != null
     }
 
+    @Ignore('ON CONFLICT DO UPDATE does not work in H2 which is our test DB here')
     def "should upsert and find user in database"() {
         given:
         def employee = new EmployeeEntity('John Doe', 'john.doe@example.com')

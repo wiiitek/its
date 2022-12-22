@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.tasks.run.BootRun
 
 plugins {
-    id("org.springframework.boot") version "2.7.5"
+    id("org.springframework.boot") version "2.7.6"
     id("io.spring.dependency-management") version "1.1.0"
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
@@ -24,22 +24,25 @@ defaultTasks(":clean", ":build")
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.flywaydb:flyway-core")
+    // https://www.programmersought.com/article/30275596545/
+    runtimeOnly("com.h2database:h2")
+    // may be surprising, but we use postgres only for integration testing
+    testRuntimeOnly("org.postgresql:postgresql")
+
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    implementation("org.flywaydb:flyway-core")
-
-    implementation("io.springfox:springfox-boot-starter:3.0.0")
-
-    runtimeOnly("org.postgresql:postgresql")
+    implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
+    implementation("org.springdoc:springdoc-openapi-kotlin:1.6.14")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
     testImplementation("org.spockframework:spock-spring:2.3-groovy-3.0")
-
     testImplementation("org.codehaus.groovy:groovy-all:3.0.13")
     testImplementation("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
 
@@ -52,8 +55,6 @@ dependencies {
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
     testImplementation("org.testcontainers:spock")
-    // https://www.programmersought.com/article/30275596545/
-    testRuntimeOnly("com.h2database:h2")
     // https://stackoverflow.com/q/48956743
     testImplementation("io.zonky.test:embedded-database-spring-test:2.2.0")
     testImplementation("com.opentable.components:otj-pg-embedded:1.0.1")
