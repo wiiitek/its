@@ -12,6 +12,7 @@ import spock.lang.Specification
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest
+// for spring cloud contract (see build.gradle.kts)
 class MockMvcSpringBaseTest extends Specification {
 
     @MockBean

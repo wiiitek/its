@@ -23,10 +23,12 @@ class EmployeesControllerMockMvcSpec extends Specification {
     EmployeesService employeesService
 
     @Autowired
-    private ApplicationContext context;
+    private MockMvc mockMvc
 
-    @Autowired
-    private MockMvc mockMvc;
+    def "should auto-wire MockMvc"() {
+        expect:
+        mockMvc != null
+    }
 
     def "Assertions on content().string"() {
 
