@@ -30,7 +30,7 @@ class EmployeesControllerMockMvcSpec extends Specification {
         mockMvc != null
     }
 
-    def "Assertions on content().string"() {
+    def "Assertions on content string"() {
 
         expect:
         mockMvc.perform(get('/employees'))
@@ -38,7 +38,7 @@ class EmployeesControllerMockMvcSpec extends Specification {
                 .andExpect(content().string('[]'))
     }
 
-    def "Assertions on content().json"() {
+    def "Assertions on content json"() {
 
         expect:
         mockMvc.perform(get('/employees'))
