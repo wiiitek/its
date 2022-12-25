@@ -39,7 +39,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    implementation("org.hibernate:hibernate-core-jakarta:5.6.14.Final")
+    implementation("org.hibernate.orm:hibernate-core:6.1.6.Final")
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
 
