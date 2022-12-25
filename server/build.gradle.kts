@@ -39,15 +39,13 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    implementation("org.hibernate.orm:hibernate-core:6.1.6.Final")
-
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    testImplementation("org.apache.groovy:groovy-all:4.0.6")
     testImplementation("org.spockframework:spock-core:2.4-M1-groovy-4.0")
     testImplementation("org.spockframework:spock-spring:2.4-M1-groovy-4.0")
+    testImplementation("org.apache.groovy:groovy-all:4.0.6")
     testImplementation("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
 
     // wiremock

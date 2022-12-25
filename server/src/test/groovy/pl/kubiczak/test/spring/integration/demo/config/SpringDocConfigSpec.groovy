@@ -5,7 +5,7 @@ import groovyx.net.http.RESTClient
 import pl.kubiczak.test.spring.integration.demo.TestcontainersSpringBaseTest
 import spock.lang.Ignore
 
-@Ignore
+@Ignore("http-builder is not supported in Groovy 4")
 class SpringDocConfigSpec extends TestcontainersSpringBaseTest {
 
     private static final SWAGGER_CONFIG_PATH = '/v3/api-docs/swagger-config'

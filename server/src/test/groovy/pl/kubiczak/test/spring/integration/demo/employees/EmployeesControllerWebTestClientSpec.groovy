@@ -37,7 +37,7 @@ class EmployeesControllerWebTestClientSpec extends Specification {
     }
 
 
-    def "get employees + expectBody json"() {
+    def "get employees + expectBody().json"() {
 
         expect:
         webTestClient.get()
