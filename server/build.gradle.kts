@@ -2,18 +2,20 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.tasks.run.BootRun
 
 plugins {
-    id("org.springframework.boot") version "2.7.6"
+    id("org.springframework.boot") version "3.0.1"
     id("io.spring.dependency-management") version "1.1.0"
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
     kotlin("plugin.jpa") version "1.7.22"
     id("groovy")
-    id("org.springframework.cloud.contract") version "3.1.5"
+    id("org.springframework.cloud.contract") version "4.0.0"
 }
+
+val javaVersion = JavaVersion.VERSION_17
 
 group = "pl.kubiczak.test.spring.integration"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = javaVersion
 
 repositories {
     mavenCentral()
@@ -37,19 +39,19 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
-    implementation("org.springdoc:springdoc-openapi-kotlin:1.6.14")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
-    testImplementation("org.spockframework:spock-spring:2.3-groovy-3.0")
-    testImplementation("org.codehaus.groovy:groovy-all:3.0.13")
+
+    testImplementation("org.spockframework:spock-core:2.4-M1-groovy-4.0")
+    testImplementation("org.spockframework:spock-spring:2.4-M1-groovy-4.0")
+    testImplementation("org.apache.groovy:groovy-all:4.0.6")
     testImplementation("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
 
     // wiremock
-    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:3.1.5")
+    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:4.0.0")
     // spring cloud contract
-    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:3.1.5")
+    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:4.0.0")
 
     // testcontainers
     testImplementation("org.testcontainers:junit-jupiter")
@@ -69,7 +71,7 @@ dependencyManagement {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "1.8"
+        jvmTarget = javaVersion.toString()
     }
 }
 
