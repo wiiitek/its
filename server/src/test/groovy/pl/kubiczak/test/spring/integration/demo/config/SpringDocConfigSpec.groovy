@@ -1,50 +1,53 @@
 package pl.kubiczak.test.spring.integration.demo.config
 
-import groovyx.net.http.HttpResponseDecorator
-import groovyx.net.http.RESTClient
+import groovy.json.JsonSlurper
 import pl.kubiczak.test.spring.integration.demo.TestcontainersSpringBaseTest
-import spock.lang.Ignore
 
-@Ignore("http-builder is not supported in Groovy 4")
 class SpringDocConfigSpec extends TestcontainersSpringBaseTest {
 
     private static final SWAGGER_CONFIG_PATH = '/v3/api-docs/swagger-config'
 
     private static final API_CONFIG_PATH = '/v3/api-docs'
 
-    private RESTClient restClient
+    private String baseUrl
 
     def setup() {
-        restClient = new RESTClient("http://localhost:${localServerPort}")
+        baseUrl = "http://localhost:${localServerPort}"
     }
 
     def "Swagger UI should be available at default path"() {
         when:
-        def response = restClient.get(path: '/swagger-ui/index.html') as HttpResponseDecorator
+        def url = new URL("$baseUrl/swagger-ui/index.html")
 
         then:
-        response.status == 200
+        def okHtmlResponse = url.getText()
+        okHtmlResponse != null
+        okHtmlResponse != ''
     }
 
     def "Swagger endpoints description should be available as JSON"() {
+        given:
+        def url = new URL("$baseUrl$SWAGGER_CONFIG_PATH")
+
         when:
-        def response = restClient.get(path: SWAGGER_CONFIG_PATH) as HttpResponseDecorator
+        def responseBody = url.getText()
+        def json = new JsonSlurper().parseText(responseBody)
 
         then:
-        response.status == 200
-        and:
-        response.data.url == API_CONFIG_PATH
+        json.url == API_CONFIG_PATH
     }
 
     def "Swagger API definition should be available as JSON"() {
+        given:
+        def url = new URL("$baseUrl$API_CONFIG_PATH")
+
         when:
-        def response = restClient.get(path: API_CONFIG_PATH) as HttpResponseDecorator
+        def responseBody = url.getText()
+        def json = new JsonSlurper().parseText(responseBody)
 
         then:
-        response.status == 200
+        json.openapi == '3.0.1'
         and:
-        response.data.openapi == '3.0.1'
-        and:
-        response.data.info.title == 'Integration Tests Samples'
+        json.info.title == 'Integration Tests Samples'
     }
 }
