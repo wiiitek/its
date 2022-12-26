@@ -16,11 +16,13 @@ class SpringDocConfigSpec extends TestcontainersSpringBaseTest {
     }
 
     def "Swagger UI should be available at default path"() {
-        when:
+        given:
         def url = new URL("$baseUrl/swagger-ui/index.html")
 
-        then:
+        when:
         def okHtmlResponse = url.getText()
+
+        then:
         okHtmlResponse != null
         okHtmlResponse != ''
     }
