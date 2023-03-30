@@ -50,7 +50,7 @@ dependencies {
     // wiremock
     testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:4.0.2")
     // spring cloud contract
-    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:4.0.1")
+    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:4.0.2")
 
     // testcontainers
     testImplementation("org.testcontainers:junit-jupiter")
