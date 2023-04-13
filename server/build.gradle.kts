@@ -39,18 +39,18 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     testImplementation("org.spockframework:spock-core:2.4-M1-groovy-4.0")
     testImplementation("org.spockframework:spock-spring:2.4-M1-groovy-4.0")
-    testImplementation("org.apache.groovy:groovy-all:4.0.7")
+    testImplementation("org.apache.groovy:groovy-all:4.0.11")
 
     // wiremock
-    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:4.0.0")
+    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:4.0.2")
     // spring cloud contract
-    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:4.0.0")
+    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:4.0.2")
 
     // testcontainers
     testImplementation("org.testcontainers:junit-jupiter")
@@ -63,7 +63,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("org.testcontainers:testcontainers-bom:1.17.6")
+        mavenBom("org.testcontainers:testcontainers-bom:1.18.0")
     }
 }
 
