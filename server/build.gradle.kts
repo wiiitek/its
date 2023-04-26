@@ -4,9 +4,9 @@ import org.springframework.boot.gradle.tasks.run.BootRun
 plugins {
     id("org.springframework.boot") version "3.0.6"
     id("io.spring.dependency-management") version "1.1.0"
-    kotlin("jvm") version "1.8.20"
+    kotlin("jvm") version "1.8.21"
     kotlin("plugin.spring") version "1.8.21"
-    kotlin("plugin.jpa") version "1.8.20"
+    kotlin("plugin.jpa") version "1.8.21"
     id("groovy")
     id("org.springframework.cloud.contract") version "4.0.2"
 }
