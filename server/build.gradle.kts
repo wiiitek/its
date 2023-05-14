@@ -9,7 +9,6 @@ plugins {
     kotlin("plugin.jpa") version "1.8.21"
     id("groovy")
     id("org.springframework.cloud.contract") version "4.0.2"
-    id("org.sonarqube") version "4.0.0.2929"
 }
 
 val javaVersion = JavaVersion.VERSION_17
@@ -23,18 +22,6 @@ repositories {
 }
 
 defaultTasks(":clean", ":build")
-
-sonarqube {
-    properties {
-        property("sonar.projectKey", "wiiitek_its")
-        property("sonar.organization", "wiiitek-github")
-        property("sonar.host.url", "https://sonarcloud.io")
-
-        property("sonar.links.homepage", "https://github.com/wiiitek/its")
-        property("sonar.links.scm", "https://github.com/wiiitek/its")
-        property("sonar.links.ci", "https://github.com/wiiitek/its/actions")
-    }
-}
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
