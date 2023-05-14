@@ -1,7 +1,7 @@
 # its
 
 [![CI](https://github.com/wiiitek/its/actions/workflows/main.yml/badge.svg)](https://github.com/wiiitek/its/actions/workflows/main.yml)
-[![Codiga](https://api.codiga.io/project/34895/status/svg)](https://app.codiga.io/hub/project/34895/its)
+[![sonarcloud.io](https://sonarcloud.io/api/project_badges/measure?project=wiiitek_its&metric=alert_status)](https://sonarcloud.io/dashboard?id=wiiitek_its)
 
 Integration Testing examples for [Spring Test Slices].
 
