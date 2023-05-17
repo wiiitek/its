@@ -57,7 +57,7 @@ dependencies {
     testImplementation("org.testcontainers:postgresql")
     testImplementation("org.testcontainers:spock")
     // https://stackoverflow.com/q/48956743
-    testImplementation("io.zonky.test:embedded-database-spring-test:2.2.0")
+    testImplementation("io.zonky.test:embedded-database-spring-test:2.3.0")
     testImplementation("com.opentable.components:otj-pg-embedded:1.0.1")
 }
 
