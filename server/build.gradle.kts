@@ -48,7 +48,7 @@ dependencies {
     testImplementation("org.apache.groovy:groovy-all:4.0.13")
 
     // wiremock
-    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:4.0.3")
+    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:4.0.4")
     // spring cloud contract
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:4.0.3")
 
