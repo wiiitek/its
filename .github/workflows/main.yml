@@ -18,19 +18,13 @@ jobs:
         with:
           key: cache-owasp-vulnerability-database
           path: /home/runner/.gradle/dependency-check-data/7.0
-      - name: Show Gradle version
-        run: ./gradlew -v
-      - name: Update Vulnerabilities Database
-        run: ./gradlew dependencyCheckUpdate
-      - name: List NVM DB folders
-        run: ls -lah $HOME/.gradle/dependency-check-data/7.0/
+      - name: Check Security Vulnerabilities
+        run: ./gradlew dependencyCheckAnalyze
       - name: Save Cache for OWASP Vulnerabilities Database
         uses: actions/cache/save@v3
         with:
           key: cache-owasp-vulnerability-database
           path: ~/.gradle/dependency-check-data/7.0
-      - name: Check Security Vulnerabilities
-        run: ./gradlew dependencyCheckAnalyze
 
   test:
     runs-on: ubuntu-latest
