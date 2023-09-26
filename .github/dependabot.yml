@@ -10,6 +10,11 @@ updates:
     labels:
       - dependencies
       - actions
+    groups:
+      # name of the group
+      exposed:
+        patterns:
+          - 'org.jetbrains.exposed:*'
   - package-ecosystem: gradle
     directory: /server
     schedule:
