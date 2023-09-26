@@ -10,11 +10,6 @@ updates:
     labels:
       - dependencies
       - actions
-    groups:
-      # name of the group
-      exposed:
-        patterns:
-          - 'org.jetbrains.exposed:*'
   - package-ecosystem: gradle
     directory: /server
     schedule:
@@ -25,3 +20,13 @@ updates:
       - dependencies
       - libs
       - server
+    groups:
+      # name of the group
+      exposed:
+        patterns:
+          - 'org.jetbrains.exposed:*'
+      kotlin:
+        patterns:
+          - 'jvm'
+          - 'plugin.spring'
+          - 'plugin.jpa'
