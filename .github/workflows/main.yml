@@ -13,27 +13,24 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
-#      - name: Cache OWASP Vulnerabilities Database
-#        uses: actions/cache@v3
-#        env:
-#          cache-name: cache-owasp-vulnerability-database
-#        with:
-#          key: ${{ runner.os }}-${{ env.cache-name }}
-#          path:
-#      - name: Show Gradle version
-#        run: ./gradlew -v
+      - name: Restore Cache for OWASP Vulnerabilities Database
+        uses: actions/cache/restore@v3
+        with:
+          key: cache-owasp-vulnerability-database
+          path: /home/runner/.gradle/dependency-check-data/7.0
+      - name: Show Gradle version
+        run: ./gradlew -v
       - name: Update Vulnerabilities Database
         run: ./gradlew dependencyCheckUpdate
       - name: List NVM DB folders
-        run: |
-          echo $HOME
-          ls -lah $HOME
-          ls -lah /home/runner/work/its
-          ls -lah $HOME/.gradle/dependency-check-data/7.0/
-          ls -lah /home/runner/work/its/.gradle/dependency-check-data/7.0/
-          ls -lah /home/runner/work/its/its/.gradle/dependency-check-data/7.0/
-#      - name: Check Security Vulnerabilities
-#        run: ./gradlew dependencyCheckAnalyze
+        run: ls -lah $HOME/.gradle/dependency-check-data/7.0/
+      - name: Save Cache for OWASP Vulnerabilities Database
+        uses: actions/cache/save@v3
+        with:
+          key: cache-owasp-vulnerability-database
+          path: ~/.gradle/dependency-check-data/7.0
+      - name: Check Security Vulnerabilities
+        run: ./gradlew dependencyCheckAnalyze
 
   test:
     runs-on: ubuntu-latest
