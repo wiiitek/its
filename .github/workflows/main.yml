@@ -13,8 +13,19 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
+      - name: Show Gradle version
+        run: ./gradlew -v
+      - name: Update Vulnerabilities Database
+        run: ./gradlew dependencyCheckUpdate
       - name: Check Security Vulnerabilities
         run: ./gradlew dependencyCheckAnalyze
+      - name: Archive OWASP Dependencies Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: owasp-dependency-check-report
+          path: |
+            server/build/reports/dependency-check-report.html
+            server/build/reports/dependency-check-junit.xml
 
   test:
     runs-on: ubuntu-latest
@@ -58,5 +69,5 @@ jobs:
           java-version: '17'
       - name: Show Gradle version
         run: ./gradlew -v
-      - name: Execute Gradle task
+      - name: Build without tests
         run: ./gradlew --no-daemon build -x test -x contractTest
