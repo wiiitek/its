@@ -8,7 +8,9 @@ plugins {
     kotlin("plugin.spring") version "1.9.10"
     kotlin("plugin.jpa") version "1.9.10"
     id("groovy")
+
     id("org.springframework.cloud.contract") version "4.0.4"
+    id("org.owasp.dependencycheck") version "8.4.0"
 }
 
 val javaVersion = JavaVersion.VERSION_17
@@ -19,6 +21,15 @@ java.sourceCompatibility = javaVersion
 
 repositories {
     mavenCentral()
+}
+
+// http://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
+dependencyCheck {
+    formats = listOf("HTML", "JUNIT")
+    failBuildOnCVSS = 3.14f
+    suppressionFile = "owasp-dependency-suppression.xml"
+    // disable .NET assembly scanning
+    analyzers.assemblyEnabled = false
 }
 
 defaultTasks(":clean", ":build")
@@ -37,7 +48,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-java-time:0.43.0")
 
     // https://www.programmersought.com/article/30275596545/
-    runtimeOnly("com.h2database:h2")
+    runtimeOnly("com.h2database:h2:2.2.224")
     // may be surprising, but we use postgres only for integration testing
     testRuntimeOnly("org.postgresql:postgresql")
 
@@ -70,6 +81,11 @@ dependencies {
 dependencyManagement {
     imports {
         mavenBom("org.testcontainers:testcontainers-bom:1.19.0")
+    }
+    dependencies {
+        // next major version enforced because of
+        // https://www.cve.org/CVERecord?id=CVE-2022-1471
+        dependency("org.yaml:snakeyaml:2.2")
     }
 }
 
