@@ -39,6 +39,9 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: cache-owasp-vulnerability-database
+          restore-keys:
+            - owasp-dependency-cache
+            - cache-owasp-vulnerability-database
           path: /home/runner/.gradle/dependency-check-data/7.0
       - name: Check Security Vulnerabilities
         run: ./gradlew dependencyCheckAnalyze
