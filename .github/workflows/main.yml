@@ -40,10 +40,9 @@ jobs:
         with:
           key: cache-owasp-vulnerability-database
           path: ~/.gradle/dependency-check-data/7.0
-#          restore-keys: 'cache-owasp-vulnerability-database'
           fail-on-cache-miss: true
-#      - name: Check Security Vulnerabilities
-#        run: ./gradlew dependencyCheckAnalyze
+      - name: Check Security Vulnerabilities
+        run: ./gradlew dependencyCheckAnalyze
 #
 #  test:
 #    runs-on: ubuntu-latest
