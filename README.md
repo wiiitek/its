@@ -64,9 +64,6 @@ We can use testcontainers to create all of our application beans for integration
 
 Usually we use it with `@MockBean` for services used by the tested controller.
 
-We can use `MockMvc` without `@WebMvcTest` annotation
-(compare with [Setup Choices](https://docs.spring.io/spring-framework/reference/testing/spring-mvc-test-framework/server-setup-options.html) documentation page).
-
 Examples are provided in:
 
 - [`EmployeesControllerMockMvcSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerMockMvcSpec.groovy)
