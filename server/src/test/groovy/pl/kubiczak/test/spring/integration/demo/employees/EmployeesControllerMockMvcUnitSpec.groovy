@@ -7,7 +7,7 @@ import spock.lang.Specification
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
-class TestSpec extends Specification {
+class EmployeesControllerMockMvcUnitSpec extends Specification {
 
     private EmployeesService employeesService
 
