@@ -75,13 +75,13 @@ However, the servlet context still needs to be created.
 
 - [`EmployeesControllerMockMvcUnitSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerMockMvcUnitSpec.groovy)
 
-## @AutoConfigureWireMock
+## WireMock
 
-[Autoconfigured Wiremock](https://cloud.spring.io/spring-cloud-contract/reference/html/project-features.html#features-wiremock)
-example with
-[@AutoConfigureWireMock](https://cloud.spring.io/spring-cloud-contract/1.2.x/multi/multi__spring_cloud_contract_wiremock.html)
-annotation is provided in
-[CatFactClientSpec](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy).
+This project uses [WireMock](https://wiremock.org/docs/overview/) to record expected answers from 3rd party service.
+In sample specification:
+[CatFactClientSpec](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy)
+recorded WireMock server responds with given data.
+Thanks to that we can verify if our code can correctly interact with expected response.
 
 ## Spring Cloud Contract
 
