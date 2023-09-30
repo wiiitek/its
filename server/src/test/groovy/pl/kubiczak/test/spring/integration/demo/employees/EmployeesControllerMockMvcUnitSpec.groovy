@@ -67,6 +67,7 @@ class EmployeesControllerMockMvcUnitSpec extends Specification {
                 .andExpect(header().exists("Content-Type"))
                 .andExpect(header().stringValues("Content-Type", "application/json"))
                 .andExpect(jsonPath('[0]').exists())
-                .andExpect(jsonPath('[0].email').doesNotExist())
+                .andExpect(jsonPath('[0].email').hasJsonPath())
+                .andExpect(jsonPath('[0].email').value(null))
     }
 }
