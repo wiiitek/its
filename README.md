@@ -69,6 +69,12 @@ Examples are provided in:
 - [`EmployeesControllerMockMvcSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerMockMvcSpec.groovy)
 - [`EmployeesControllerWebTestClientSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerWebTestClientSpec.groovy)
 
+We can use `MockMvc` without `@WebMvcTest` annotation
+(compare with [Setup Choices](https://docs.spring.io/spring-framework/reference/testing/spring-mvc-test-framework/server-setup-options.html) documentation page).
+However, the servlet context still needs to be created.
+
+- [`EmployeesControllerMockMvcUnitSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerMockMvcUnitSpec.groovy)
+
 ## @AutoConfigureWireMock
 
 [Autoconfigured Wiremock](https://cloud.spring.io/spring-cloud-contract/reference/html/project-features.html#features-wiremock)

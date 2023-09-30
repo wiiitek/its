@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class EmployeesControllerMockMvcSpec extends MockMvcSpringBaseTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    private MockMvc mockMvc
 
     def "Assertions on content().string"() {
 
