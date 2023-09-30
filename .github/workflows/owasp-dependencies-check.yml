@@ -1,0 +1,27 @@
+name: OWASP dependency check
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: '07 07 * * *'
+    - cron: '14 14 * * *'
+
+jobs:
+  owasp-dependency-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Zulu/Azul JAVA 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+      - name: Cache for OWASP Vulnerabilities
+        id: cache-owasp-vulnerability-database
+        uses: actions/cache@v3
+        with:
+          key: cache-owasp-vulnerability-database
+          path: ~/.gradle/dependency-check-data/7.0
+      - name: Check Security Vulnerabilities
+        run: ./gradlew dependencyCheckAnalyze
