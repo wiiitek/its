@@ -19,10 +19,9 @@ jobs:
         uses: actions/cache@v3
         with:
           key: cache-owasp-vulnerability-database
-#          path: ~/.gradle/dependency-check-data/7.0
-          path: gradle
-#      - name: Update Security Vulnerabilities
-#        run: ./gradlew dependencyCheckUpdate
+          path: ~/.gradle/dependency-check-data/7.0
+      - name: Update Security Vulnerabilities
+        run: ./gradlew dependencyCheckUpdate
 
   owasp-dependency-check:
     runs-on: ubuntu-latest
@@ -40,12 +39,11 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: cache-owasp-vulnerability-database
-          restore-keys: 'cache-owasp-vulnerability-database'
-#          path: /home/runner/.gradle/dependency-check-data/7.0
-          path: gradle
+          path: ~/.gradle/dependency-check-data/7.0
+#          restore-keys: 'cache-owasp-vulnerability-database'
           fail-on-cache-miss: true
-      - name: Check Security Vulnerabilities
-        run: ./gradlew dependencyCheckAnalyze
+#      - name: Check Security Vulnerabilities
+#        run: ./gradlew dependencyCheckAnalyze
 #
 #  test:
 #    runs-on: ubuntu-latest
