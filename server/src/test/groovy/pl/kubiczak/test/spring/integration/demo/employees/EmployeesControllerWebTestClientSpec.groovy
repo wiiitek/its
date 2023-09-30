@@ -1,20 +1,10 @@
 package pl.kubiczak.test.spring.integration.demo.employees
 
-import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
-import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.test.context.junit.jupiter.SpringExtension
+
 import org.springframework.test.web.reactive.server.WebTestClient
-import spock.lang.Specification
+import pl.kubiczak.test.spring.integration.demo.MockMvcSpringBaseTest
 
-@ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = [
-        EmployeesController.class
-])
-class EmployeesControllerWebTestClientSpec extends Specification {
-
-    @MockBean
-    EmployeesService employeesService
+class EmployeesControllerWebTestClientSpec extends MockMvcSpringBaseTest {
 
     WebTestClient webTestClient
 
