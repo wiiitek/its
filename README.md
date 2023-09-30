@@ -78,10 +78,12 @@ However, the servlet context still needs to be created.
 ## WireMock
 
 This project uses [WireMock](https://wiremock.org/docs/overview/) to record expected answers from 3rd party service.
-In sample specification:
+In
 [CatFactClientSpec](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy)
-recorded WireMock server responds with given data.
-Thanks to that we can verify if our code can correctly interact with expected response.
+we:
+
+1. specify how WireMock server should respond
+2. verify that our code can correctly interact with specified response
 
 ## Spring Cloud Contract
 
