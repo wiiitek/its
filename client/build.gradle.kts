@@ -28,23 +28,24 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.spockframework:spock-core:2.0-groovy-3.0")
-    testImplementation("org.spockframework:spock-spring:2.0-groovy-3.0")
 
-    testImplementation("org.codehaus.groovy:groovy-all:3.0.9")
-    testImplementation("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
+    testImplementation("org.spockframework:spock-core:2.4-M1-groovy-4.0")
+    testImplementation("org.spockframework:spock-spring:2.4-M1-groovy-4.0")
+    testImplementation("org.apache.groovy:groovy-all:4.0.15")
 
 //    testImplementation("pl.kubiczak.test.spring.integration:server:0.0.1-SNAPSHOT")
     testImplementation(project(":server", "stubs"))
 
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:3.1.0")
 
+    // Additional dependency for JUnit Platform
+    testImplementation("org.junit.platform:junit-platform-console:1.8.2")
 }
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "1.8"
+        jvmTarget = javaVersion.toString()
     }
 }
 
