@@ -33,10 +33,9 @@ dependencies {
     testImplementation("org.spockframework:spock-spring:2.4-M1-groovy-4.0")
     testImplementation("org.apache.groovy:groovy-all:4.0.15")
 
-//    testImplementation("pl.kubiczak.test.spring.integration:server:0.0.1-SNAPSHOT")
     testImplementation(project(":server", "stubs"))
 
-    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:3.1.0")
+    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.0.4")
 
     // Additional dependency for JUnit Platform
     testImplementation("org.junit.platform:junit-platform-console:1.8.2")
