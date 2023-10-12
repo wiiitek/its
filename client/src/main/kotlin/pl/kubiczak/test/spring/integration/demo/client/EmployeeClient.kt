@@ -6,7 +6,7 @@ import java.util.UUID
 
 interface EmployeeClient {
 
-    @GET
+    @GET("/employees")
     fun listEmployees(): Call<List<EmployeeDto>>
 
     data class EmployeeDto(
