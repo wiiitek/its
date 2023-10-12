@@ -1,6 +1,5 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees.jpa
 
-
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager

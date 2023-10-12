@@ -1,6 +1,5 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees
 
-
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.web.servlet.MockMvc
 import pl.kubiczak.test.spring.integration.demo.server.MockMvcSpringBaseTest
