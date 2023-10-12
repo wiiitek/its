@@ -109,9 +109,9 @@ tasks.withType<Test> {
 contracts {
     setTestFramework("SPOCK")
     // configures package for generated test classes
-    setBasePackageForTests("pl.kubiczak.test.spring.integration.demo.contracts")
+    setBasePackageForTests("pl.kubiczak.test.spring.integration.demo.server.contracts")
     // configures base class for Spring boot contract tests
     baseClassMappings {
-        baseClassMapping(".*", "pl.kubiczak.test.spring.integration.demo.MockMvcSpringBaseTest")
+        baseClassMapping(".*", "pl.kubiczak.test.spring.integration.demo.server.MockMvcSpringBaseTest")
     }
 }
