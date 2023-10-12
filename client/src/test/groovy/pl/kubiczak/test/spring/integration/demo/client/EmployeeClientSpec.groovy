@@ -1,13 +1,16 @@
 package pl.kubiczak.test.spring.integration.demo.client
 
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner
-import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties
+import org.springframework.beans.factory.annotation.Autowired
 
-@SpringBootTest
-@AutoConfigureStubRunner(
-        ids = "pl.kubiczak.test.spring.integration:server:0.0.1-SNAPSHOT",
-        stubsMode = StubRunnerProperties.StubsMode.CLASSPATH
-)
-class EmployeeClientSpec {
+class EmployeeClientSpec extends BaseClientApplicationSpec {
+
+    @Autowired
+    private EmployeeClient employeeClient
+
+    def "should create employee client with Retrofit"() {
+        expect:
+        employeeClient != null
+        and:
+        employeeClient instanceof EmployeeClient
+    }
 }
