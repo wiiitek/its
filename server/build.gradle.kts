@@ -45,6 +45,7 @@ dependencyManagement {
         dependency("io.netty:netty-codec-http2:4.1.100.Final")
         dependency("io.netty:netty-codec-socks:4.1.100.Final")
         dependency("io.netty:netty-common:4.1.100.Final")
+        dependency("io.netty:netty-handler:4.1.100.Final")
         dependency("io.netty:netty-handler-proxy:4.1.100.Final")
         dependency("io.netty:netty-resolver:4.1.100.Final")
         dependency("io.netty:netty-resolver-dns:4.1.100.Final")
