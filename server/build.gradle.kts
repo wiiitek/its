@@ -32,6 +32,7 @@ dependencyCheck {
 dependencyManagement {
     dependencies {
         // https://github.com/wiiitek/its/actions/runs/6505220493/job/17668447802
+        // https://github.com/wiiitek/its/pull/203#issuecomment-1761937427
         // older netty-http is vulnerable: CVE-2023-4586
         dependency("io.netty:netty-buffer:4.1.100.Final")
         dependency("io.netty:netty-codec:4.1.100.Final")
@@ -51,6 +52,11 @@ dependencyManagement {
         dependency("io.netty:netty-transport-classes-epoll:4.1.100.Final")
         dependency("io.netty:netty-transport-native-epoll:4.1.100.Final")
         dependency("io.netty:netty-transport-native-unix-common:4.1.100.Final")
+        // for CVE-2023-42795
+        // https://security.snyk.io/vuln/SNYK-JAVA-ORGAPACHETOMCATEMBED-5959972
+        // https://github.com/advisories/GHSA-g8pj-r55q-5c2v
+        dependency("org.apache.tomcat.embed:tomcat-embed-core:10.1.14")
+        dependency("org.apache.tomcat.embed:tomcat-embed-websocket:10.1.14")
     }
 }
 
