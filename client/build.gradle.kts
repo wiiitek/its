@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.springframework.boot.gradle.tasks.run.BootRun
 
 plugins {
     id("org.springframework.boot") version "3.1.4"
@@ -15,12 +14,6 @@ group = "pl.kubiczak.test.spring.integration.demo"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = javaVersion
 java.targetCompatibility = javaVersion
-
-repositories {
-    mavenCentral()
-}
-
-defaultTasks(":clean", ":build")
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
