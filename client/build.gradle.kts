@@ -8,6 +8,11 @@ plugins {
 
 val javaVersion = JavaVersion.VERSION_17
 
+group = "pl.kubiczak.test.spring.integration.demo"
+version = "0.0.1-SNAPSHOT"
+java.sourceCompatibility = javaVersion
+java.targetCompatibility = javaVersion
+
 repositories {
     mavenCentral()
 }
