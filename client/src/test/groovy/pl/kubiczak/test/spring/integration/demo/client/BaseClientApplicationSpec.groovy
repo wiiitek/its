@@ -9,7 +9,7 @@ import spock.lang.Specification
 
 @SpringBootTest
 @AutoConfigureStubRunner(
-        ids = "pl.kubiczak.test.spring.integration:server:+:stubs:8080",
+        ids = "pl.kubiczak.test.spring.integration.demo:server:+:stubs:8080",
         stubsMode = StubRunnerProperties.StubsMode.CLASSPATH
 )
 class BaseClientApplicationSpec extends Specification {
