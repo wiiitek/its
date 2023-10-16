@@ -8,14 +8,21 @@ class EmployeeClientSpec extends BaseClientApplicationSpec {
     @Autowired
     private EmployeeClient employeeClient
 
-    def "should receive empty list of employees"() {
+    def "should receive sample list of employees"() {
         when:
         def response = employeeClient.listEmployees().execute()
 
         then:
         response.code() == HttpStatus.OK.value()
         and:
-        response.body() == []
+        response.body().size() == 2
+        and:
+        response.body()[0].uuid == UuidKt.toUUID(1)
+        response.body()[0].name == "John Doe"
+        response.body()[0].email == "john.doe@example.com"
+        response.body()[1].uuid == UuidKt.toUUID(2)
+        response.body()[1].name == "Jane Smith"
+        response.body()[1].email == null
     }
 
     def "should receive 404 for non-existent employee"() {
