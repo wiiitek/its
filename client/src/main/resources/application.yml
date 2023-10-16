@@ -1,0 +1,4 @@
+
+remotes:
+  employees:
+    domain: 'https://sample.domain.org/'

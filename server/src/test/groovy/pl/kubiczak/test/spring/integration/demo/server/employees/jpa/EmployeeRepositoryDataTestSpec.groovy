@@ -8,7 +8,7 @@ import pl.kubiczak.test.spring.integration.demo.server.TestDb
 import spock.lang.Specification
 
 @DataJpaTest
-class EmployeeRepositoryDataJpaTestSpec extends Specification {
+class EmployeeRepositoryDataTestSpec extends Specification {
 
     @Autowired()
     EmployeeRepository tested

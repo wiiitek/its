@@ -5,7 +5,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import spock.lang.Specification
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 class EmployeesControllerMockMvcUnitSpec extends Specification {
 
@@ -69,5 +72,20 @@ class EmployeesControllerMockMvcUnitSpec extends Specification {
                 .andExpect(jsonPath('[0]').exists())
                 .andExpect(jsonPath('[0].email').hasJsonPath())
                 .andExpect(jsonPath('[0].email').value(null))
+    }
+
+    def "should return JSON with employee with non-null email"() {
+        given:
+        def randomId = UUID.randomUUID().toString()
+        recordMockWithOneSampleEmployee(randomId, "John", "john@example.com")
+
+        expect:
+        mockMvc.perform(get('/employees'))
+                .andExpect(status().isOk())
+                .andExpect(header().exists("Content-Type"))
+                .andExpect(header().stringValues("Content-Type", "application/json"))
+                .andExpect(jsonPath('[0]').exists())
+                .andExpect(jsonPath('[0].email').hasJsonPath())
+                .andExpect(jsonPath('[0].email').value("john@example.com"))
     }
 }

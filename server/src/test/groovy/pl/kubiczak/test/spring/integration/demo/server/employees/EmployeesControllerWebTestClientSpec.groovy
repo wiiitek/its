@@ -15,24 +15,44 @@ class EmployeesControllerWebTestClientSpec extends MockMvcSpringBaseTest {
                 .build()
     }
 
-    def "get employees + expectBodyList"() {
+    def "get employees + expectBodyList + contains"() {
 
         expect:
         webTestClient.get()
                 .uri('/employees')
                 .exchange()
                 .expectStatus().isOk()
-                .expectBodyList(EmployeeDto).isEqualTo([])
+                .expectBodyList(EmployeeDto)
+                .contains(
+                        new EmployeeDto(
+                                UUID.fromString("00000000-0000-0000-a000-000000000001"),
+                                "John Doe",
+                                "john.doe@example.com"
+                        )
+                )
+                .contains(
+                        new EmployeeDto(
+                                UUID.fromString("00000000-0000-0000-a000-000000000002"),
+                                "Jane Smith",
+                                null
+                        )
+                )
     }
 
 
-    def "get employees + expectBody().json"() {
+    def "get employees + expectBody().jsonPath"() {
 
         expect:
         webTestClient.get()
                 .uri('/employees')
                 .exchange()
                 .expectStatus().isOk()
-                .expectBody().json('[]')
+                .expectBody()
+                .jsonPath("\$[0].uuid").isEqualTo("00000000-0000-0000-a000-000000000001")
+                .jsonPath("\$[1].uuid").isEqualTo("00000000-0000-0000-a000-000000000002")
+                .jsonPath("\$[0].name").isEqualTo("John Doe")
+                .jsonPath("\$[1].name").isEqualTo("Jane Smith")
+                .jsonPath("\$[0].email").isEqualTo("john.doe@example.com")
+                .jsonPath("\$[1].email").doesNotExist()
     }
 }

@@ -20,10 +20,6 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = javaVersion
 java.targetCompatibility = javaVersion
 
-repositories {
-    mavenCentral()
-}
-
 // http://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
 dependencyCheck {
     formats = listOf("HTML", "JUNIT")
@@ -32,8 +28,6 @@ dependencyCheck {
     // disable .NET assembly scanning
     analyzers.assemblyEnabled = false
 }
-
-defaultTasks(":clean", ":build")
 
 dependencyManagement {
     dependencies {
@@ -140,4 +134,14 @@ contracts {
     baseClassMappings {
         baseClassMapping(".*", "pl.kubiczak.test.spring.integration.demo.server.MockMvcSpringBaseTest")
     }
+}
+
+// for consuming stubs locally https://stackoverflow.com/a/62077808/1823545
+val stubs: Configuration by configurations.creating {
+    isCanBeConsumed = true
+    isCanBeResolved = false
+}
+
+artifacts {
+    add("stubs", tasks.verifierStubsJar.get())
 }
