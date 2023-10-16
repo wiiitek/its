@@ -72,8 +72,6 @@ dependencies {
     // may be surprising, but we use postgres only for integration testing
     testRuntimeOnly("org.postgresql:postgresql")
 
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
