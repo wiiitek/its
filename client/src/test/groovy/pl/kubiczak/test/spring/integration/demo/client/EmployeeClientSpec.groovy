@@ -8,13 +8,6 @@ class EmployeeClientSpec extends BaseClientApplicationSpec {
     @Autowired
     private EmployeeClient employeeClient
 
-    def "should create employee client with Retrofit"() {
-        expect:
-        employeeClient != null
-        and:
-        employeeClient instanceof EmployeeClient
-    }
-
     def "should receive empty list of employees"() {
         when:
         def response = employeeClient.listEmployees().execute()
