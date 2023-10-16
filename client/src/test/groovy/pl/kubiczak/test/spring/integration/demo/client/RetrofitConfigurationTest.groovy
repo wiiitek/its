@@ -33,5 +33,6 @@ class RetrofitConfigurationTest extends Specification {
         "https://www.example.com/some/path/not/ending/with/slash" || "baseUrl must end in /"
         "ftp://incorrect.protocol/"                               || "Expected URL scheme 'http' or 'https' but was 'ftp'"
         "//missing.protocol/"                                     || "Expected URL scheme 'http' or 'https' but no scheme was found"
+        ""                                                        || "Expected URL scheme 'http' or 'https' but no scheme was found"
     }
 }
