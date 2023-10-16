@@ -1,0 +1,5 @@
+
+remotes:
+  employees:
+    # will use WireMock server created from Spring Cloud Contract
+    domain: 'http://localhost:8080/'
