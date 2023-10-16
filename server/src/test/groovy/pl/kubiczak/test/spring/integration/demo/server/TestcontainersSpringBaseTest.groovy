@@ -40,5 +40,4 @@ class TestcontainersSpringBaseTest extends Specification {
                     .applyTo(context.getEnvironment())
         }
     }
-
 }

@@ -18,8 +18,8 @@ class EmployeesController(
         )
 
     @GetMapping(path = ["/employees/{uuid}"])
-    fun readAll(@PathVariable uuid: UUID): ResponseEntity<EmployeeDto> {
-        val employee = employeesService.findByUuid(uuid)
-        return ResponseEntity.of(employee)
-    }
+    fun readAll(@PathVariable uuid: UUID): ResponseEntity<EmployeeDto> =
+        ResponseEntity.of(
+            employeesService.findByUuid(uuid)
+        )
 }
