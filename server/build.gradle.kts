@@ -55,7 +55,7 @@ dependencyManagement {
         // for CVE-2023-42795
         // https://security.snyk.io/vuln/SNYK-JAVA-ORGAPACHETOMCATEMBED-5959972
         // https://github.com/advisories/GHSA-g8pj-r55q-5c2v
-        dependency("org.apache.tomcat.embed:tomcat-embed-core:10.1.14")
+        dependency("org.apache.tomcat.embed:tomcat-embed-core:10.1.15")
         dependency("org.apache.tomcat.embed:tomcat-embed-websocket:10.1.14")
     }
 }
