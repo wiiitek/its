@@ -17,17 +17,21 @@ class EmployeeClientSpec extends BaseClientApplicationSpec {
         and:
         response.body().size() == 2
         and:
-        response.body()[0].uuid == UuidKt.toUUID(1)
-        response.body()[0].name == "John Doe"
-        response.body()[0].email == "john.doe@example.com"
-        response.body()[1].uuid == UuidKt.toUUID(2)
-        response.body()[1].name == "Jane Smith"
-        response.body()[1].email == null
+        with(response.body()[0]) { first ->
+            first.uuid == UuidKt.toUUID(1)
+            first.name == "John Doe"
+            first.email == "john.doe@example.com"
+        }
+        with(response.body()[1]) { second ->
+            second.uuid == UuidKt.toUUID(2)
+            second.name == "Jane Smith"
+            second.email == null
+        }
     }
 
     def "should receive 404 for non-existent employee"() {
         given:
-        def nonExistingEmployeeID = UUID.fromString("00000000-0000-0000-0000-000000000000")
+        def nonExistingEmployeeID = UUID.randomUUID()
 
         when:
         def response = employeeClient.findEmployee(nonExistingEmployeeID).execute()
