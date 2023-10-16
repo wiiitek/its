@@ -11,12 +11,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitConfiguration {
 
     @Bean
-    fun employeeClient(@Value("\${remotes.employees.domain}") employeeDomain: String): EmployeeClient {
+    fun employeeClient(@Value("\${remotes.employees.domain}") employeeDomain: String): EmployeeClient = try {
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(employeeDomain)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        return retrofit.create(EmployeeClient::class.java)
+        retrofit.create(EmployeeClient::class.java)
+    } catch (iae: IllegalArgumentException) {
+        throw iae
     }
 }

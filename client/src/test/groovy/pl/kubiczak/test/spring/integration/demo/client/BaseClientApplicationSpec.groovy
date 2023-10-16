@@ -21,4 +21,15 @@ class BaseClientApplicationSpec extends Specification {
         expect:
         context != null
     }
+
+    def "should provide employees client bean"() {
+        when:
+        EmployeeClient actual = context.getBean(EmployeeClient)
+
+        then:
+        actual instanceof EmployeeClient
+        and:
+        // it shouldn't be the interface, but rather an implementation (retrofit)
+        actual.class != EmployeeClient
+    }
 }
