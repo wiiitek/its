@@ -13,6 +13,18 @@ Contract.make {
         headers {
             contentType applicationJson()
         }
-        body([])
+        body '''\
+		[
+		    {
+                    "uuid": "00000000-0000-0000-a000-000000000001",
+                    "name": "John Doe",
+                    "email": "john.doe@example.com"
+		    },
+		    {
+                    "uuid": "00000000-0000-0000-a000-000000000002",
+                    "name": "Jane Smith"
+		    }
+		]
+	'''
     }
 }
