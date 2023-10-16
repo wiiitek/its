@@ -15,7 +15,7 @@ class MockMvcSpringBaseTest extends Specification {
 
     // https://spockframework.org/spock/docs/1.2/module_spring.html#_using_code_springbean_code
     @SpringBean
-    EmployeesService employeesService = Mock()
+    EmployeesService employeesService = Stub()
 
     EmployeesService spockMock = Mock(EmployeesService)
 
@@ -26,11 +26,19 @@ class MockMvcSpringBaseTest extends Specification {
         // needed for Spring Cloud Contract
         RestAssuredMockMvc.mockMvc(mockMvc)
 
+        // records response for listing all employees
+        employeesService.findAll() >> []
         // since we are using web MVC test slice for our Cloud Contract tests
-        // let's record mock response for sample employee
-        def sampleEmployeeID = UUID.fromString("00000000-0000-0000-a000-00000000001")
-        def sampleEmployee = new EmployeeDto(sampleEmployeeID, "John Doe", "john.doe@example.com")
-        employeesService.findByUuid(sampleEmployeeID) >> Optional.of(sampleEmployee)
-        spockMock.findByUuid(sampleEmployeeID) >> Optional.of(sampleEmployee)
+        // we need to record mock responses for some of employee IDs
+        employeesService.findByUuid(_ as UUID) >> { UUID uuid ->
+
+            def sampleEmployeeID = UUID.fromString("00000000-0000-0000-a000-00000000001")
+            def sampleEmployee = new EmployeeDto(sampleEmployeeID, "John Doe", "john.doe@example.com")
+
+            return uuid == sampleEmployeeID ?
+                    Optional.of(sampleEmployee)
+                    :
+                    Optional.empty()
+        }
     }
 }
