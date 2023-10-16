@@ -24,8 +24,6 @@ defaultTasks(":clean", ":build")
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -39,9 +37,6 @@ dependencies {
     testImplementation(project(":server", "stubs"))
 
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.0.4")
-
-    // Additional dependency for JUnit Platform
-    testImplementation("org.junit.platform:junit-platform-console:1.8.2")
 }
 
 tasks.withType<KotlinCompile> {
@@ -49,12 +44,6 @@ tasks.withType<KotlinCompile> {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = javaVersion.toString()
     }
-}
-
-// https://stackoverflow.com/a/50719594/1823545
-tasks.withType<BootRun> {
-    val activeProfiles = System.getProperty("spring.profiles.active")
-    this.systemProperty("spring.profiles.active", activeProfiles)
 }
 
 tasks.withType<Test> {
