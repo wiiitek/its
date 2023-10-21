@@ -51,4 +51,4 @@ jobs:
   owasp-check:
     uses: ./.github/workflows/owasp-dependencies-check.yml
     with:
-      branch: ${{ github.ref }}
+      currentBranchName: ${{ github.ref }}

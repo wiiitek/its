@@ -7,18 +7,17 @@ on:
     - cron: '14 14 * * *'
   workflow_call:
     inputs:
-      branch:
-        description: 'Source branch within the OWASP check is run'
+      currentBranchName:
+        description: 'Current branch on which the OWASP check is run'
         type: string
         default: 'main'
-        required: false
 
 jobs:
   owasp-dependency-check:
     runs-on: ubuntu-latest
     steps:
       - name: Info
-        run: 'echo "Running OWASP check on branch: ${{ inputs.branch }}"'
+        run: 'echo "Running OWASP check on branch: ${{ inputs.currentBranchName }}"'
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Zulu/Azul JAVA 17
