@@ -5,11 +5,20 @@ on:
     # * is a special character in YAML so you have to quote this string
     - cron: '07 07 * * *'
     - cron: '14 14 * * *'
+  workflow_call:
+    inputs:
+      branch:
+        description: 'Source branch within the OWASP check is run'
+        type: string
+        default: 'main'
+        required: false
 
 jobs:
   owasp-dependency-check:
     runs-on: ubuntu-latest
     steps:
+      - name: Info
+        run: 'echo "Running OWASP check on branch: ${{ inputs.branch }}"'
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Zulu/Azul JAVA 17

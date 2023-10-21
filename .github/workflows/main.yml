@@ -47,3 +47,8 @@ jobs:
         run: ./gradlew -v
       - name: Build without tests
         run: ./gradlew --no-daemon build -x test -x contractTest
+
+  owasp-check:
+    uses: ./github/workflows/owasp-dependency-check.yml@updates
+    with:
+      branch: ${{ github.ref }}
