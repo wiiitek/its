@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "3.1.4"
+    id("org.springframework.boot") version "3.1.5"
     id("io.spring.dependency-management") version "1.1.3"
     kotlin("jvm")
     kotlin("plugin.spring") version "1.9.10"
@@ -41,6 +41,15 @@ dependencies {
     testImplementation(project(":server", "stubs"))
 
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.0.4")
+}
+
+dependencyManagement {
+    dependencies {
+        // for CVE-2023-3635
+        // https://github.com/advisories/GHSA-w33c-445m-f8w7
+        dependency("com.squareup.okio:okio:3.6.0")
+        dependency("com.squareup.okio:okio-metadata:3.6.0")
+    }
 }
 
 tasks.withType<KotlinCompile> {
