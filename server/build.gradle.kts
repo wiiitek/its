@@ -78,6 +78,7 @@ dependencyManagement {
     dependencies {
         // next major version enforced because of
         // https://www.cve.org/CVERecord?id=CVE-2022-1471
+        // https://github.com/advisories/GHSA-mjmj-j48q-9wg2
         dependency("org.yaml:snakeyaml:2.2")
     }
 }
