@@ -49,6 +49,10 @@ dependencyManagement {
         // https://github.com/advisories/GHSA-w33c-445m-f8w7
         dependency("com.squareup.okio:okio:3.6.0")
         dependency("com.squareup.okio:okio-metadata:3.6.0")
+        // next major version enforced because of
+        // https://www.cve.org/CVERecord?id=CVE-2022-1471
+        // https://github.com/advisories/GHSA-mjmj-j48q-9wg2
+        dependency("org.yaml:snakeyaml:2.2")
     }
 }
 
