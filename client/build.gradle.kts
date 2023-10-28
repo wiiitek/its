@@ -6,6 +6,8 @@ plugins {
     kotlin("jvm")
     kotlin("plugin.spring") version "1.9.10"
     id("groovy")
+
+    id("org.owasp.dependencycheck") version "8.4.2"
 }
 
 val javaVersion = JavaVersion.VERSION_17
@@ -14,6 +16,15 @@ group = "pl.kubiczak.test.spring.integration.demo"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = javaVersion
 java.targetCompatibility = javaVersion
+
+// http://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
+dependencyCheck {
+    formats = listOf("HTML", "JUNIT")
+    failBuildOnCVSS = 3.14f
+    suppressionFile = "owasp-dependency-suppression.xml"
+    // disable .NET assembly scanning
+    analyzers.assemblyEnabled = false
+}
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
