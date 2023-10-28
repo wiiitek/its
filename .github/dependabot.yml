@@ -21,7 +21,25 @@ updates:
       - libs
       - server
     groups:
-      # name of the group
+      exposed:
+        patterns:
+          - 'org.jetbrains.exposed:*'
+      kotlin:
+        patterns:
+          - 'jvm'
+          - 'plugin.spring'
+          - 'plugin.jpa'
+  - package-ecosystem: gradle
+    directory: /client
+    schedule:
+      interval: daily
+      time: '01:23'
+      timezone: Europe/Warsaw
+    labels:
+      - dependencies
+      - libs
+      - client
+    groups:
       exposed:
         patterns:
           - 'org.jetbrains.exposed:*'
