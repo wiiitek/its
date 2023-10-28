@@ -11,7 +11,7 @@ updates:
       - dependencies
       - actions
   - package-ecosystem: gradle
-    directory: /server
+    directory: /
     schedule:
       interval: daily
       time: '01:23'
@@ -19,26 +19,6 @@ updates:
     labels:
       - dependencies
       - libs
-      - server
-    groups:
-      exposed:
-        patterns:
-          - 'org.jetbrains.exposed:*'
-      kotlin:
-        patterns:
-          - 'jvm'
-          - 'plugin.spring'
-          - 'plugin.jpa'
-  - package-ecosystem: gradle
-    directory: /client
-    schedule:
-      interval: daily
-      time: '01:23'
-      timezone: Europe/Warsaw
-    labels:
-      - dependencies
-      - libs
-      - client
     groups:
       exposed:
         patterns:
