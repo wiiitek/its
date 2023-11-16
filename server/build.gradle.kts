@@ -29,6 +29,15 @@ dependencyCheck {
     analyzers.assemblyEnabled = false
 }
 
+dependencyManagement {
+    dependencies {
+        // https://www.cve.org/CVERecord?id=CVE-2023-34062
+        // https://github.com/advisories/GHSA-xjhv-p3fv-x24r
+        // older reactor-netty-http is vulnerable:  CVE-2023-34062
+        dependency("io.projectreactor.netty:reactor-netty-http:1.1.13")
+    }
+}
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
