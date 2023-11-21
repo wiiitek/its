@@ -70,6 +70,15 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-java-time:$vExposed")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
+    // opentelemetry
+    implementation("io.opentelemetry.semconv:opentelemetry-semconv:1.22.0-alpha")
+    implementation("io.opentelemetry:opentelemetry-api")
+    // https://opentelemetry.io/docs/instrumentation/java/manual/#manual-instrumentation-setup
+    implementation("io.opentelemetry:opentelemetry-sdk")
+    implementation("io.opentelemetry:opentelemetry-sdk-metrics")
+    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure")
+    implementation("io.opentelemetry:opentelemetry-exporter-logging")
+
     // https://www.programmersought.com/article/30275596545/
     runtimeOnly("com.h2database:h2:2.2.224")
     // may be surprising, but we use postgres only for integration testing
@@ -98,6 +107,7 @@ dependencies {
 dependencyManagement {
     imports {
         mavenBom("org.testcontainers:testcontainers-bom:1.19.7")
+        mavenBom("io.opentelemetry:opentelemetry-bom:1.32.0")
     }
     dependencies {
         // next major version enforced because of
