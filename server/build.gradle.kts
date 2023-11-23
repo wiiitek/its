@@ -28,6 +28,8 @@ dependencyCheck {
     // disable .NET assembly scanning
     analyzers.assemblyEnabled = false
     nvd.apiKey = System.getenv("NVD_API_KEY")
+    // https://github.com/jeremylong/DependencyCheck/issues/6107#issuecomment-1824010802
+    nvd.delay = 16000
 }
 
 dependencyManagement {
