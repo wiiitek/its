@@ -24,6 +24,7 @@ dependencyCheck {
     suppressionFile = "owasp-dependency-suppression.xml"
     // disable .NET assembly scanning
     analyzers.assemblyEnabled = false
+    nvd.apiKey = System.getenv("NVD_API_KEY")
 }
 
 dependencies {
