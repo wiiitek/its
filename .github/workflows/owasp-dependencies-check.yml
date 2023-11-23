@@ -33,3 +33,5 @@ jobs:
           path: ~/.gradle/dependency-check-data/7.0
       - name: Check Security Vulnerabilities
         run: ./gradlew dependencyCheckAnalyze
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
