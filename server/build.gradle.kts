@@ -85,7 +85,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("org.testcontainers:testcontainers-bom:1.19.2")
+        mavenBom("org.testcontainers:testcontainers-bom:1.19.3")
     }
     dependencies {
         // next major version enforced because of
