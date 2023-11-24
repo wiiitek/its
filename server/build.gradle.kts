@@ -10,7 +10,7 @@ plugins {
     id("groovy")
 
     id("org.springframework.cloud.contract") version "4.0.4"
-    id("org.owasp.dependencycheck") version "8.4.3"
+    id("org.owasp.dependencycheck") version "9.0.0"
 }
 
 val javaVersion = JavaVersion.VERSION_17
@@ -27,6 +27,9 @@ dependencyCheck {
     suppressionFile = "owasp-dependency-suppression.xml"
     // disable .NET assembly scanning
     analyzers.assemblyEnabled = false
+    nvd.apiKey = System.getenv("NVD_API_KEY")
+    // https://github.com/jeremylong/DependencyCheck/issues/6107#issuecomment-1824010802
+    nvd.delay = 16000
 }
 
 dependencyManagement {

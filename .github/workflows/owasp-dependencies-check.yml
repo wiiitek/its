@@ -11,10 +11,16 @@ on:
         description: 'Current branch on which the OWASP check is run'
         type: string
         default: 'main'
+    secrets:
+      NVD_API_KEY:
+        description: 'NVD API key for owasp dependency check plugin'
+        required: true
 
 jobs:
   owasp-dependency-check:
     runs-on: ubuntu-latest
+    env:
+      NVD_API_KEY: "${{ secrets.NVD_API_KEY }}"
     steps:
       - name: Info
         run: 'echo "Running OWASP check on branch: ${{ inputs.currentBranchName }}"'
@@ -31,5 +37,12 @@ jobs:
         with:
           key: cache-owasp-vulnerability-database
           path: ~/.gradle/dependency-check-data/7.0
+      - name: Check env variable
+        run: >
+          if [[ -z "${NVD_API_KEY}" ]]; then
+            echo "Missing NVD_API_KEY env variable"
+          else
+            echo "NVD_API_KEY env variable exists"
+          fi
       - name: Check Security Vulnerabilities
         run: ./gradlew dependencyCheckAnalyze
