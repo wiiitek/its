@@ -31,6 +31,13 @@ jobs:
         with:
           key: cache-owasp-vulnerability-database
           path: ~/.gradle/dependency-check-data/7.0
+      - name: Check env variable
+        run: >
+          if [[ -z "${NVD_API_KEY}" ]]; then
+            echo "NVD_API_KEY env variable exists"
+          else
+            echo "Missing NVD_API_KEY env variable"
+          fi
       - name: Check Security Vulnerabilities
         run: ./gradlew dependencyCheckAnalyze
         env:
