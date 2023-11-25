@@ -4,6 +4,7 @@ import java.util.UUID
 
 private const val maxSupportedInt = 999999999999
 
+// https://cloud.magiclen.org/us/uuid/checker
 fun Long.toUUID(): UUID {
     check(this in 0..maxSupportedInt) {
         "Can only convert to UUID integer value from 0 to $maxSupportedInt"
