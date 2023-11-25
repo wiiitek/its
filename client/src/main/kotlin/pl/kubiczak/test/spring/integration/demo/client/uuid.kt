@@ -10,6 +10,6 @@ fun Long.toUUID(): UUID {
     }
     return this.toString().padStart(11, '0')
         .let { lastPart ->
-            UUID.fromString("00000000-0000-0000-a000-$lastPart")
+            UUID.fromString("00000000-0000-4000-a000-$lastPart")
         }
 }
