@@ -1,9 +1,10 @@
-package pl.kubiczak.test.spring.integration.demo.server.cats
+package pl.kubiczak.test.spring.integration.demo.server.cats.adapters
 
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.client.WebClient
-import pl.kubiczak.test.spring.integration.demo.server.cats.CatFactClient.CatFactDto
+import pl.kubiczak.test.spring.integration.demo.server.cats.ports.CatFactClient
+import pl.kubiczak.test.spring.integration.demo.server.cats.ports.CatFactClient.CatFactDto
 
 class CatFactClientSimple(apiDomain: String) : CatFactClient {
 
