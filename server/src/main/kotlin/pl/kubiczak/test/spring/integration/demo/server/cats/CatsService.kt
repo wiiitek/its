@@ -15,19 +15,13 @@ class CatsService(
         catsRepository.findAll()
 
     fun create(name: String?): UUID {
+        val response = catFactClient.nextFact()
 
-        val factContent = try {
-            val response = catFactClient.nextFact()
+        val factContent = response.fact
+        val declaredLength = response.length
 
-            val factContent = response.fact
-            val declaredLength = response.length
-
-            check(factContent.length == declaredLength.toInt()) {
-                "Invalid fact length: ${response.length} for fact content: ${response.fact}"
-            }
-            factContent
-        } catch (e: Exception) {
-            throw e
+        check(factContent.length == declaredLength.toInt()) {
+            "Invalid fact length: ${response.length} for fact content: ${response.fact}"
         }
 
         return catsRepository.create(name, factContent)

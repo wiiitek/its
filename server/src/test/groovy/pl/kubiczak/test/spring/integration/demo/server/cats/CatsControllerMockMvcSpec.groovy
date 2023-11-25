@@ -30,7 +30,7 @@ class CatsControllerMockMvcSpec extends MockMvcSpringBaseTest {
         mockMvc.perform(get('/cats'))
                 .andExpect(status().isOk())
                 .andExpect(
-                        jsonPath("\$[0].name").isEmpty()
+                        jsonPath("\$[0].name").doesNotExist()
                 )
                 .andExpect(
                         jsonPath("\$[1].name").value("Thomas")
