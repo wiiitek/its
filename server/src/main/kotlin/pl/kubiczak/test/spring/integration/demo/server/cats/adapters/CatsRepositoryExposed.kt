@@ -1,4 +1,4 @@
-package pl.kubiczak.test.spring.integration.demo.server.cats.persistence
+package pl.kubiczak.test.spring.integration.demo.server.cats.adapters
 
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.Slf4jSqlDebugLogger
@@ -9,6 +9,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 import pl.kubiczak.test.spring.integration.demo.server.cats.CatResponseDto
+import pl.kubiczak.test.spring.integration.demo.server.cats.ports.CatsRepository
 import java.util.UUID
 import javax.sql.DataSource
 

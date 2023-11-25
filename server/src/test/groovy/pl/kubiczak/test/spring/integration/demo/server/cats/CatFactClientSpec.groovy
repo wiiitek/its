@@ -5,6 +5,7 @@ import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.TestPropertySource
+import pl.kubiczak.test.spring.integration.demo.server.cats.ports.CatFactClient
 import pl.kubiczak.test.spring.integration.demo.server.config.CatFactConfig
 import spock.lang.Specification
 

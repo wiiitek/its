@@ -1,4 +1,4 @@
-package pl.kubiczak.test.spring.integration.demo.server.cats.persistence
+package pl.kubiczak.test.spring.integration.demo.server.cats.adapters
 
 import org.jetbrains.exposed.dao.id.UUIDTable
 

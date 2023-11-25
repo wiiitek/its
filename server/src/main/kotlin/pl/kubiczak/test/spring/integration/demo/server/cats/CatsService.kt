@@ -1,9 +1,9 @@
 package pl.kubiczak.test.spring.integration.demo.server.cats
 
 import org.springframework.stereotype.Service
-import pl.kubiczak.test.spring.integration.demo.server.cats.persistence.CatsRepository
+import pl.kubiczak.test.spring.integration.demo.server.cats.ports.CatFactClient
+import pl.kubiczak.test.spring.integration.demo.server.cats.ports.CatsRepository
 import java.util.UUID
-
 
 @Service
 class CatsService(

@@ -1,4 +1,4 @@
-package pl.kubiczak.test.spring.integration.demo.server.cats
+package pl.kubiczak.test.spring.integration.demo.server.cats.ports
 
 interface CatFactClient {
 

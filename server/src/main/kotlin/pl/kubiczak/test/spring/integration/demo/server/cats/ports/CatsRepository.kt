@@ -1,4 +1,4 @@
-package pl.kubiczak.test.spring.integration.demo.server.cats.persistence
+package pl.kubiczak.test.spring.integration.demo.server.cats.ports
 
 import pl.kubiczak.test.spring.integration.demo.server.cats.CatResponseDto
 import java.util.UUID
