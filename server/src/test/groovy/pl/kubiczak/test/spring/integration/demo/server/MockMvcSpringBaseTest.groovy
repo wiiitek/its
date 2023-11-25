@@ -34,8 +34,8 @@ class MockMvcSpringBaseTest extends Specification {
     }
 
     private recordMockAnswersForEmployees() {
-        UUID eid01 = UUID.fromString("00000000-0000-0000-a000-00000000001")
-        UUID eid02 = UUID.fromString("00000000-0000-0000-a000-00000000002")
+        UUID eid01 = UUID.fromString("00000000-0000-4000-a000-00000000001")
+        UUID eid02 = UUID.fromString("00000000-0000-4000-a000-00000000002")
         def employee01 = new EmployeeDto(eid01, "John Doe", "john.doe@example.com")
         def employee02 = new EmployeeDto(eid02, "Jane Smith", null)
         // records response for listing all employees
@@ -54,8 +54,8 @@ class MockMvcSpringBaseTest extends Specification {
     }
 
     private recordMockAnswersForCats() {
-        UUID cid01 = UUID.fromString("00000000-0000-0000-b000-00000000001")
-        UUID cid02 = UUID.fromString("00000000-0000-0000-b000-00000000002")
+        UUID cid01 = UUID.fromString("00000000-0000-4000-b000-00000000001")
+        UUID cid02 = UUID.fromString("00000000-0000-4000-b000-00000000002")
         def cat01 = new CatResponseDto(cid01, null, "Cats have 9 lives")
         def cat02 = new CatResponseDto(cid02, "Thomas", "")
 

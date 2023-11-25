@@ -18,10 +18,10 @@ class CatsControllerMockMvcSpec extends MockMvcSpringBaseTest {
         mockMvc.perform(get('/cats'))
                 .andExpect(status().isOk())
                 .andExpect(
-                        jsonPath("\$[0].id").value("00000000-0000-0000-b000-000000000001")
+                        jsonPath("\$[0].id").value("00000000-0000-4000-b000-000000000001")
                 )
                 .andExpect(
-                        jsonPath("\$[1].id").value("00000000-0000-0000-b000-000000000002")
+                        jsonPath("\$[1].id").value("00000000-0000-4000-b000-000000000002")
                 )
     }
 
