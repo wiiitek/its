@@ -50,7 +50,7 @@ We can use testcontainers to create all of our application beans for integration
 
 1. Slowest, but use *real* database.
 2. Requires some setup and config values for DB connection:
-   -[`TestcontainersSpringBaseTest`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/TestcontainersSpringBaseTest.groovy)
+   - [`TestcontainersSpringBaseTest`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/TestcontainersSpringBaseTest.groovy)
 3. Database changes made by tests are **not** rolled back at the end.
 
 Examples:
