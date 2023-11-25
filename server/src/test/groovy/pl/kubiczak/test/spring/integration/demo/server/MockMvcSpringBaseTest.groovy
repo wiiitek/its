@@ -15,16 +15,6 @@ import spock.lang.Specification
 // Needed also for spring cloud contract (see build.gradle.kts)
 class MockMvcSpringBaseTest extends Specification {
 
-    private static UUID eid01 = UUID.fromString("00000000-0000-0000-a000-00000000001")
-    private static UUID eid02 = UUID.fromString("00000000-0000-0000-a000-00000000002")
-    private static EmployeeDto employee01 = new EmployeeDto(eid01, "John Doe", "john.doe@example.com")
-    private static EmployeeDto employee02 = new EmployeeDto(eid02, "Jane Smith", null)
-    private static UUID cid01 = UUID.fromString("00000000-0000-0000-b000-00000000001")
-    private static UUID cid02 = UUID.fromString("00000000-0000-0000-b000-00000000002")
-    private static CatResponseDto cat01 = new CatResponseDto(cid01, null, "Cats have 9 lives")
-    private static CatResponseDto cat02 = new CatResponseDto(cid02, "Thomas", "")
-
-
     // https://spockframework.org/spock/docs/1.2/module_spring.html#_using_code_springbean_code
     @SpringBean
     EmployeesService employeesService = Stub()
@@ -44,21 +34,31 @@ class MockMvcSpringBaseTest extends Specification {
     }
 
     private recordMockAnswersForEmployees() {
+        UUID eid01 = UUID.fromString("00000000-0000-0000-a000-00000000001")
+        UUID eid02 = UUID.fromString("00000000-0000-0000-a000-00000000002")
+        def employee01 = new EmployeeDto(eid01, "John Doe", "john.doe@example.com")
+        def employee02 = new EmployeeDto(eid02, "Jane Smith", null)
         // records response for listing all employees
         employeesService.findAll() >> [employee01, employee02]
 
         // since we are using web MVC test slice for our Cloud Contract tests
         // we need to record mock responses for some of employee IDs
+        def employeesMap = [
+                (eid01): employee01,
+                (eid02): employee02,
+        ]
         employeesService.findByUuid(_ as UUID) >> { UUID uuid ->
-            switch (uuid) {
-                case eid01 -> Optional.of(employee01)
-                case eid02 -> Optional.of(employee02)
-                default -> Optional.empty()
-            }
+            def employee = employeesMap[uuid]
+            Optional.ofNullable(employee)
         }
     }
 
     private recordMockAnswersForCats() {
+        UUID cid01 = UUID.fromString("00000000-0000-0000-b000-00000000001")
+        UUID cid02 = UUID.fromString("00000000-0000-0000-b000-00000000002")
+        def cat01 = new CatResponseDto(cid01, null, "Cats have 9 lives")
+        def cat02 = new CatResponseDto(cid02, "Thomas", "")
+
         // records response for listing all cats
         catsService.readAll() >> [cat01, cat02]
     }
