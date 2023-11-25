@@ -11,6 +11,10 @@ fun Long.toUUID(): UUID {
     }
     return this.toString().padStart(11, '0')
         .let { lastPart ->
+            // variant digit can be one of: 8, 9, a, b
+            // version number needs to be 4
+            // everything else is random
+            // https://datatracker.ietf.org/doc/html/rfc4122#section-4.4
             UUID.fromString("00000000-0000-4000-a000-$lastPart")
         }
 }
