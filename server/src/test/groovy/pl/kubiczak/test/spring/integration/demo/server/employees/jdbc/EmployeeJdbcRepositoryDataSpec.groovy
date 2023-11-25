@@ -9,7 +9,7 @@ import spock.lang.Ignore
 import spock.lang.Specification
 
 @DataJdbcTest
-class EmployeeRepositoryDataTestSpec extends Specification {
+class EmployeeJdbcRepositoryDataSpec extends Specification {
 
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate

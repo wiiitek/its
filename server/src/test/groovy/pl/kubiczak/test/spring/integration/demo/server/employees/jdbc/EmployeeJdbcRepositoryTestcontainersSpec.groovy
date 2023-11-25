@@ -3,7 +3,7 @@ package pl.kubiczak.test.spring.integration.demo.server.employees.jdbc
 import org.springframework.beans.factory.annotation.Autowired
 import pl.kubiczak.test.spring.integration.demo.server.TestcontainersSpringBaseTest
 
-class EmployeeRepositoryTestcontainersSpec extends TestcontainersSpringBaseTest {
+class EmployeeJdbcRepositoryTestcontainersSpec extends TestcontainersSpringBaseTest {
 
     @Autowired
     EmployeeRepository tested
