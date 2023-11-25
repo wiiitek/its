@@ -16,12 +16,14 @@ Some links about Test Slices:
 
 Tests run with no DB connection by default:
 
-- [`TestEmployeeRepositoryJdbcSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jdbc/TestEmployeeRepositoryJdbcSpec.groovy)
+- [`TestEmployeeRepositoryJdbcSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/jdbc/TestEmployeeRepositoryJdbcSpec.groovy)
+- [`EmployeeExposedRepositoryDataSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/exposed/EmployeeExposedRepositoryDataSpec.groovy)
 
-but it can be configured to use [embedded database] (H2, DERBY, HSQLDB).
+It can also be configured to use [embedded database] (H2, DERBY, HSQLDB).
 With some effort it is also a possible to use [embedded PostgreSQL]:
 
-- [`EmbeddedEmployeeRepositoryJdbcSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jdbc/EmbeddedEmployeeRepositoryJdbcSpec.groovy)
+- [`EmployeeJdbcRepositoryEmbeddedSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/jdbc/EmployeeJdbcRepositoryEmbeddedSpec.groovy)
+- [`EmployeeExposedRepositoryEmbeddedSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/exposed/EmployeeExposedRepositoryEmbeddedSpec.groovy)
 
 > By default, tests annotated with @DataJdbcTest are transactional and roll back at the end of each test.
 
@@ -29,13 +31,10 @@ With some effort it is also a possible to use [embedded PostgreSQL]:
 
 [@DataJpaTest] provides Spring configuration to support JPA repositories and Entities:
 
-- [`TestEmployeeRepositoryJpaSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jpa/TestEmployeeRepositoryJpaSpec.groovy)
+- [`EmployeeJpaRepositoryDataSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/jpa/EmployeeJpaRepositoryDataSpec.groovy)
+- [`EmployeeJpaRepositoryEmbeddedSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/jpa/EmployeeJpaRepositoryEmbeddedSpec.groovy)
 
 they can also inject [TestEntityManager] to help testing repositories while using [first-level cache].
-
-And can be configured to use embedded PostgreSQL:
-
-- [`EmbeddedEmployeeRepositoryJpaSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/jpa/EmbeddedEmployeeRepositoryJpaSpec.groovy)
 
 Additional info for using Kotlin with Spring JPA:
 
@@ -50,10 +49,15 @@ Additional info for using Kotlin with Spring JPA:
 We can use testcontainers to create all of our application beans for integration tests.
 
 1. Slowest, but use *real* database.
-2. Requires some setup and config values for DB connection
+2. Requires some setup and config values for DB connection:
+   -[`TestcontainersSpringBaseTest`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/TestcontainersSpringBaseTest.groovy)
 3. Database changes made by tests are **not** rolled back at the end.
 
-- [`TestcontainersSpringBaseTest`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/TestcontainersSpringBaseTest.groovy)
+Examples:
+
+- [`EmployeeJdbcRepositoryTestcontainersSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/jdbc/EmployeeJdbcRepositoryTestcontainersSpec.groovy)
+- [`EmployeeExposedRepositoryTestcontainersSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/exposed/EmployeeExposedRepositoryTestcontainersSpec.groovy)
+- [`EmployeeJpaRepositoryTestcontainersSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/jpa/EmployeeJpaRepositoryTestcontainersSpec.groovy)
 
 ## @WebMvcTest
 
@@ -66,8 +70,9 @@ Usually we use it with `@MockBean` for services used by the tested controller.
 
 Examples are provided in:
 
-- [`EmployeesControllerMockMvcSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerMockMvcSpec.groovy)
-- [`EmployeesControllerWebTestClientSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerWebTestClientSpec.groovy)
+- [`EmployeesControllerMockMvcSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/EmployeesControllerMockMvcSpec.groovy)
+- [`EmployeesControllerWebTestClientSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/EmployeesControllerWebTestClientSpec.groovy)
+- [``]
 
 We can use `MockMvc` without `@WebMvcTest` annotation
 (compare with [Setup Choices](https://docs.spring.io/spring-framework/reference/testing/spring-mvc-test-framework/server-setup-options.html) documentation page).

@@ -15,7 +15,7 @@ import javax.sql.DataSource
         type = AutoConfigureEmbeddedDatabase.DatabaseType.POSTGRES,
         provider = AutoConfigureEmbeddedDatabase.DatabaseProvider.OPENTABLE
 )
-class EmployeeRepositoryEmbeddedSpec extends Specification {
+class EmployeeExposedRepositoryEmbeddedSpec extends Specification {
 
     @Autowired
     DataSource dataSource

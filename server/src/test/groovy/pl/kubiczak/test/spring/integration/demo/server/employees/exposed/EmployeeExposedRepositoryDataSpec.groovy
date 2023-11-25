@@ -7,7 +7,7 @@ import spock.lang.Specification
 import javax.sql.DataSource
 
 @DataJdbcTest
-class EmployeeRepositoryDataJdbcTestSpec extends Specification {
+class EmployeeExposedRepositoryDataSpec extends Specification {
 
     @Autowired
     DataSource dataSource
