@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.tasks.run.BootRun
 
 plugins {
-    id("org.springframework.boot") version "3.1.5"
+    id("org.springframework.boot") version "3.2.0"
     id("io.spring.dependency-management") version "1.1.4"
     kotlin("jvm")
     kotlin("plugin.spring") version "1.9.21"
@@ -79,7 +79,7 @@ dependencies {
     testImplementation("org.testcontainers:postgresql")
     testImplementation("org.testcontainers:spock")
     // https://stackoverflow.com/q/48956743
-    testImplementation("io.zonky.test:embedded-database-spring-test:2.3.0")
+    testImplementation("io.zonky.test:embedded-database-spring-test:2.4.0")
     testImplementation("com.opentable.components:otj-pg-embedded:1.0.2")
 }
 

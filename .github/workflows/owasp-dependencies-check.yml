@@ -3,8 +3,9 @@ name: OWASP dependency check
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron: '07 07 * * *'
-    - cron: '14 14 * * *'
+#    - cron: '07 07 * * *'
+#    - cron: '14 14 * * *'
+    - cron: '19 19 * * *'
   workflow_call:
     inputs:
       currentBranchName:
