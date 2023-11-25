@@ -72,19 +72,19 @@ Examples are provided in:
 
 - [`EmployeesControllerMockMvcSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/EmployeesControllerMockMvcSpec.groovy)
 - [`EmployeesControllerWebTestClientSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/EmployeesControllerWebTestClientSpec.groovy)
-- [``]
+- [`CatsControllerMockMvcSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/cats/CatsControllerMockMvcSpec.groovy)
 
 We can use `MockMvc` without `@WebMvcTest` annotation
 (compare with [Setup Choices](https://docs.spring.io/spring-framework/reference/testing/spring-mvc-test-framework/server-setup-options.html) documentation page).
-However, the servlet context still needs to be created.
+However, even in standalone mode the servlet context still needs to be created.
 
-- [`EmployeesControllerMockMvcUnitSpec`](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/employees/EmployeesControllerMockMvcUnitSpec.groovy)
+- [`EmployeesControllerMockMvcUnitSpec`](https://github.com/wiiitek/its/tree/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/employees/EmployeesControllerMockMvcUnitSpec.groovy)
 
 ## WireMock
 
 This project uses [WireMock](https://wiremock.org/docs/overview/) to record expected answers from 3rd party service.
 In
-[CatFactClientSpec](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/cats/CatFactClientSpec.groovy)
+[CatFactClientSpec](https://github.com/wiiitek/its/blob/main/server/src/test/groovy/pl/kubiczak/test/spring/integration/demo/server/cats/CatFactClientSpec.groovy)
 we:
 
 1. specify how WireMock server should respond
@@ -92,8 +92,7 @@ we:
 
 ## Spring Cloud Contract
 
-[Spring Cloud Contract] describes behaviour of our API with with
-[Contract DSL].
+[Spring Cloud Contract] describes behaviour of our API with [Contract DSL].
 
 1. On the producer side:
     * Verifies if the server behaves as described in contract
