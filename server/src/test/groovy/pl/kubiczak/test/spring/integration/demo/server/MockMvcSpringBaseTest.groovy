@@ -5,6 +5,8 @@ import org.spockframework.spring.SpringBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.test.web.servlet.MockMvc
+import pl.kubiczak.test.spring.integration.demo.server.cats.CatResponseDto
+import pl.kubiczak.test.spring.integration.demo.server.cats.CatsService
 import pl.kubiczak.test.spring.integration.demo.server.employees.EmployeeDto
 import pl.kubiczak.test.spring.integration.demo.server.employees.EmployeesService
 import spock.lang.Specification
@@ -13,15 +15,22 @@ import spock.lang.Specification
 // Needed also for spring cloud contract (see build.gradle.kts)
 class MockMvcSpringBaseTest extends Specification {
 
-    private static UUID id01 = UUID.fromString("00000000-0000-0000-a000-00000000001")
-    private static UUID id02 = UUID.fromString("00000000-0000-0000-a000-00000000002")
-    private static EmployeeDto sample01 = new EmployeeDto(id01, "John Doe", "john.doe@example.com")
-    private static EmployeeDto sample02 = new EmployeeDto(id02, "Jane Smith", null)
+    private static UUID eid01 = UUID.fromString("00000000-0000-0000-a000-00000000001")
+    private static UUID eid02 = UUID.fromString("00000000-0000-0000-a000-00000000002")
+    private static EmployeeDto employee01 = new EmployeeDto(eid01, "John Doe", "john.doe@example.com")
+    private static EmployeeDto employee02 = new EmployeeDto(eid02, "Jane Smith", null)
+    private static UUID cid01 = UUID.fromString("00000000-0000-0000-b000-00000000001")
+    private static UUID cid02 = UUID.fromString("00000000-0000-0000-b000-00000000002")
+    private static CatResponseDto cat01 = new CatResponseDto(cid01, null, "Cats have 9 lives")
+    private static CatResponseDto cat02 = new CatResponseDto(cid02, "Thomas", "")
 
 
     // https://spockframework.org/spock/docs/1.2/module_spring.html#_using_code_springbean_code
     @SpringBean
     EmployeesService employeesService = Stub()
+
+    @SpringBean
+    CatsService catsService = Stub()
 
     @Autowired
     private MockMvc mockMvc
@@ -30,17 +39,27 @@ class MockMvcSpringBaseTest extends Specification {
         // needed for Spring Cloud Contract
         RestAssuredMockMvc.mockMvc(mockMvc)
 
+        recordMockAnswersForEmployees()
+        recordMockAnswersForCats()
+    }
+
+    private recordMockAnswersForEmployees() {
         // records response for listing all employees
-        employeesService.findAll() >> [sample01, sample02]
+        employeesService.findAll() >> [employee01, employee02]
+
         // since we are using web MVC test slice for our Cloud Contract tests
         // we need to record mock responses for some of employee IDs
-        Map<UUID, EmployeeDto> mockEmployees = [
-                (id01 as UUID): sample01,
-                (id02 as UUID): sample02,
-        ]
         employeesService.findByUuid(_ as UUID) >> { UUID uuid ->
-            def mockEmployee = mockEmployees[uuid]
-            Optional.ofNullable(mockEmployee)
+            switch (uuid) {
+                case eid01 -> Optional.of(employee01)
+                case eid02 -> Optional.of(employee02)
+                default -> Optional.empty()
+            }
         }
+    }
+
+    private recordMockAnswersForCats() {
+        // records response for listing all cats
+        catsService.readAll() >> [cat01, cat02]
     }
 }
