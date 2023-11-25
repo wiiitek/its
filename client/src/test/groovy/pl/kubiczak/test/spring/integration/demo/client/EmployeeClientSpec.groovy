@@ -46,7 +46,7 @@ class EmployeeClientSpec extends BaseClientApplicationSpec {
         given:
         def idIntValue = 1
         def sampleEmployeeId = UuidKt.toUUID(idIntValue)
-        def expectedEmployeeId = UUID.fromString("00000000-0000-0000-a000-000000000001")
+        def expectedEmployeeId = UUID.fromString("00000000-0000-4000-a000-000000000001")
 
         when:
         def response = employeeClient.findEmployee(sampleEmployeeId).execute()

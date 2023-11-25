@@ -21,12 +21,12 @@ class EmployeesControllerMockMvcSpec extends MockMvcSpringBaseTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("""[
                   {
-                    "uuid": "00000000-0000-0000-a000-000000000001",
+                    "uuid": "00000000-0000-4000-a000-000000000001",
                     "name": "John Doe",
                     "email": "john.doe@example.com"
                   },
                   {
-                    "uuid": "00000000-0000-0000-a000-000000000002",
+                    "uuid": "00000000-0000-4000-a000-000000000002",
                     "name": "Jane Smith",
                     "email": null
                   }
@@ -40,7 +40,7 @@ class EmployeesControllerMockMvcSpec extends MockMvcSpringBaseTest {
         mockMvc.perform(get('/employees'))
                 .andExpect(status().isOk())
                 .andExpect(
-                        jsonPath("\$[0].uuid").value("00000000-0000-0000-a000-000000000001")
+                        jsonPath("\$[0].uuid").value("00000000-0000-4000-a000-000000000001")
                 )
                 .andExpect(
                         jsonPath("\$[0].name").value("John Doe")
@@ -49,7 +49,7 @@ class EmployeesControllerMockMvcSpec extends MockMvcSpringBaseTest {
                         jsonPath("\$[0].email").value("john.doe@example.com")
                 )
                 .andExpect(
-                        jsonPath("\$[1].uuid").value("00000000-0000-0000-a000-000000000002")
+                        jsonPath("\$[1].uuid").value("00000000-0000-4000-a000-000000000002")
                 )
                 .andExpect(
                         jsonPath("\$[1].name").value("Jane Smith")
