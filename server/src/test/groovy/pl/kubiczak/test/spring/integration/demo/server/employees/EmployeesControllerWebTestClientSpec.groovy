@@ -25,14 +25,14 @@ class EmployeesControllerWebTestClientSpec extends MockMvcSpringBaseTest {
                 .expectBodyList(EmployeeDto)
                 .contains(
                         new EmployeeDto(
-                                UUID.fromString("00000000-0000-0000-a000-000000000001"),
+                                UUID.fromString("00000000-0000-4000-a000-000000000001"),
                                 "John Doe",
                                 "john.doe@example.com"
                         )
                 )
                 .contains(
                         new EmployeeDto(
-                                UUID.fromString("00000000-0000-0000-a000-000000000002"),
+                                UUID.fromString("00000000-0000-4000-a000-000000000002"),
                                 "Jane Smith",
                                 null
                         )
@@ -48,8 +48,8 @@ class EmployeesControllerWebTestClientSpec extends MockMvcSpringBaseTest {
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody()
-                .jsonPath("\$[0].uuid").isEqualTo("00000000-0000-0000-a000-000000000001")
-                .jsonPath("\$[1].uuid").isEqualTo("00000000-0000-0000-a000-000000000002")
+                .jsonPath("\$[0].uuid").isEqualTo("00000000-0000-4000-a000-000000000001")
+                .jsonPath("\$[1].uuid").isEqualTo("00000000-0000-4000-a000-000000000002")
                 .jsonPath("\$[0].name").isEqualTo("John Doe")
                 .jsonPath("\$[1].name").isEqualTo("Jane Smith")
                 .jsonPath("\$[0].email").isEqualTo("john.doe@example.com")
