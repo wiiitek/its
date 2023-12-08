@@ -29,6 +29,15 @@ dependencyCheck {
     nvd.delay = 16000
 }
 
+dependencyManagement {
+    dependencies {
+        // https://nvd.nist.gov/vuln/detail/CVE-2023-6378
+        // https://github.com/advisories/GHSA-vmq6-5m68-f53m
+        // default logback-classic from Spring is vulnerable: CVE-2023-6378
+        dependency("ch.qos.logback:logback-classic:1.4.11")
+    }
+}
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
 
