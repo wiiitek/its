@@ -41,7 +41,12 @@ dependencyManagement {
         // https://nvd.nist.gov/vuln/detail/CVE-2023-6378
         // https://github.com/advisories/GHSA-vmq6-5m68-f53m
         // default logback-classic from Spring is vulnerable: CVE-2023-6378
-        dependency("ch.qos.logback:logback-classic:1.4.11")
+        dependency("ch.qos.logback:logback-classic:1.4.14")
+        dependency("ch.qos.logback:logback-core:1.4.14")
+        // https://nvd.nist.gov/vuln/detail/CVE-2023-35116
+        // https://github.com/advisories/GHSA-gx6w-fqg7-mc3p
+        // jackson-databind vulnerability: CVE-2023-35116
+        dependency("com.fasterxml.jackson.core:jackson-databind:2.16.0")
     }
 }
 
