@@ -7,7 +7,7 @@ plugins {
     kotlin("plugin.spring") version "1.9.21"
     id("groovy")
 
-    id("org.owasp.dependencycheck") version "9.0.1"
+    id("org.owasp.dependencycheck") version "9.0.3"
 }
 
 val javaVersion = JavaVersion.VERSION_17
@@ -27,6 +27,15 @@ dependencyCheck {
     nvd.apiKey = System.getenv("NVD_API_KEY")
     // https://github.com/jeremylong/DependencyCheck/issues/6107#issuecomment-1824010802
     nvd.delay = 16000
+}
+
+dependencyManagement {
+    dependencies {
+        // https://nvd.nist.gov/vuln/detail/CVE-2023-6378
+        // https://github.com/advisories/GHSA-vmq6-5m68-f53m
+        // default logback-classic from Spring is vulnerable: CVE-2023-6378
+        dependency("ch.qos.logback:logback-classic:1.4.11")
+    }
 }
 
 dependencies {

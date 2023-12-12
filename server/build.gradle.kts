@@ -10,7 +10,7 @@ plugins {
     id("groovy")
 
     id("org.springframework.cloud.contract") version "4.1.0"
-    id("org.owasp.dependencycheck") version "9.0.1"
+    id("org.owasp.dependencycheck") version "9.0.3"
 }
 
 val javaVersion = JavaVersion.VERSION_17
@@ -36,8 +36,12 @@ dependencyManagement {
     dependencies {
         // https://www.cve.org/CVERecord?id=CVE-2023-34062
         // https://github.com/advisories/GHSA-xjhv-p3fv-x24r
-        // older reactor-netty-http is vulnerable:  CVE-2023-34062
+        // older reactor-netty-http is vulnerable: CVE-2023-34062
         dependency("io.projectreactor.netty:reactor-netty-http:1.1.13")
+        // https://nvd.nist.gov/vuln/detail/CVE-2023-6378
+        // https://github.com/advisories/GHSA-vmq6-5m68-f53m
+        // default logback-classic from Spring is vulnerable: CVE-2023-6378
+        dependency("ch.qos.logback:logback-classic:1.4.11")
     }
 }
 
