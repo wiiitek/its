@@ -52,7 +52,7 @@ dependencies {
 
     testImplementation(project(":server", "stubs"))
 
-    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.0.4")
+    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.1.0")
 }
 
 dependencyManagement {
