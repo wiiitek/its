@@ -60,8 +60,8 @@ dependencyManagement {
     dependencies {
         // for CVE-2023-3635
         // https://github.com/advisories/GHSA-w33c-445m-f8w7
-        dependency("com.squareup.okio:okio:3.6.0")
-        dependency("com.squareup.okio:okio-metadata:3.6.0")
+        dependency("com.squareup.okio:okio:3.7.0")
+        dependency("com.squareup.okio:okio-metadata:3.7.0")
         // next major version enforced because of
         // https://www.cve.org/CVERecord?id=CVE-2022-1471
         // https://github.com/advisories/GHSA-mjmj-j48q-9wg2
