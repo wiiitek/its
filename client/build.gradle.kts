@@ -29,26 +29,31 @@ dependencyCheck {
     nvd.delay = 16000
 }
 
+val vLogback = "1.4.14"
+val vRetrofit = "2.9.0"
+val vSpock = "2.4-M1-groovy-4.0"
+val vOkio = "3.7.0"
+
 dependencyManagement {
     dependencies {
         // https://nvd.nist.gov/vuln/detail/CVE-2023-6378
         // https://github.com/advisories/GHSA-vmq6-5m68-f53m
         // default logback-classic from Spring is vulnerable: CVE-2023-6378
-        dependency("ch.qos.logback:logback-classic:1.4.14")
-        dependency("ch.qos.logback:logback-core:1.4.14")
+        dependency("ch.qos.logback:logback-classic:$vLogback")
+        dependency("ch.qos.logback:logback-core:$vLogback")
     }
 }
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
 
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:$vRetrofit")
+    implementation("com.squareup.retrofit2:converter-gson:$vRetrofit")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    testImplementation("org.spockframework:spock-core:2.4-M1-groovy-4.0")
-    testImplementation("org.spockframework:spock-spring:2.4-M1-groovy-4.0")
+    testImplementation("org.spockframework:spock-core:$vSpock")
+    testImplementation("org.spockframework:spock-spring:$vSpock")
     testImplementation("org.apache.groovy:groovy-all:4.0.17")
 
     testImplementation(project(":server", "stubs"))
@@ -60,8 +65,8 @@ dependencyManagement {
     dependencies {
         // for CVE-2023-3635
         // https://github.com/advisories/GHSA-w33c-445m-f8w7
-        dependency("com.squareup.okio:okio:3.7.0")
-        dependency("com.squareup.okio:okio-metadata:3.7.0")
+        dependency("com.squareup.okio:okio:$vOkio")
+        dependency("com.squareup.okio:okio-metadata:$vOkio")
         // next major version enforced because of
         // https://www.cve.org/CVERecord?id=CVE-2022-1471
         // https://github.com/advisories/GHSA-mjmj-j48q-9wg2
