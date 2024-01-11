@@ -1,6 +1,6 @@
 
 CREATE TABLE cats (
     uuid uuid PRIMARY KEY,
-    name text,
+    "name" text,
     fact text NOT NULL
 );

@@ -22,7 +22,7 @@ CREATE SEQUENCE departments_seq
 
 CREATE TABLE departments (
     id bigint PRIMARY KEY,
-    name varchar(2048) CHECK (name <> '')
+    "name" varchar(2048) CHECK ("name" <> '')
 );
 
 CREATE TABLE employees_departments (
