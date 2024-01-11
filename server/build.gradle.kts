@@ -32,6 +32,11 @@ dependencyCheck {
     nvd.delay = 16000
 }
 
+val vLogback = "1.4.14"
+val vExposed = "0.46.0"
+val vSpock = "2.4-M1-groovy-4.0"
+val vSpringContract = "4.1.0"
+
 dependencyManagement {
     dependencies {
         // https://www.cve.org/CVERecord?id=CVE-2023-34062
@@ -41,8 +46,8 @@ dependencyManagement {
         // https://nvd.nist.gov/vuln/detail/CVE-2023-6378
         // https://github.com/advisories/GHSA-vmq6-5m68-f53m
         // default logback-classic from Spring is vulnerable: CVE-2023-6378
-        dependency("ch.qos.logback:logback-classic:1.4.14")
-        dependency("ch.qos.logback:logback-core:1.4.14")
+        dependency("ch.qos.logback:logback-classic:$vLogback")
+        dependency("ch.qos.logback:logback-core:$vLogback")
         // https://nvd.nist.gov/vuln/detail/CVE-2023-35116
         // https://github.com/advisories/GHSA-gx6w-fqg7-mc3p
         // jackson-databind vulnerability: CVE-2023-35116
@@ -58,10 +63,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.flywaydb:flyway-core")
 
-    implementation("org.jetbrains.exposed:exposed-core:0.46.0")
-    implementation("org.jetbrains.exposed:exposed-dao:0.46.0")
-    implementation("org.jetbrains.exposed:exposed-jdbc:0.46.0")
-    implementation("org.jetbrains.exposed:exposed-java-time:0.46.0")
+    implementation("org.jetbrains.exposed:exposed-core:$vExposed")
+    implementation("org.jetbrains.exposed:exposed-dao:$vExposed")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$vExposed")
+    implementation("org.jetbrains.exposed:exposed-java-time:$vExposed")
 
     // https://www.programmersought.com/article/30275596545/
     runtimeOnly("com.h2database:h2:2.2.224")
@@ -74,14 +79,14 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    testImplementation("org.spockframework:spock-core:2.4-M1-groovy-4.0")
-    testImplementation("org.spockframework:spock-spring:2.4-M1-groovy-4.0")
+    testImplementation("org.spockframework:spock-core:$vSpock")
+    testImplementation("org.spockframework:spock-spring:$vSpock")
     testImplementation("org.apache.groovy:groovy-all:4.0.17")
 
     // wiremock
-    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:4.1.0")
+    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:$vSpringContract")
     // spring cloud contract
-    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:4.1.0")
+    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:$vSpringContract")
 
     // testcontainers
     testImplementation("org.testcontainers:junit-jupiter")

@@ -1,6 +1,6 @@
 package pl.kubiczak.test.spring.integration.demo.server.cats.ports
 
-interface CatFactClient {
+fun interface CatFactClient {
 
     fun nextFact(): CatFactDto
 
