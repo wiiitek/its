@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
     <suppress>
-        <!-- https://nvd.nist.gov/vuln/detail/CVE-2018-14335 -->
+        <!--
+            https://nvd.nist.gov/vuln/detail/CVE-2018-14335
+            https://github.com/advisories/GHSA-wm64-883p-84j3
+        -->
         <notes>We use this database only for sample integration tests.</notes>
         <packageUrl regex="true">^pkg:maven\/com\.h2database\/h2@.*$</packageUrl>
         <vulnerabilityName>CVE-2018-14335</vulnerabilityName>
