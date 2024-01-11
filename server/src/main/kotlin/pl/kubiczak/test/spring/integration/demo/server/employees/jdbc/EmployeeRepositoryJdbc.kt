@@ -13,15 +13,15 @@ constructor(private val namedParameterJdbcTemplate: NamedParameterJdbcTemplate) 
     companion object {
         private const val FIRST = 0
         private const val INSERT = """
-            INSERT INTO employees (id, uuid, name, email)
+            INSERT INTO employees (id, uuid, "name", email)
             VALUES(nextval('employees_seq'), :uuid_param, :name_param, :email_param) 
         """
         private const val UPSERT = """
-            INSERT INTO employees (id, uuid, name, email)
+            INSERT INTO employees (id, uuid, "name", email)
             VALUES(nextval('employees_seq'), :uuid_param, :name_param, :email_param) 
             ON CONFLICT (uuid) 
                 DO UPDATE
-                SET name = EXCLUDED.name, email = EXCLUDED.email WHERE employees.uuid = :uuid_param;
+                SET "name" = EXCLUDED."name", email = EXCLUDED.email WHERE employees.uuid = :uuid_param;
         """
         private const val FIND_BY_ID = """
             SELECT *
@@ -31,7 +31,7 @@ constructor(private val namedParameterJdbcTemplate: NamedParameterJdbcTemplate) 
         private const val FIND_ALL = """
             SELECT *
             FROM employees
-            ORDER BY name;
+            ORDER BY "name";
         """
     }
 

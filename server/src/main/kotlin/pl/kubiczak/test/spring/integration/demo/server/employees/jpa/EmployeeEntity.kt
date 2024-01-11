@@ -1,5 +1,6 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees.jpa
 
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
@@ -10,7 +11,7 @@ import java.util.UUID
 
 @Entity
 @Table(name = "employees")
-open class EmployeeEntity(open var name: String, open var email: String?) {
+open class EmployeeEntity(@Column(name="\"name\"") open var name: String, open var email: String?) {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employees_gen")
