@@ -62,20 +62,18 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.flywaydb:flyway-core")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 
     implementation("org.jetbrains.exposed:exposed-core:$vExposed")
     implementation("org.jetbrains.exposed:exposed-dao:$vExposed")
     implementation("org.jetbrains.exposed:exposed-jdbc:$vExposed")
     implementation("org.jetbrains.exposed:exposed-java-time:$vExposed")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     // https://www.programmersought.com/article/30275596545/
     runtimeOnly("com.h2database:h2:2.2.224")
     // may be surprising, but we use postgres only for integration testing
     testRuntimeOnly("org.postgresql:postgresql")
-
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
