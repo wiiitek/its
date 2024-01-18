@@ -7,7 +7,7 @@ plugins {
     kotlin("plugin.spring") version "1.9.22"
     id("groovy")
 
-    id("org.owasp.dependencycheck") version "9.0.8"
+    id("org.owasp.dependencycheck") version "9.0.9"
 }
 
 val javaVersion = JavaVersion.VERSION_17
