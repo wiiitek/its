@@ -34,7 +34,7 @@ jobs:
           java-version: '17'
       - name: Cache for OWASP Vulnerabilities
         id: cache-owasp-vulnerability-database
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           key: cache-owasp-vulnerability-database
           path: ~/.gradle/dependency-check-data/7.0
