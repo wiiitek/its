@@ -54,7 +54,7 @@ dependencies {
 
     testImplementation("org.spockframework:spock-core:$vSpock")
     testImplementation("org.spockframework:spock-spring:$vSpock")
-    testImplementation("org.apache.groovy:groovy-all:4.0.17")
+    testImplementation("org.apache.groovy:groovy-all:4.0.18")
 
     testImplementation(project(":server", "stubs"))
 
