@@ -35,7 +35,7 @@ dependencyCheck {
 val vLogback = "1.4.14"
 val vExposed = "0.46.0"
 val vSpock = "2.4-M1-groovy-4.0"
-val vSpringContract = "4.1.0"
+val vSpringContract = "4.1.1"
 
 dependencyManagement {
     dependencies {
