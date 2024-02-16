@@ -32,18 +32,18 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
-      - name: Cache for OWASP Vulnerabilities
-        id: cache-owasp-vulnerability-database
+      - name: Cache SonarCloud packages
         uses: actions/cache@v4
         with:
-          key: cache-owasp-vulnerability-database
-          path: ~/.gradle/dependency-check-data/7.0
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
       - name: Check env variable
         run: >
           if [[ -z "${NVD_API_KEY}" ]]; then
-            echo "Missing NVD_API_KEY env variable"
+            echo "[FAILURE] Missing NVD_API_KEY env variable"
           else
-            echo "NVD_API_KEY env variable exists"
+            echo "[SUCCESS] NVD_API_KEY env variable exists"
           fi
       - name: Check Security Vulnerabilities
         run: ./gradlew dependencyCheckAnalyze
