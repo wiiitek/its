@@ -31,7 +31,7 @@ dependencyCheck {
 
 val vLogback = "1.5.0"
 val vRetrofit = "2.9.0"
-val vSpock = "2.4-M1-groovy-4.0"
+val vSpock = "2.4-M2-groovy-4.0"
 val vOkio = "3.7.0"
 
 dependencyManagement {
