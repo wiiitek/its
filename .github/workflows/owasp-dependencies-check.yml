@@ -41,9 +41,9 @@ jobs:
       - name: Check env variable
         run: >
           if [[ -z "${NVD_API_KEY}" ]]; then
-            echo "Missing NVD_API_KEY env variable"
+            echo "[FAILURE] Missing NVD_API_KEY env variable" && exit 1
           else
-            echo "NVD_API_KEY env variable exists"
+            echo "[SUCCESS] NVD_API_KEY env variable exists"
           fi
       - name: Check Security Vulnerabilities
         run: ./gradlew dependencyCheckAnalyze
