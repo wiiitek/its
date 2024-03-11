@@ -32,26 +32,26 @@ dependencyCheck {
     nvd.delay = 16000
 }
 
-val vLogback = "1.5.3"
+//val vLogback = "1.5.3"
 val vExposed = "0.48.0"
 val vSpock = "2.4-M2-groovy-4.0"
 val vSpringContract = "4.1.1"
 
 dependencyManagement {
     dependencies {
-        // https://www.cve.org/CVERecord?id=CVE-2023-34062
-        // https://github.com/advisories/GHSA-xjhv-p3fv-x24r
-        // older reactor-netty-http is vulnerable: CVE-2023-34062
-        dependency("io.projectreactor.netty:reactor-netty-http:1.1.15")
-        // https://nvd.nist.gov/vuln/detail/CVE-2023-6378
-        // https://github.com/advisories/GHSA-vmq6-5m68-f53m
-        // default logback-classic from Spring is vulnerable: CVE-2023-6378
-        dependency("ch.qos.logback:logback-classic:$vLogback")
-        dependency("ch.qos.logback:logback-core:$vLogback")
-        // https://nvd.nist.gov/vuln/detail/CVE-2023-35116
-        // https://github.com/advisories/GHSA-gx6w-fqg7-mc3p
-        // jackson-databind vulnerability: CVE-2023-35116
-        dependency("com.fasterxml.jackson.core:jackson-databind:2.16.2")
+//        // https://www.cve.org/CVERecord?id=CVE-2023-34062
+//        // https://github.com/advisories/GHSA-xjhv-p3fv-x24r
+//        // older reactor-netty-http is vulnerable: CVE-2023-34062
+//        dependency("io.projectreactor.netty:reactor-netty-http:1.1.15")
+//        // https://nvd.nist.gov/vuln/detail/CVE-2023-6378
+//        // https://github.com/advisories/GHSA-vmq6-5m68-f53m
+//        // default logback-classic from Spring is vulnerable: CVE-2023-6378
+//        dependency("ch.qos.logback:logback-classic:$vLogback")
+//        dependency("ch.qos.logback:logback-core:$vLogback")
+//        // https://nvd.nist.gov/vuln/detail/CVE-2023-35116
+//        // https://github.com/advisories/GHSA-gx6w-fqg7-mc3p
+//        // jackson-databind vulnerability: CVE-2023-35116
+//        dependency("com.fasterxml.jackson.core:jackson-databind:2.16.2")
     }
 }
 
