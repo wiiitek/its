@@ -61,19 +61,6 @@ dependencies {
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.1.1")
 }
 
-dependencyManagement {
-    dependencies {
-        // for CVE-2023-3635
-        // https://github.com/advisories/GHSA-w33c-445m-f8w7
-        dependency("com.squareup.okio:okio:$vOkio")
-        dependency("com.squareup.okio:okio-metadata:$vOkio")
-        // next major version enforced because of
-        // https://www.cve.org/CVERecord?id=CVE-2022-1471
-        // https://github.com/advisories/GHSA-mjmj-j48q-9wg2
-        dependency("org.yaml:snakeyaml:2.2")
-    }
-}
-
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
