@@ -52,7 +52,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.flywaydb:flyway-core")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.4.0")
 
     implementation("org.jetbrains.exposed:exposed-core:$vExposed")
     implementation("org.jetbrains.exposed:exposed-dao:$vExposed")
