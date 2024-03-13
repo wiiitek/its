@@ -41,7 +41,7 @@ dependencyManagement {
         // https://nvd.nist.gov/vuln/detail/CVE-2023-35116
         // https://github.com/advisories/GHSA-gx6w-fqg7-mc3p
         // jackson-databind vulnerability: CVE-2023-35116
-        dependency("com.fasterxml.jackson.core:jackson-databind:2.16.2")
+        dependency("com.fasterxml.jackson.core:jackson-databind:2.17.0")
     }
 }
 
