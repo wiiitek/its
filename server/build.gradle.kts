@@ -37,11 +37,8 @@ val vSpock = "2.4-M2-groovy-4.0"
 val vSpringContract = "4.1.1"
 
 dependencyManagement {
-    dependencies {
-        // https://nvd.nist.gov/vuln/detail/CVE-2023-35116
-        // https://github.com/advisories/GHSA-gx6w-fqg7-mc3p
-        // jackson-databind vulnerability: CVE-2023-35116
-        dependency("com.fasterxml.jackson.core:jackson-databind:2.16.2")
+    imports {
+        mavenBom("com.fasterxml.jackson:jackson-bom:2.17.0")
     }
 }
 
