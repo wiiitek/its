@@ -66,7 +66,7 @@ dependencies {
 
     testImplementation("org.spockframework:spock-core:$vSpock")
     testImplementation("org.spockframework:spock-spring:$vSpock")
-    testImplementation("org.apache.groovy:groovy-all:4.0.20")
+    testImplementation("org.apache.groovy:groovy-all:4.0.21")
 
     // wiremock
     testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:$vSpringContract")
