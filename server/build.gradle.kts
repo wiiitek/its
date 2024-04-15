@@ -40,6 +40,14 @@ dependencyManagement {
     imports {
         mavenBom("com.fasterxml.jackson:jackson-bom:2.17.0")
     }
+    dependencies {
+        // newer versions to fix CVE-2024-29025
+        // https://nvd.nist.gov/vuln/detail/CVE-2024-29025
+        dependency("io.projectreactor.netty:reactor-netty-http:1.1.18")
+        dependency("io.netty:netty-codec-http:4.1.108.Final")
+        // https://spring.io/security/cve-2024-22262
+        dependency("org.springframework:spring-web:6.1.6")
+    }
 }
 
 dependencies {
