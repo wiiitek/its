@@ -11,8 +11,8 @@ CREATE TABLE employees (
     uuid uuid UNIQUE NOT NULL,
     -- column name being a keyword needs to be in quotes for H2
     -- https://stackoverflow.com/a/19758863
-    "name" varchar(2048) CHECK ("name" <> ''),
-    email varchar(512)
+    "name" TEXT NOT NULL CHECK ("name" <> ''),
+    email TEXT
 );
 
 CREATE SEQUENCE departments_seq
@@ -22,7 +22,7 @@ CREATE SEQUENCE departments_seq
 
 CREATE TABLE departments (
     id bigint PRIMARY KEY,
-    "name" varchar(2048) CHECK ("name" <> '')
+    "name" TEXT NOT NULL CHECK ("name" <> '')
 );
 
 CREATE TABLE employees_departments (
