@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration
 class SpringDocConfig {
 
     @Bean
-    fun api() =
+    fun api(): OpenAPI =
         OpenAPI()
             .components(Components())
             .info(

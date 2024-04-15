@@ -5,7 +5,7 @@ import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger
 import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
@@ -36,7 +36,7 @@ class EmployeeRepositoryExposed(
             addLogger(StdOutSqlLogger)
 
             val found = EmployeeTable
-                .select(EmployeeTable.uuid eq uuid)
+                .selectAll().where(EmployeeTable.uuid eq uuid)
                 .map {
                     EmployeeDto(
                         uuid = it[EmployeeTable.uuid],
