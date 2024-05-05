@@ -38,7 +38,7 @@ val vSpringContract = "4.1.2"
 
 dependencyManagement {
     imports {
-        mavenBom("com.fasterxml.jackson:jackson-bom:2.17.0")
+        mavenBom("com.fasterxml.jackson:jackson-bom:2.17.1")
     }
     dependencies {
         // newer versions to fix CVE-2024-29025
