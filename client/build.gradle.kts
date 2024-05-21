@@ -4,7 +4,7 @@ plugins {
     id("org.springframework.boot") version "3.2.5"
     id("io.spring.dependency-management") version "1.1.5"
     kotlin("jvm")
-    kotlin("plugin.spring") version "1.9.24"
+    kotlin("plugin.spring") version "2.0.0"
     id("groovy")
 
     id("org.owasp.dependencycheck") version "9.2.0"
