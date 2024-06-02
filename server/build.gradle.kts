@@ -32,7 +32,7 @@ dependencyCheck {
     nvd.delay = 16000
 }
 
-val vExposed = "0.50.1"
+val vExposed = "0.51.0"
 val vSpock = "2.4-M4-groovy-4.0"
 val vSpringContract = "4.1.2"
 
