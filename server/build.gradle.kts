@@ -9,7 +9,7 @@ plugins {
     kotlin("plugin.jpa") version "2.0.0"
     id("groovy")
 
-    id("org.springframework.cloud.contract") version "4.1.2"
+    id("org.springframework.cloud.contract") version "4.1.3"
     id("org.owasp.dependencycheck") version "9.2.0"
 }
 
