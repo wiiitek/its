@@ -58,7 +58,7 @@ dependencies {
 
     testImplementation(project(":server", "stubs"))
 
-    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.1.2")
+    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.1.3")
 }
 
 tasks.withType<KotlinCompile> {
