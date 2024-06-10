@@ -56,7 +56,6 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
 
     implementation("org.jetbrains.exposed:exposed-core:$vExposed")
@@ -65,6 +64,8 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-java-time:$vExposed")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
+    runtimeOnly("org.flywaydb:flyway-core")
+    runtimeOnly("org.flywaydb:flyway-database-postgresql")
     // https://www.programmersought.com/article/30275596545/
     runtimeOnly("com.h2database:h2:2.2.224")
     // may be surprising, but we use postgres only for integration testing
@@ -87,7 +88,7 @@ dependencies {
     testImplementation("org.testcontainers:spock")
     // https://stackoverflow.com/q/48956743
     testImplementation("io.zonky.test:embedded-database-spring-test:2.5.1")
-    testImplementation("com.opentable.components:otj-pg-embedded:1.0.3")
+    testImplementation("io.zonky.test:embedded-postgres:2.0.7")
 }
 
 dependencyManagement {

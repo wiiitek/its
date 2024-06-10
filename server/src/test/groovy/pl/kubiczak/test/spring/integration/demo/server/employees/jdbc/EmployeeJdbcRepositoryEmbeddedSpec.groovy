@@ -17,7 +17,7 @@ import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseType
 ])
 @AutoConfigureEmbeddedDatabase(
         type = DatabaseType.POSTGRES,
-        provider = DatabaseProvider.OPENTABLE
+        provider = DatabaseProvider.ZONKY
 )
 class EmployeeJdbcRepositoryEmbeddedSpec extends Specification {
 
