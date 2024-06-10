@@ -26,7 +26,7 @@ class TestcontainersSpringBaseTest extends Specification {
     static class TestcontainersDbInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
         @Container
-        public static final PostgreSQLContainer CONTAINER = new PostgreSQLContainer<>("postgres:12.3")
+        public static final PostgreSQLContainer CONTAINER = new PostgreSQLContainer<>("postgres:14.12")
 
         @Override
         void initialize(ConfigurableApplicationContext context) {

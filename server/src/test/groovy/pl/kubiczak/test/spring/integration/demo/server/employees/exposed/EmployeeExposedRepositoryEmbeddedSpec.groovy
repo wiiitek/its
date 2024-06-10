@@ -13,7 +13,7 @@ import javax.sql.DataSource
 ])
 @AutoConfigureEmbeddedDatabase(
         type = AutoConfigureEmbeddedDatabase.DatabaseType.POSTGRES,
-        provider = AutoConfigureEmbeddedDatabase.DatabaseProvider.OPENTABLE
+        provider = AutoConfigureEmbeddedDatabase.DatabaseProvider.ZONKY
 )
 class EmployeeExposedRepositoryEmbeddedSpec extends Specification {
 
