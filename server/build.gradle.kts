@@ -46,7 +46,7 @@ dependencyManagement {
         dependency("io.projectreactor.netty:reactor-netty-http:1.1.20")
         dependency("io.netty:netty-codec-http:4.1.111.Final")
         // https://spring.io/security/cve-2024-22262
-        dependency("org.springframework:spring-web:6.1.9")
+        dependency("org.springframework:spring-web:6.1.10")
     }
 }
 
