@@ -93,7 +93,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("org.testcontainers:testcontainers-bom:1.20.0")
+        mavenBom("org.testcontainers:testcontainers-bom:1.20.1")
     }
     dependencies {
         // next major version enforced because of
