@@ -67,7 +67,7 @@ dependencies {
     runtimeOnly("org.flywaydb:flyway-core")
     runtimeOnly("org.flywaydb:flyway-database-postgresql")
     // https://www.programmersought.com/article/30275596545/
-    runtimeOnly("com.h2database:h2:2.3.230")
+    runtimeOnly("com.h2database:h2:2.3.232")
     // may be surprising, but we use postgres only for integration testing
     testRuntimeOnly("org.postgresql:postgresql")
 
