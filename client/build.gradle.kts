@@ -29,7 +29,7 @@ dependencyCheck {
     nvd.delay = 16000
 }
 
-val vLogback = "1.5.6"
+val vLogback = "1.5.7"
 val vRetrofit = "2.11.0"
 val vSpock = "2.4-M4-groovy-4.0"
 val vOkio = "3.7.0"
