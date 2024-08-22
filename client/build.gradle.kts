@@ -29,20 +29,9 @@ dependencyCheck {
     nvd.delay = 16000
 }
 
-val vLogback = "1.5.6"
 val vRetrofit = "2.11.0"
 val vSpock = "2.4-M4-groovy-4.0"
 val vOkio = "3.7.0"
-
-dependencyManagement {
-    dependencies {
-        // https://nvd.nist.gov/vuln/detail/CVE-2023-6378
-        // https://github.com/advisories/GHSA-vmq6-5m68-f53m
-        // default logback-classic from Spring is vulnerable: CVE-2023-6378
-        dependency("ch.qos.logback:logback-classic:$vLogback")
-        dependency("ch.qos.logback:logback-core:$vLogback")
-    }
-}
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
