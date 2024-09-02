@@ -10,7 +10,7 @@ plugins {
     id("groovy")
 
     id("org.springframework.cloud.contract") version "4.1.4"
-    id("org.owasp.dependencycheck") version "10.0.3"
+    id("org.owasp.dependencycheck") version "10.0.4"
 }
 
 val javaVersion = JavaVersion.VERSION_17
