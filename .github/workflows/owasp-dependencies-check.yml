@@ -35,7 +35,7 @@ jobs:
         uses: actions/cache@v4
         with:
           key: cache-owasp-vulnerability-database
-          path: ~/.gradle/dependency-check-data/7.0
+          path: ~/.gradle/dependency-check-data/9.0
       - name: Check env variable
         run: >
           if [[ -z "${NVD_API_KEY}" ]]; then
