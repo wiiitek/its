@@ -47,13 +47,3 @@ jobs:
         run: ./gradlew -v
       - name: Build without tests
         run: ./gradlew --no-daemon build -x test -x contractTest
-
-# skips running OWASP dependency check on merge requests
-# because dependabot MR are blocking each other on dependencyCheckUpgrade
-#  owasp-check:
-#    uses: ./.github/workflows/owasp-dependencies-check.yml
-#    with:
-#      currentBranchName: ${{ github.ref }}
-#    # https://docs.github.com/en/enterprise-cloud@latest/actions/using-workflows/reusing-workflows
-#    secrets:
-#      NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
