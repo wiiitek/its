@@ -17,18 +17,6 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = javaVersion
 java.targetCompatibility = javaVersion
 
-// http://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
-dependencyCheck {
-    formats = listOf("HTML", "JUNIT")
-    failBuildOnCVSS = 3.14f
-    suppressionFile = "owasp-dependency-suppression.xml"
-    // disable .NET assembly scanning
-    analyzers.assemblyEnabled = false
-    nvd.apiKey = System.getenv("NVD_API_KEY")
-    // https://github.com/jeremylong/DependencyCheck/issues/6107#issuecomment-1824010802
-    nvd.delay = 16000
-}
-
 val vRetrofit = "2.11.0"
 val vSpock = "2.4-M4-groovy-4.0"
 val vOkio = "3.7.0"

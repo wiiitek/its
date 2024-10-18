@@ -38,4 +38,4 @@ jobs:
             echo "[SUCCESS] NVD_API_KEY env variable exists"
           fi
       - name: Check Security Vulnerabilities
-        run: ./gradlew --no-daemon dependencyCheckAnalyze
+        run: ./gradlew --no-daemon dependencyCheckAggregate
