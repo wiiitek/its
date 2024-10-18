@@ -29,7 +29,7 @@ jobs:
         uses: actions/cache@v4
         with:
           key: cache-owasp-vulnerability-database
-          path: ~/.gradle/dependency-check-data/9.0
+          path: .gradle/dependency-check-data/9.0
       - name: Check env variable
         run: >
           if [[ -z "${NVD_API_KEY}" ]]; then
@@ -39,3 +39,10 @@ jobs:
           fi
       - name: Check Security Vulnerabilities
         run: ./gradlew --no-daemon dependencyCheckAggregate
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dependency-check-reports-${{ github.run_id }}
+          path: ./build/reports
+          overwrite: true

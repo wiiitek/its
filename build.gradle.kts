@@ -20,6 +20,9 @@ dependencyCheck {
     nvd.apiKey = System.getenv("NVD_API_KEY")
     // https://github.com/jeremylong/DependencyCheck/issues/6107#issuecomment-1824010802
     nvd.delay = 16000
+    data {
+        directory=".gradle/dependency-check-data/9.0"
+    }
 }
 
 defaultTasks("clean", "build")
