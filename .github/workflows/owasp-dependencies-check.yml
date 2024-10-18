@@ -38,7 +38,7 @@ jobs:
             echo "[SUCCESS] NVD_API_KEY env variable exists"
           fi
       - name: Check Security Vulnerabilities
-        run: ./gradlew --no-daemon dependencyCheckAggregate
+        run: ./gradlew dependencyCheckAggregate
       - name: Upload test results
         uses: actions/upload-artifact@v4
         if: always()
