@@ -23,6 +23,7 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
+          cache: 'gradle'
       - name: Cache for OWASP Vulnerabilities
         id: cache-owasp-vulnerability-database
         uses: actions/cache@v4
