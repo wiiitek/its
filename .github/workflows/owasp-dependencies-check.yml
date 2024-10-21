@@ -47,3 +47,4 @@ jobs:
           name: dependency-check-reports-${{ github.run_id }}
           path: ./build/reports
           overwrite: true
+          retention-days: 7
