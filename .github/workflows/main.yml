@@ -29,6 +29,7 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
+          cache: 'gradle'
       - name: Show Gradle version
         run: ./gradlew -v
       - name: Run Contract Tests
@@ -44,6 +45,7 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
+          cache: 'gradle'
       - name: Show Gradle version
         run: ./gradlew -v
       - name: Build without tests
