@@ -1,7 +1,9 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees.jdbc
 
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
+import org.springframework.jdbc.BadSqlGrammarException
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.test.context.jdbc.Sql
 import pl.kubiczak.test.spring.integration.demo.server.TestDb
@@ -32,9 +34,9 @@ class EmployeeJdbcRepositoryDataSpec extends Specification {
         actual.get().email == 'john.doe@example.com'
     }
 
-    def "should insert and find user in database"() {
+    def "should insert and find user in database (with email: #userEmail)"() {
         given:
-        def employee = new EmployeeEntity('John Doe', 'john.doe@example.com')
+        def employee = new EmployeeEntity('John Doe', userEmail)
         def uuid = employee.uuid
         tested.insert(employee)
 
@@ -42,9 +44,15 @@ class EmployeeJdbcRepositoryDataSpec extends Specification {
         def actual = tested.findByUuid(uuid).get()
 
         then:
-        actual.email == 'john.doe@example.com'
+        actual.email == userEmail
         and:
         actual.id != null
+
+        where:
+        userEmail              || _
+        'john.doe@example.com' || _
+        ''                     || _
+        null                   || _
     }
 
     @Ignore('ON CONFLICT DO UPDATE does not work in H2 which is our test DB here')
@@ -61,5 +69,20 @@ class EmployeeJdbcRepositoryDataSpec extends Specification {
         actual.email == 'john.doe@example.com'
         and:
         actual.id != null
+    }
+
+    def "should throw exception for user with empty name"() {
+        given:
+        def employee = new EmployeeEntity('', 'bar@example.com')
+
+        when:
+        tested.upsert(employee)
+
+        then:
+        def exception = thrown(BadSqlGrammarException)
+        and:
+        // here we have exception message that comes from H2 database
+        exception.message
+                .contains('bad SQL grammar')
     }
 }

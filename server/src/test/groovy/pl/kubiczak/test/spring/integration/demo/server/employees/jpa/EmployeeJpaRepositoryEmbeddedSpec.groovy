@@ -39,9 +39,9 @@ class EmployeeJpaRepositoryEmbeddedSpec extends Specification {
         actual.get().email == 'john.doe@example.com'
     }
 
-    def "should save and find user in database"() {
+    def "should save and find user in database (with email: #userEmail)"() {
         given:
-        def employee = new EmployeeEntity('John Doe', 'john.doe@example.com')
+        def employee = new EmployeeEntity('John Doe', userEmail)
         def uuid = employee.uuid
         def saved = testEntityManager.persistFlushFind(employee)
 
@@ -52,6 +52,12 @@ class EmployeeJpaRepositoryEmbeddedSpec extends Specification {
         actual == saved
         and:
         actual.id != null
+
+        where:
+        userEmail              || _
+        'john.doe@example.com' || _
+        ''                     || _
+        null                   || _
     }
 
     def "should overwrite existing entity and update row"() {
@@ -68,5 +74,19 @@ class EmployeeJpaRepositoryEmbeddedSpec extends Specification {
 
         then:
         actual.name == 'John Doe'
+    }
+
+    def "should throw exception for user with empty name"() {
+        given:
+        def employee = new EmployeeEntity('', 'bar@example.com')
+
+        when:
+        tested.save(employee)
+
+        then:
+        def exception = thrown(DataIntegrityViolationException)
+        and:
+        exception.message
+                .contains('new row for relation "employees" violates check constraint "employees_name_check"')
     }
 }
