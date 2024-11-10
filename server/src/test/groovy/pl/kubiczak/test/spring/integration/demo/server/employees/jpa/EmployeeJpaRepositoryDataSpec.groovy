@@ -1,5 +1,6 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees.jpa
 
+import org.hibernate.exception.ConstraintViolationException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
@@ -28,9 +29,9 @@ class EmployeeJpaRepositoryDataSpec extends Specification {
         actual.get().email == 'john.doe@example.com'
     }
 
-    def "should save and find user in database"() {
+    def "should save and find user in database (with email: #userEmail)"() {
         given:
-        def employee = new EmployeeEntity('John Doe', 'john.doe@example.com')
+        def employee = new EmployeeEntity('John Doe', userEmail)
         def uuid = employee.uuid
         def saved = testEntityManager.persistFlushFind(employee)
 
@@ -41,6 +42,12 @@ class EmployeeJpaRepositoryDataSpec extends Specification {
         actual == saved
         and:
         actual.id != null
+
+        where:
+        userEmail              || _
+        'john.doe@example.com' || _
+        ''                     || _
+        null                   || _
     }
 
     def "should overwrite existing entity and update row"() {
@@ -57,5 +64,20 @@ class EmployeeJpaRepositoryDataSpec extends Specification {
 
         then:
         actual.name == 'John Doe'
+    }
+
+    def "should throw exception for user with empty name"() {
+        given:
+        def employee = new EmployeeEntity('', 'bar@example.com')
+
+        when:
+        testEntityManager.persistFlushFind(employee)
+
+        then:
+        def exception = thrown(ConstraintViolationException)
+        and:
+        // here we have exception message that comes from H2 database
+        exception.message
+                .contains('could not execute statement [Check constraint violation')
     }
 }
