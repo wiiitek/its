@@ -19,9 +19,11 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = javaVersion
 java.targetCompatibility = javaVersion
 
-val vExposed = "0.55.0"
-val vSpock = "2.4-M4-groovy-4.0"
-val vSpringContract = "4.1.4"
+val vExposed: String by rootProject.extra
+val vGroovy: String by rootProject.extra
+val vSpock: String by rootProject.extra
+val vSpringContract: String by rootProject.extra
+val vSpringContractStubRunner: String by rootProject.extra
 
 dependencyManagement {
     imports {
@@ -54,7 +56,7 @@ dependencies {
 
     testImplementation("org.spockframework:spock-core:$vSpock")
     testImplementation("org.spockframework:spock-spring:$vSpock")
-    testImplementation("org.apache.groovy:groovy-all:4.0.23")
+    testImplementation("org.apache.groovy:groovy-all:$vGroovy")
 
     // wiremock
     testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:$vSpringContract")
