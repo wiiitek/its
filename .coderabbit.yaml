@@ -1,0 +1,11 @@
+# https://docs.coderabbit.ai/configure-coderabbit/
+language: en-US
+tone_instructions: Provide links to external sources like documentation or blog posts.
+early_access: false
+enable_free_tier: true
+reviews:
+  poem: false
+  collapse_walkthrough: true
+  sequence_diagrams: false
+knowledge_base:
+  opt_out: true
