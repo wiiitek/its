@@ -15,9 +15,10 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = javaVersion
 java.targetCompatibility = javaVersion
 
-val vRetrofit = "2.11.0"
-val vSpock = "2.4-M4-groovy-4.0"
-val vOkio = "3.7.0"
+val vRetrofit: String by rootProject.extra
+val vGroovy: String by rootProject.extra
+val vSpock: String by rootProject.extra
+val vSpringContractStubRunner: String by rootProject.extra
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
@@ -29,11 +30,11 @@ dependencies {
 
     testImplementation("org.spockframework:spock-core:$vSpock")
     testImplementation("org.spockframework:spock-spring:$vSpock")
-    testImplementation("org.apache.groovy:groovy-all:4.0.23")
+    testImplementation("org.apache.groovy:groovy-all:$vGroovy")
 
     testImplementation(project(":server", "stubs"))
 
-    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.1.4")
+    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:$vSpringContractStubRunner")
 }
 
 tasks.withType<KotlinCompile> {

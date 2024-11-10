@@ -19,9 +19,16 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = javaVersion
 java.targetCompatibility = javaVersion
 
-val vExposed = "0.55.0"
-val vSpock = "2.4-M4-groovy-4.0"
-val vSpringContract = "4.1.4"
+val vSpringOpenapi: String by rootProject.extra
+val vSpringContract: String by rootProject.extra
+val vSpringContractStubRunner: String by rootProject.extra
+val vH2db: String by rootProject.extra
+val vExposed: String by rootProject.extra
+val vGroovy: String by rootProject.extra
+val vSpock: String by rootProject.extra
+val vZonky: String by rootProject.extra
+val vZonkyPostgres: String by rootProject.extra
+val vTestContainers: String by rootProject.extra
 
 dependencyManagement {
     imports {
@@ -35,7 +42,7 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$vSpringOpenapi")
 
     implementation("org.jetbrains.exposed:exposed-core:$vExposed")
     implementation("org.jetbrains.exposed:exposed-dao:$vExposed")
@@ -46,7 +53,7 @@ dependencies {
     runtimeOnly("org.flywaydb:flyway-core")
     runtimeOnly("org.flywaydb:flyway-database-postgresql")
     // https://www.programmersought.com/article/30275596545/
-    runtimeOnly("com.h2database:h2:2.3.232")
+    runtimeOnly("com.h2database:h2:$vH2db")
     // may be surprising, but we use postgres only for integration testing
     testRuntimeOnly("org.postgresql:postgresql")
 
@@ -54,7 +61,7 @@ dependencies {
 
     testImplementation("org.spockframework:spock-core:$vSpock")
     testImplementation("org.spockframework:spock-spring:$vSpock")
-    testImplementation("org.apache.groovy:groovy-all:4.0.23")
+    testImplementation("org.apache.groovy:groovy-all:$vGroovy")
 
     // wiremock
     testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:$vSpringContract")
@@ -66,19 +73,13 @@ dependencies {
     testImplementation("org.testcontainers:postgresql")
     testImplementation("org.testcontainers:spock")
     // https://stackoverflow.com/q/48956743
-    testImplementation("io.zonky.test:embedded-database-spring-test:2.5.1")
-    testImplementation("io.zonky.test:embedded-postgres:2.0.7")
+    testImplementation("io.zonky.test:embedded-database-spring-test:$vZonky")
+    testImplementation("io.zonky.test:embedded-postgres:$vZonkyPostgres")
 }
 
 dependencyManagement {
     imports {
-        mavenBom("org.testcontainers:testcontainers-bom:1.20.3")
-    }
-    dependencies {
-        // next major version enforced because of
-        // https://www.cve.org/CVERecord?id=CVE-2022-1471
-        // https://github.com/advisories/GHSA-mjmj-j48q-9wg2
-        dependency("org.yaml:snakeyaml:2.3")
+        mavenBom("org.testcontainers:testcontainers-bom:$vTestContainers")
     }
 }
 
