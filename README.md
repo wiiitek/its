@@ -109,6 +109,12 @@ See also:
 
 Swagger UI is available at http://localhost:8080/swagger-ui/index.html.
 
+## Gradle upgrade
+
+```bash
+./gradlew wrapper --gradle-version latest
+```
+
 [Spring Test Slices]: https://www.baeldung.com/spring-tests#5-using-test-slices
 [Spring Test Slices at sudoinit5.com]: https://www.sudoinit5.com/post/spring-test-slices/#testing-just-jpa
 [Integration Testing With @DataJpaTest at baeldung.com]: https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
