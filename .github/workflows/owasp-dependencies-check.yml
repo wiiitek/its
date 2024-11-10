@@ -4,9 +4,6 @@ on:
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron: '19 19 * * *'
-  push:
-    branches:
-      - '*'
 
 jobs:
   owasp-dependency-check:
