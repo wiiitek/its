@@ -4,16 +4,9 @@ on:
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron: '19 19 * * *'
-  workflow_call:
-    inputs:
-      currentBranchName:
-        description: 'Current branch on which the OWASP check is run'
-        type: string
-        default: 'main'
-    secrets:
-      NVD_API_KEY:
-        description: 'NVD API key for owasp dependency check plugin'
-        required: true
+  push:
+    branches:
+      - '*'
 
 jobs:
   owasp-dependency-check:
@@ -30,12 +23,14 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
+          cache: 'gradle'
       - name: Cache for OWASP Vulnerabilities
         id: cache-owasp-vulnerability-database
         uses: actions/cache@v4
+        if: always()
         with:
           key: cache-owasp-vulnerability-database
-          path: ~/.gradle/dependency-check-data/7.0
+          path: .gradle/dependency-check-data/9.0
       - name: Check env variable
         run: >
           if [[ -z "${NVD_API_KEY}" ]]; then
@@ -44,4 +39,12 @@ jobs:
             echo "[SUCCESS] NVD_API_KEY env variable exists"
           fi
       - name: Check Security Vulnerabilities
-        run: ./gradlew dependencyCheckAnalyze
+        run: ./gradlew dependencyCheckAggregate
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dependency-check-reports-${{ github.run_id }}
+          path: ./build/reports
+          overwrite: true
+          retention-days: 7
