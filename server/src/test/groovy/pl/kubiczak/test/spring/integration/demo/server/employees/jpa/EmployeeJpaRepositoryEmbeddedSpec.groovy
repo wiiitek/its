@@ -1,6 +1,7 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees.jpa
 
 import io.zonky.test.db.AutoConfigureEmbeddedDatabase
+import org.hibernate.exception.ConstraintViolationException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
@@ -81,10 +82,10 @@ class EmployeeJpaRepositoryEmbeddedSpec extends Specification {
         def employee = new EmployeeEntity('', 'bar@example.com')
 
         when:
-        tested.save(employee)
+        testEntityManager.persistFlushFind(employee)
 
         then:
-        def exception = thrown(DataIntegrityViolationException)
+        def exception = thrown(ConstraintViolationException)
         and:
         exception.message
                 .contains('new row for relation "employees" violates check constraint "employees_name_check"')

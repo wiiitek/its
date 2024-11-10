@@ -1,5 +1,6 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees.jpa
 
+import org.hibernate.exception.ConstraintViolationException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
@@ -63,5 +64,20 @@ class EmployeeJpaRepositoryDataSpec extends Specification {
 
         then:
         actual.name == 'John Doe'
+    }
+
+    def "should throw exception for user with empty name"() {
+        given:
+        def employee = new EmployeeEntity('', 'bar@example.com')
+
+        when:
+        testEntityManager.persistFlushFind(employee)
+
+        then:
+        def exception = thrown(ConstraintViolationException)
+        and:
+        // here we have exception message that comes from H2 database
+        exception.message
+                .contains('could not execute statement [Check constraint violation')
     }
 }
