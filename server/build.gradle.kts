@@ -9,7 +9,7 @@ plugins {
     kotlin("plugin.jpa") version "2.1.0"
     id("groovy")
 
-    id("org.springframework.cloud.contract") version "4.1.4"
+    id("org.springframework.cloud.contract") version "4.2.0"
 }
 
 val javaVersion = JavaVersion.VERSION_17
