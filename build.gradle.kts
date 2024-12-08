@@ -18,7 +18,7 @@ extra["vExposed"] = "0.56.0"
 extra["vRetrofit"] = "2.11.0"
 extra["vGroovy"] = "4.0.24"
 extra["vSpock"] = "2.4-M4-groovy-4.0"
-extra["vZonky"] = "2.5.1"
+extra["vZonky"] = "2.6.0"
 extra["vZonkyPostgres"] = "2.1.0"
 extra["vTestContainers"] = "1.20.4"
 
