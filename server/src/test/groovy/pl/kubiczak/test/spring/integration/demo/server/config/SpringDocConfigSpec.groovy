@@ -48,7 +48,7 @@ class SpringDocConfigSpec extends TestcontainersSpringBaseTest {
         def json = new JsonSlurper().parseText(responseBody)
 
         then:
-        json.openapi == '3.0.1'
+        json.openapi == '3.1.0'
         and:
         json.info.title == 'Integration Tests Samples'
     }
