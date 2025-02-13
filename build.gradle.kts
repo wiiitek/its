@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.1.0" apply false
+    kotlin("jvm") version "2.1.10" apply false
 
     id("org.owasp.dependencycheck") version "12.0.2"
 }
