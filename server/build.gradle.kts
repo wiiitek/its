@@ -32,7 +32,7 @@ val vTestContainers: String by rootProject.extra
 
 dependencyManagement {
     imports {
-        mavenBom("com.fasterxml.jackson:jackson-bom:2.18.3")
+        mavenBom("com.fasterxml.jackson:jackson-bom:2.19.0")
     }
 }
 
