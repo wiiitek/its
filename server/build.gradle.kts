@@ -34,6 +34,11 @@ dependencyManagement {
     imports {
         mavenBom("com.fasterxml.jackson:jackson-bom:2.19.0")
     }
+    dependencies {
+        // newer versions to fix CVE-2025-22233
+        // https://spring.io/security/cve-2025-22233
+        dependency("org.springframework:spring-context:6.2.7")
+    }
 }
 
 dependencies {
