@@ -7,7 +7,7 @@ on:
 
 jobs:
   owasp-dependency-check:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     env:
       NVD_API_KEY: "${{ secrets.NVD_API_KEY }}"
     steps:
