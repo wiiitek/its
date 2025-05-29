@@ -20,7 +20,7 @@ extra["vGroovy"] = "4.0.27"
 extra["vSpock"] = "2.4-M6-groovy-4.0"
 extra["vZonky"] = "2.6.0"
 extra["vZonkyPostgres"] = "2.1.0"
-extra["vTestContainers"] = "1.21.0"
+extra["vTestContainers"] = "1.21.1"
 
 // http://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
 dependencyCheck {
