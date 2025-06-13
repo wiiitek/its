@@ -37,7 +37,7 @@ dependencyManagement {
     dependencies {
         // newer versions to fix CVE-2025-22233
         // https://spring.io/security/cve-2025-22233
-        dependency("org.springframework:spring-context:6.2.7")
+        dependency("org.springframework:spring-context:6.2.8")
     }
 }
 
