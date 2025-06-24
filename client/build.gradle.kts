@@ -1,10 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("org.springframework.boot") version "3.5.3"
     id("io.spring.dependency-management") version "1.1.7"
     kotlin("jvm")
-    kotlin("plugin.spring") version "2.1.21"
+    kotlin("plugin.spring") version "2.2.0"
     id("groovy")
 }
 
@@ -45,10 +46,10 @@ dependencies {
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:$vSpringContractStubRunner")
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = javaVersion.toString()
+tasks.withType<KotlinCompile>().configureEach {
+    compilerOptions {
+        freeCompilerArgs.addAll(listOf("-Xjsr305=strict"))
+        jvmTarget.set(JvmTarget.fromTarget(javaVersion.majorVersion))
     }
 }
 

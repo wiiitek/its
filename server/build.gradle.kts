@@ -1,12 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.springframework.boot.gradle.tasks.run.BootRun
 
 plugins {
     id("org.springframework.boot") version "3.5.3"
     id("io.spring.dependency-management") version "1.1.7"
     kotlin("jvm")
-    kotlin("plugin.spring") version "2.1.21"
-    kotlin("plugin.jpa") version "2.1.21"
+    kotlin("plugin.spring") version "2.2.0"
+    kotlin("plugin.jpa") version "2.2.0"
     id("groovy")
 
     id("org.springframework.cloud.contract") version "4.3.0"
@@ -88,10 +89,10 @@ dependencyManagement {
     }
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = javaVersion.toString()
+tasks.withType<KotlinCompile>().configureEach {
+    compilerOptions {
+        freeCompilerArgs.addAll(listOf("-Xjsr305=strict"))
+        jvmTarget.set(JvmTarget.fromTarget(javaVersion.majorVersion))
     }
 }
 
