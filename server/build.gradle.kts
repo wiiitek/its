@@ -33,7 +33,7 @@ val vTestContainers: String by rootProject.extra
 
 dependencyManagement {
     imports {
-        mavenBom("com.fasterxml.jackson:jackson-bom:2.19.1")
+        mavenBom("com.fasterxml.jackson:jackson-bom:2.19.2")
     }
     dependencies {
         // newer versions to fix CVE-2025-22233
