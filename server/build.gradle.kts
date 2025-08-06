@@ -39,6 +39,10 @@ dependencyManagement {
         // newer versions to fix CVE-2025-22233
         // https://spring.io/security/cve-2025-22233
         dependency("org.springframework:spring-context:6.2.9")
+        // overwrite to newer version of transitive dependency from
+        // org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9
+        // https://nvd.nist.gov/vuln/detail/CVE-2025-48924
+        dependency("org.apache.commons:commons-lang3:3.18.0")
     }
 }
 
