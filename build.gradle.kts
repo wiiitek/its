@@ -19,7 +19,7 @@ extra["vRetrofit"] = "3.0.0"
 extra["vGroovy"] = "4.0.28"
 extra["vSpock"] = "2.4-M6-groovy-4.0"
 extra["vZonky"] = "2.6.0"
-extra["vZonkyPostgres"] = "2.1.0"
+extra["vZonkyPostgres"] = "2.1.1"
 extra["vTestContainers"] = "1.21.3"
 
 // http://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
