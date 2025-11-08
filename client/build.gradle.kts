@@ -21,14 +21,6 @@ val vGroovy: String by rootProject.extra
 val vSpock: String by rootProject.extra
 val vSpringContractStubRunner: String by rootProject.extra
 
-dependencyManagement {
-    dependencies {
-        // newer versions to fix CVE-2025-22233
-        // https://spring.io/security/cve-2025-22233
-        dependency("org.springframework:spring-context:6.2.10")
-    }
-}
-
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
 
