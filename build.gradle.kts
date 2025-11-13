@@ -10,7 +10,7 @@ allprojects {
     }
 }
 
-extra["vSpringOpenapi"] = "2.8.13"
+extra["vSpringOpenapi"] = "2.8.14"
 extra["vSpringContract"] = "4.3.0"
 extra["vSpringContractStubRunner"] = "4.3.0"
 extra["vH2db"] = "2.3.232"
