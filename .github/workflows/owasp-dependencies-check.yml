@@ -14,7 +14,7 @@ jobs:
       - name: Info
         run: 'echo "Running OWASP check on branch: ${{ inputs.currentBranchName }}"'
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Setup Zulu/Azul JAVA 17
         uses: actions/setup-java@v5
         with:
