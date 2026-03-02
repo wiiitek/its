@@ -11,7 +11,7 @@ allprojects {
 }
 
 extra["vSpringOpenapi"] = "2.8.14"
-extra["vSpringContract"] = "4.3.0"
+extra["vSpringContract"] = "5.0.0"
 extra["vSpringContractStubRunner"] = "4.3.0"
 extra["vH2db"] = "2.4.240"
 extra["vExposed"] = "0.61.0"
