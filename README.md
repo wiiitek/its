@@ -105,7 +105,7 @@ See also:
 * [Spring Cloud Contract Reference Documentation]
 * [Spring Cloud Contract samples]
 
-## Springfox
+## Swagger UI
 
 Swagger UI is available at http://localhost:8080/swagger-ui/index.html.
 

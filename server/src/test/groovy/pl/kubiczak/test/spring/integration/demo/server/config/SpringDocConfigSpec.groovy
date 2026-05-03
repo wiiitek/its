@@ -17,7 +17,7 @@ class SpringDocConfigSpec extends TestcontainersSpringBaseTest {
 
     def "Swagger UI should be available at default path"() {
         given:
-        def url = new URL("$baseUrl/swagger-ui/index.html")
+        def url = new URI("$baseUrl/swagger-ui/index.html").toURL()
 
         when:
         def okHtmlResponse = url.getText()
@@ -29,7 +29,7 @@ class SpringDocConfigSpec extends TestcontainersSpringBaseTest {
 
     def "Swagger endpoints description should be available as JSON"() {
         given:
-        def url = new URL("$baseUrl$SWAGGER_CONFIG_PATH")
+        def url = new URI("$baseUrl$SWAGGER_CONFIG_PATH").toURL()
 
         when:
         def responseBody = url.getText()
@@ -41,7 +41,7 @@ class SpringDocConfigSpec extends TestcontainersSpringBaseTest {
 
     def "Swagger API definition should be available as JSON"() {
         given:
-        def url = new URL("$baseUrl$API_CONFIG_PATH")
+        def url = new URI("$baseUrl$API_CONFIG_PATH").toURL()
 
         when:
         def responseBody = url.getText()

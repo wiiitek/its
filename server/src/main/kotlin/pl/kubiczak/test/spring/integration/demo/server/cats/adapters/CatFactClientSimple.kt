@@ -3,6 +3,7 @@ package pl.kubiczak.test.spring.integration.demo.server.cats.adapters
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.client.WebClient
+import org.springframework.web.reactive.function.client.bodyToMono
 import pl.kubiczak.test.spring.integration.demo.server.cats.ports.CatFactClient
 import pl.kubiczak.test.spring.integration.demo.server.cats.ports.CatFactClient.CatFactDto
 
@@ -17,6 +18,6 @@ class CatFactClientSimple(apiDomain: String) : CatFactClient {
         .get()
         .uri("/fact")
         .retrieve()
-        .bodyToMono(CatFactDto::class.java)
+        .bodyToMono<CatFactDto>()
         .block()!!
 }

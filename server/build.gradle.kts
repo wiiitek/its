@@ -50,6 +50,7 @@ dependencies {
     runtimeOnly("org.springframework.boot:spring-boot-flyway")
     // https://www.programmersought.com/article/30275596545/
     runtimeOnly("com.h2database:h2:$vH2db")
+    implementation("org.springframework.boot:spring-boot-h2console")
     // may be surprising, but we use postgres only for integration testing
     testRuntimeOnly("org.postgresql:postgresql")
 
