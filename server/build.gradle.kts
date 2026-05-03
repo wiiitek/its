@@ -3,14 +3,14 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.springframework.boot.gradle.tasks.run.BootRun
 
 plugins {
-    id("org.springframework.boot") version "3.5.7"
+    id("org.springframework.boot") version "4.0.6"
     id("io.spring.dependency-management") version "1.1.7"
     kotlin("jvm")
     kotlin("plugin.spring") version "2.2.21"
     kotlin("plugin.jpa") version "2.2.21"
     id("groovy")
 
-    id("org.springframework.cloud.contract") version "4.3.0"
+    id("org.springframework.cloud.contract") version "5.0.2"
 }
 
 val javaVersion = JavaVersion.VERSION_17
@@ -30,18 +30,6 @@ val vSpock: String by rootProject.extra
 val vZonky: String by rootProject.extra
 val vZonkyPostgres: String by rootProject.extra
 val vTestContainers: String by rootProject.extra
-
-dependencyManagement {
-    imports {
-        mavenBom("com.fasterxml.jackson:jackson-bom:2.20.1")
-    }
-    dependencies {
-        // overwrite to newer version of transitive dependency from
-        // org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9
-        // https://nvd.nist.gov/vuln/detail/CVE-2025-48924
-        dependency("org.apache.commons:commons-lang3:3.20.0")
-    }
-}
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")

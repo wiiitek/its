@@ -10,17 +10,17 @@ allprojects {
     }
 }
 
-extra["vSpringOpenapi"] = "2.8.14"
-extra["vSpringContract"] = "4.3.0"
-extra["vSpringContractStubRunner"] = "4.3.0"
+extra["vSpringOpenapi"] = "3.0.3"
+extra["vSpringContract"] = "5.0.2"
+extra["vSpringContractStubRunner"] = "5.0.2"
 extra["vH2db"] = "2.4.240"
 extra["vExposed"] = "0.61.0"
 extra["vRetrofit"] = "3.0.0"
-extra["vGroovy"] = "5.0.2"
-extra["vSpock"] = "2.4-M6-groovy-4.0"
-extra["vZonky"] = "2.7.1"
-extra["vZonkyPostgres"] = "2.2.0"
-extra["vTestContainers"] = "2.0.2"
+extra["vGroovy"] = "5.0.5"
+extra["vSpock"] = "2.4-groovy-5.0"
+extra["vZonky"] = "2.8.0"
+extra["vZonkyPostgres"] = "2.2.2"
+extra["vTestContainers"] = "2.0.5"
 
 // http://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
 dependencyCheck {
