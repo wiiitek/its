@@ -13,11 +13,11 @@ import javax.sql.DataSource
 @DataJdbcTest(excludeAutoConfiguration = [
         AutoConfigureTestDatabase
 ])
-@AutoConfigureDataSourceInitialization
 @AutoConfigureEmbeddedDatabase(
         type = AutoConfigureEmbeddedDatabase.DatabaseType.POSTGRES,
-        provider = AutoConfigureEmbeddedDatabase.DatabaseProvider.ZONKY
+        provider = AutoConfigureEmbeddedDatabase.DatabaseProvider.EMBEDDED
 )
+@AutoConfigureDataSourceInitialization
 class EmployeeExposedRepositoryEmbeddedSpec extends Specification {
 
     @Autowired

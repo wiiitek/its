@@ -9,6 +9,7 @@ import spock.lang.Specification
 
 @SpringBootTest
 @AutoConfigureStubRunner(
+        // Contract module id (server) with latest version (+) and `stubs` classifier.
         ids = "pl.kubiczak.test.spring.integration.demo:server:+:stubs:8080",
         stubsMode = StubRunnerProperties.StubsMode.CLASSPATH
 )

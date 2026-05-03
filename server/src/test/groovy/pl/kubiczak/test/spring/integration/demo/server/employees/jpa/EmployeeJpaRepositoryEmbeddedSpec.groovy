@@ -3,8 +3,8 @@ package pl.kubiczak.test.spring.integration.demo.server.employees.jpa
 import io.zonky.test.db.AutoConfigureEmbeddedDatabase
 import org.hibernate.exception.ConstraintViolationException
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest
+import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase
 import org.springframework.boot.jpa.test.autoconfigure.TestEntityManager
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureDataSourceInitialization
 import org.springframework.test.context.jdbc.Sql
@@ -20,7 +20,7 @@ import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseType
 @AutoConfigureDataSourceInitialization
 @AutoConfigureEmbeddedDatabase(
         type = DatabaseType.POSTGRES,
-        provider = DatabaseProvider.ZONKY
+        provider = DatabaseProvider.EMBEDDED
 )
 class EmployeeJpaRepositoryEmbeddedSpec extends Specification {
 

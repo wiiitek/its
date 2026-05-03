@@ -17,11 +17,11 @@ import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseType
 @DataJdbcTest(excludeAutoConfiguration = [
         AutoConfigureTestDatabase
 ])
-@AutoConfigureDataSourceInitialization
 @AutoConfigureEmbeddedDatabase(
         type = DatabaseType.POSTGRES,
-        provider = DatabaseProvider.ZONKY
+        provider = DatabaseProvider.EMBEDDED
 )
+@AutoConfigureDataSourceInitialization
 class EmployeeJdbcRepositoryEmbeddedSpec extends Specification {
 
     @Autowired
