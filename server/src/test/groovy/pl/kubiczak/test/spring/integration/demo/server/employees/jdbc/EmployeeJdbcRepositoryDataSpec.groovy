@@ -2,7 +2,8 @@ package pl.kubiczak.test.spring.integration.demo.server.employees.jdbc
 
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
+import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureDataSourceInitialization
 import org.springframework.jdbc.BadSqlGrammarException
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.test.context.jdbc.Sql
@@ -11,6 +12,7 @@ import spock.lang.Ignore
 import spock.lang.Specification
 
 @DataJdbcTest
+@AutoConfigureDataSourceInitialization
 class EmployeeJdbcRepositoryDataSpec extends Specification {
 
     @Autowired

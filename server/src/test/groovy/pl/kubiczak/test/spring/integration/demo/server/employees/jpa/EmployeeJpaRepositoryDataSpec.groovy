@@ -2,13 +2,15 @@ package pl.kubiczak.test.spring.integration.demo.server.employees.jpa
 
 import org.hibernate.exception.ConstraintViolationException
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
+import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest
+import org.springframework.boot.jpa.test.autoconfigure.TestEntityManager
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureDataSourceInitialization
 import org.springframework.test.context.jdbc.Sql
 import pl.kubiczak.test.spring.integration.demo.server.TestDb
 import spock.lang.Specification
 
 @DataJpaTest
+@AutoConfigureDataSourceInitialization
 class EmployeeJpaRepositoryDataSpec extends Specification {
 
     @Autowired()

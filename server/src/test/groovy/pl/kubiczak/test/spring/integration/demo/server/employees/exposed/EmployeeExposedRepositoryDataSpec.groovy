@@ -2,12 +2,14 @@ package pl.kubiczak.test.spring.integration.demo.server.employees.exposed
 
 import org.jetbrains.exposed.exceptions.ExposedSQLException
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
+import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureDataSourceInitialization
 import spock.lang.Specification
 
 import javax.sql.DataSource
 
 @DataJdbcTest
+@AutoConfigureDataSourceInitialization
 class EmployeeExposedRepositoryDataSpec extends Specification {
 
     @Autowired

@@ -2,8 +2,9 @@ package pl.kubiczak.test.spring.integration.demo.server.employees.jdbc
 
 import io.zonky.test.db.AutoConfigureEmbeddedDatabase
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
+import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest
+import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureDataSourceInitialization
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.test.context.jdbc.Sql
@@ -16,6 +17,7 @@ import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseType
 @DataJdbcTest(excludeAutoConfiguration = [
         AutoConfigureTestDatabase
 ])
+@AutoConfigureDataSourceInitialization
 @AutoConfigureEmbeddedDatabase(
         type = DatabaseType.POSTGRES,
         provider = DatabaseProvider.ZONKY

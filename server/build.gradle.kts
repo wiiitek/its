@@ -47,12 +47,18 @@ dependencies {
 
     runtimeOnly("org.flywaydb:flyway-core")
     runtimeOnly("org.flywaydb:flyway-database-postgresql")
+    runtimeOnly("org.springframework.boot:spring-boot-flyway")
     // https://www.programmersought.com/article/30275596545/
     runtimeOnly("com.h2database:h2:$vH2db")
     // may be surprising, but we use postgres only for integration testing
     testRuntimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-webmvc-test")
+    testImplementation("org.springframework.boot:spring-boot-data-jpa-test")
+    testImplementation("org.springframework.boot:spring-boot-jpa-test")
+    testImplementation("org.springframework.boot:spring-boot-data-jdbc-test")
+    testImplementation("org.springframework.boot:spring-boot-jdbc-test")
 
     testImplementation("org.spockframework:spock-core:$vSpock")
     testImplementation("org.spockframework:spock-spring:$vSpock")
@@ -64,18 +70,12 @@ dependencies {
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:$vSpringContract")
 
     // testcontainers
-    testImplementation("org.testcontainers:junit-jupiter")
-    testImplementation("org.testcontainers:postgresql")
-    testImplementation("org.testcontainers:spock")
+    testImplementation("org.testcontainers:testcontainers-junit-jupiter:$vTestContainers")
+    testImplementation("org.testcontainers:testcontainers-postgresql:$vTestContainers")
+    testImplementation("org.testcontainers:testcontainers-spock:$vTestContainers")
     // https://stackoverflow.com/q/48956743
     testImplementation("io.zonky.test:embedded-database-spring-test:$vZonky")
     testImplementation("io.zonky.test:embedded-postgres:$vZonkyPostgres")
-}
-
-dependencyManagement {
-    imports {
-        mavenBom("org.testcontainers:testcontainers-bom:$vTestContainers")
-    }
 }
 
 tasks.withType<KotlinCompile>().configureEach {
