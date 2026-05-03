@@ -3,14 +3,14 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.springframework.boot.gradle.tasks.run.BootRun
 
 plugins {
-    id("org.springframework.boot") version "3.5.7"
+    id("org.springframework.boot") version "4.0.6"
     id("io.spring.dependency-management") version "1.1.7"
     kotlin("jvm")
     kotlin("plugin.spring") version "2.2.21"
     kotlin("plugin.jpa") version "2.2.21"
     id("groovy")
 
-    id("org.springframework.cloud.contract") version "4.3.0"
+    id("org.springframework.cloud.contract") version "5.0.2"
 }
 
 val javaVersion = JavaVersion.VERSION_17
@@ -31,18 +31,6 @@ val vZonky: String by rootProject.extra
 val vZonkyPostgres: String by rootProject.extra
 val vTestContainers: String by rootProject.extra
 
-dependencyManagement {
-    imports {
-        mavenBom("com.fasterxml.jackson:jackson-bom:2.20.1")
-    }
-    dependencies {
-        // overwrite to newer version of transitive dependency from
-        // org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9
-        // https://nvd.nist.gov/vuln/detail/CVE-2025-48924
-        dependency("org.apache.commons:commons-lang3:3.20.0")
-    }
-}
-
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -59,12 +47,19 @@ dependencies {
 
     runtimeOnly("org.flywaydb:flyway-core")
     runtimeOnly("org.flywaydb:flyway-database-postgresql")
+    runtimeOnly("org.springframework.boot:spring-boot-flyway")
     // https://www.programmersought.com/article/30275596545/
     runtimeOnly("com.h2database:h2:$vH2db")
+    implementation("org.springframework.boot:spring-boot-h2console")
     // may be surprising, but we use postgres only for integration testing
     testRuntimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-webmvc-test")
+    testImplementation("org.springframework.boot:spring-boot-data-jpa-test")
+    testImplementation("org.springframework.boot:spring-boot-jpa-test")
+    testImplementation("org.springframework.boot:spring-boot-data-jdbc-test")
+    testImplementation("org.springframework.boot:spring-boot-jdbc-test")
 
     testImplementation("org.spockframework:spock-core:$vSpock")
     testImplementation("org.spockframework:spock-spring:$vSpock")
@@ -76,18 +71,12 @@ dependencies {
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier:$vSpringContract")
 
     // testcontainers
-    testImplementation("org.testcontainers:junit-jupiter")
-    testImplementation("org.testcontainers:postgresql")
-    testImplementation("org.testcontainers:spock")
+    testImplementation("org.testcontainers:testcontainers-junit-jupiter:$vTestContainers")
+    testImplementation("org.testcontainers:testcontainers-postgresql:$vTestContainers")
+    testImplementation("org.testcontainers:testcontainers-spock:$vTestContainers")
     // https://stackoverflow.com/q/48956743
     testImplementation("io.zonky.test:embedded-database-spring-test:$vZonky")
     testImplementation("io.zonky.test:embedded-postgres:$vZonkyPostgres")
-}
-
-dependencyManagement {
-    imports {
-        mavenBom("org.testcontainers:testcontainers-bom:$vTestContainers")
-    }
 }
 
 tasks.withType<KotlinCompile>().configureEach {

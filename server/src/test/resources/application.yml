@@ -1,4 +1,5 @@
 # it might be surprising / counterintuitive, but we use H2 database while running our app,
-# but in our tests we use postgres as embedded DB. Because of that we need to overwrite Flyway jdbc driver
-flyway:
-  driver: org.postgresql.Driver
+# but in our tests we use postgres as embedded DB. Because of that we need to overwrite the jdbc driver here.
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver

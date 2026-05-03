@@ -3,8 +3,9 @@ package pl.kubiczak.test.spring.integration.demo.server.employees.exposed
 import io.zonky.test.db.AutoConfigureEmbeddedDatabase
 import org.jetbrains.exposed.exceptions.ExposedSQLException
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
+import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest
+import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureDataSourceInitialization
 import spock.lang.Specification
 
 import javax.sql.DataSource
@@ -14,8 +15,9 @@ import javax.sql.DataSource
 ])
 @AutoConfigureEmbeddedDatabase(
         type = AutoConfigureEmbeddedDatabase.DatabaseType.POSTGRES,
-        provider = AutoConfigureEmbeddedDatabase.DatabaseProvider.ZONKY
+        provider = AutoConfigureEmbeddedDatabase.DatabaseProvider.EMBEDDED
 )
+@AutoConfigureDataSourceInitialization
 class EmployeeExposedRepositoryEmbeddedSpec extends Specification {
 
     @Autowired

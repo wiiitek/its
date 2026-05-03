@@ -17,7 +17,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.stubFor
 
 @ContextConfiguration(classes = [CatFactConfig.class])
 @TestPropertySource(properties = ["apiDomain=http://localhost:8080"])
-class CatFactClientSpec extends Specification {
+class CatFactClientWithWireMockSpec extends Specification {
 
     @Autowired
     private CatFactClient catFactClient
@@ -38,7 +38,7 @@ class CatFactClientSpec extends Specification {
                         """)
     }
 
-    private ResponseDefinitionBuilder invalidResponse() {
+    private ResponseDefinitionBuilder invalidTypesInResponse() {
         return okJson("""
                         {
                             "fact": 12345,
@@ -78,10 +78,10 @@ class CatFactClientSpec extends Specification {
         actual.length == expectedLength
     }
 
-    def "should ... for invalid response"() {
+    def "should throw exception for invalid response"() {
         given:
         stubFor(
-                get("/fact").willReturn(invalidResponse())
+                get("/fact").willReturn(invalidTypesInResponse())
         )
 
         when:

@@ -1,6 +1,7 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.test.json.JsonCompareMode
 import org.springframework.test.web.servlet.MockMvc
 import pl.kubiczak.test.spring.integration.demo.server.MockMvcSpringBaseTest
 
@@ -30,7 +31,7 @@ class EmployeesControllerMockMvcSpec extends MockMvcSpringBaseTest {
                     "name": "Jane Smith",
                     "email": null
                   }
-                ]""", false)
+                ]""", JsonCompareMode.STRICT)
                 )
     }
 
