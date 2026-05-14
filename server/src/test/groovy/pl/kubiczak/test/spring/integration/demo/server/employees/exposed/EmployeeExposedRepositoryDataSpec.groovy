@@ -1,6 +1,6 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees.exposed
 
-import org.jetbrains.exposed.exceptions.ExposedSQLException
+import org.jetbrains.exposed.v1.exceptions.ExposedSQLException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureDataSourceInitialization

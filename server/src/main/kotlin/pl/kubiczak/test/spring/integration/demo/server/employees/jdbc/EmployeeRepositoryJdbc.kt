@@ -3,7 +3,8 @@ package pl.kubiczak.test.spring.integration.demo.server.employees.jdbc
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.stereotype.Repository
-import java.util.*
+import java.util.Optional
+import java.util.UUID
 
 @Repository
 class EmployeeRepositoryJdbc

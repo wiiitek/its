@@ -1,7 +1,7 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees.exposed
 
 import pl.kubiczak.test.spring.integration.demo.server.employees.EmployeeDto
-import java.util.*
+import java.util.UUID
 
 interface EmployeeRepository {
 
