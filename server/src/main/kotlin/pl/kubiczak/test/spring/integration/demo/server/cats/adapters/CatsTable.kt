@@ -1,6 +1,6 @@
 package pl.kubiczak.test.spring.integration.demo.server.cats.adapters
 
-import org.jetbrains.exposed.dao.id.UUIDTable
+import org.jetbrains.exposed.v1.core.dao.id.java.UUIDTable
 
 object CatsTable : UUIDTable("cats", "uuid") {
 

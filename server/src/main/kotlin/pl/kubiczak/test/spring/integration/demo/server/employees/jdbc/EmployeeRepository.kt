@@ -1,6 +1,7 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees.jdbc
 
-import java.util.*
+import java.util.Optional
+import java.util.UUID
 
 interface EmployeeRepository {
 

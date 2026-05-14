@@ -1,6 +1,10 @@
 package pl.kubiczak.test.spring.integration.demo.server.cats
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*
+
+import static com.github.tomakehurst.wiremock.client.WireMock.configureFor
+import static com.github.tomakehurst.wiremock.client.WireMock.get
+import static com.github.tomakehurst.wiremock.client.WireMock.okJson
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder

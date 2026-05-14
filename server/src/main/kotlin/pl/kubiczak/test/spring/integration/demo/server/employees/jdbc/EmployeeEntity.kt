@@ -2,7 +2,7 @@ package pl.kubiczak.test.spring.integration.demo.server.employees.jdbc
 
 import org.springframework.jdbc.core.RowMapper
 import java.sql.ResultSet
-import java.util.*
+import java.util.UUID
 
 class EmployeeEntity {
 

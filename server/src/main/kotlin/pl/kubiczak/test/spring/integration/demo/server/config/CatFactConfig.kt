@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.PropertySource
-import pl.kubiczak.test.spring.integration.demo.server.cats.ports.CatFactClient
 import pl.kubiczak.test.spring.integration.demo.server.cats.adapters.CatFactClientSimple
+import pl.kubiczak.test.spring.integration.demo.server.cats.ports.CatFactClient
 
 @Configuration
 @PropertySource("classpath:cats.properties")

@@ -3,7 +3,8 @@ package pl.kubiczak.test.spring.integration.demo.server.employees
 import org.springframework.stereotype.Service
 import pl.kubiczak.test.spring.integration.demo.server.employees.jdbc.EmployeeEntity
 import pl.kubiczak.test.spring.integration.demo.server.employees.jdbc.EmployeeRepository
-import java.util.*
+import java.util.Optional
+import java.util.UUID
 
 @Service
 class EmployeesService(
