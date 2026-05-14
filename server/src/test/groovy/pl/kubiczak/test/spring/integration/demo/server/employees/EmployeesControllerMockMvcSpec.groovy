@@ -1,14 +1,12 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.json.JsonCompareMode
 import org.springframework.test.web.servlet.MockMvc
 import pl.kubiczak.test.spring.integration.demo.server.MockMvcSpringBaseTest
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 class EmployeesControllerMockMvcSpec extends MockMvcSpringBaseTest {
 

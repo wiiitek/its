@@ -1,5 +1,8 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees.jdbc
 
+import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseProvider
+import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseType
+
 import io.zonky.test.db.AutoConfigureEmbeddedDatabase
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest
@@ -10,9 +13,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.test.context.jdbc.Sql
 import pl.kubiczak.test.spring.integration.demo.server.TestDb
 import spock.lang.Specification
-
-import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseProvider
-import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseType
 
 @DataJdbcTest(excludeAutoConfiguration = [
         AutoConfigureTestDatabase
