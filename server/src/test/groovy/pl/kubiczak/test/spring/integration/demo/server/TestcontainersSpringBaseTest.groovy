@@ -1,5 +1,7 @@
 package pl.kubiczak.test.spring.integration.demo.server
 
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
+
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.util.TestPropertyValues
 import org.springframework.boot.test.web.server.LocalServerPort
@@ -10,8 +12,6 @@ import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.postgresql.PostgreSQLContainer
 import org.testcontainers.spock.Testcontainers
 import spock.lang.Specification
-
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
 @Testcontainers
 @ContextConfiguration(initializers = [

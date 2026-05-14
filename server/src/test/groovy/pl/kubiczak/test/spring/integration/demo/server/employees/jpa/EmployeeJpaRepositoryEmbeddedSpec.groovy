@@ -1,5 +1,8 @@
 package pl.kubiczak.test.spring.integration.demo.server.employees.jpa
 
+import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseProvider
+import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseType
+
 import io.zonky.test.db.AutoConfigureEmbeddedDatabase
 import org.hibernate.exception.ConstraintViolationException
 import org.springframework.beans.factory.annotation.Autowired
@@ -10,9 +13,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureDataSourceI
 import org.springframework.test.context.jdbc.Sql
 import pl.kubiczak.test.spring.integration.demo.server.TestDb
 import spock.lang.Specification
-
-import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseProvider
-import static io.zonky.test.db.AutoConfigureEmbeddedDatabase.DatabaseType
 
 @DataJpaTest(excludeAutoConfiguration = [
         AutoConfigureTestDatabase

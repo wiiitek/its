@@ -1,12 +1,12 @@
 package pl.kubiczak.test.spring.integration.demo.server.cats
 
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.web.servlet.MockMvc
-import pl.kubiczak.test.spring.integration.demo.server.MockMvcSpringBaseTest
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.test.web.servlet.MockMvc
+import pl.kubiczak.test.spring.integration.demo.server.MockMvcSpringBaseTest
 
 class CatsControllerMockMvcSpec extends MockMvcSpringBaseTest {
 

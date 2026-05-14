@@ -1,5 +1,7 @@
 package pl.kubiczak.test.spring.integration.demo.server.cats
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*
+
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder
 import org.springframework.beans.factory.annotation.Autowired
@@ -9,11 +11,6 @@ import org.springframework.test.context.TestPropertySource
 import pl.kubiczak.test.spring.integration.demo.server.cats.ports.CatFactClient
 import pl.kubiczak.test.spring.integration.demo.server.config.CatFactConfig
 import spock.lang.Specification
-
-import static com.github.tomakehurst.wiremock.client.WireMock.configureFor
-import static com.github.tomakehurst.wiremock.client.WireMock.get
-import static com.github.tomakehurst.wiremock.client.WireMock.okJson
-import static com.github.tomakehurst.wiremock.client.WireMock.stubFor
 
 @ContextConfiguration(classes = [CatFactConfig.class])
 @TestPropertySource(properties = ["apiDomain=http://localhost:8080"])
