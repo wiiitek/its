@@ -22,7 +22,6 @@ java.targetCompatibility = javaVersion
 
 val vSpringOpenapi: String by rootProject.extra
 val vSpringContract: String by rootProject.extra
-val vSpringContractStubRunner: String by rootProject.extra
 val vH2db: String by rootProject.extra
 val vExposed: String by rootProject.extra
 val vGroovy: String by rootProject.extra

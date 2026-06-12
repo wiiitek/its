@@ -23,6 +23,11 @@ updates:
       exposed:
         patterns:
           - 'org.jetbrains.exposed:*'
+      contract:
+        patterns:
+          - 'org.springframework.cloud.contract'
+          - 'org.springframework.cloud:spring-cloud-contract-wiremock'
+          - 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
       kotlin:
         patterns:
           - 'jvm'
