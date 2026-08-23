@@ -16,10 +16,10 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = javaVersion
 java.targetCompatibility = javaVersion
 
-val vRetrofit: String by rootProject.extra
-val vGroovy: String by rootProject.extra
-val vSpock: String by rootProject.extra
-val vSpringContractStubRunner: String by rootProject.extra
+val vRetrofit = parent?.extra["vRetrofit"] as String
+val vGroovy = parent?.extra["vGroovy"] as String
+val vSpock = parent?.extra["vSpock"] as String
+val vSpringContractStubRunner = parent?.extra["vSpringContractStubRunner"] as String
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
