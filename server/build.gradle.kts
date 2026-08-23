@@ -20,16 +20,16 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = javaVersion
 java.targetCompatibility = javaVersion
 
-val vSpringOpenapi: String by rootProject.extra
-val vSpringContract: String by rootProject.extra
-val vSpringContractStubRunner: String by rootProject.extra
-val vH2db: String by rootProject.extra
-val vExposed: String by rootProject.extra
-val vGroovy: String by rootProject.extra
-val vSpock: String by rootProject.extra
-val vZonky: String by rootProject.extra
-val vZonkyPostgres: String by rootProject.extra
-val vTestContainers: String by rootProject.extra
+val vSpringOpenapi = parent?.extra["vSpringOpenapi"] as String
+val vSpringContract = parent?.extra["vSpringContract"] as String
+val vSpringContractStubRunner = parent?.extra["vSpringContractStubRunner"] as String
+val vH2db = parent?.extra["vH2db"] as String
+val vExposed = parent?.extra["vExposed"] as String
+val vGroovy = parent?.extra["vGroovy"] as String
+val vSpock = parent?.extra["vSpock"] as String
+val vZonky = parent?.extra["vZonky"] as String
+val vZonkyPostgres = parent?.extra["vZonkyPostgres"] as String
+val vTestContainers = parent?.extra["vTestContainers"] as String
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -107,7 +107,7 @@ contracts {
 }
 
 // for consuming stubs locally https://stackoverflow.com/a/62077808/1823545
-val stubs: Configuration by configurations.creating {
+val stubs: Configuration = configurations.create("stubs") {
     isCanBeConsumed = true
     isCanBeResolved = false
 }
